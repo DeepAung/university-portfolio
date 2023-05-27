@@ -1,0 +1,198 @@
+---
+import SkillCard from "./SkillCard.astro";
+---
+
+<div class="container">
+  <div class="head">
+    <h1>Profile</h1>
+    <h3>ประวัติส่วนตัว</h3>
+  </div>
+
+  <div class="wrapper">
+    <section class="personal-info">
+      <h3>Personal Info</h3>
+      <p><span>ชื่อ:</span> อชิระ อังสุมาล (ดีพ)</p>
+      <p><span>วันเกิด:</span> 14 ธันวาคม 2548</p>
+      <p>
+        <span>สัญชาติ:</span> ไทย <span>เชื้อชาติ:</span> ไทย <span
+          >ศาสนา:
+        </span> พุทธ
+      </p>
+      <p><span>แผนการเรียน:</span> วิทย์-คณิต (เน้นวิศวกรรม)</p>
+      <p>
+        <span>ที่อยู่:</span>
+        <a
+          target="_blank"
+          href="https://goo.gl/maps/mqgZLzyVSvBxq79A8?coh=178571&entry=tt"
+          >คลิกที่นี่</a
+        >
+      </p>
+      <p>
+        <span>ครอบครัว:</span> มารดา ทัศนีย์ อังสุมาล, พี่ชาย อชิตะ อังสุมาล
+      </p>
+    </section>
+    <img
+      class="profile-pic"
+      src="../../public/images/line_54745460511716.jpg"
+    />
+  </div>
+
+  <div class="wrapper">
+    <section class="contacts">
+      <h3>Contacts</h3>
+      <div class="contact-item">
+        <img src="../../public/icons/gmail.png" />
+        <p>i.deepaung@gmail.com</p>
+      </div>
+
+      <div class="contact-item">
+        <i class="fa-solid fa-phone fa-2xl"></i>
+        <p>086-075-1345</p>
+      </div>
+
+      <div class="contact-item">
+        <i class="fa-brands fa-github fa-2xl"></i>
+        <a target="_blank" href="https://github.com/deepaung">DeepAung</a>
+      </div>
+    </section>
+    <section class="habits" ,>
+      <h3>Habits</h3>
+      <li>ฟังเพลง ดูหนัง ดูอนิเมะ</li>
+      <li>เล่นรูบิค เล่นเกม เขีนโค้ด</li>
+      <li>ออกกำลังกาย (Calisthenics)</li>
+    </section>
+  </div>
+
+  <section class="programming-skills">
+    <h3>Programming Skills</h3>
+
+    <div class="skills-container">
+      <SkillCard title="C">
+        <img src="../../public/icons/c.svg" />
+      </SkillCard>
+
+      <SkillCard title="C++">
+        <img src="../../public/icons/c++.png" />
+      </SkillCard>
+
+      <SkillCard title="Unity (C#)">
+        <img src="../../public/icons/unity.png" />
+        <img src="../../public/icons/csharp.svg" />
+      </SkillCard>
+
+      <SkillCard title="Python (Django)">
+        <img src="../../public/icons/python.png" />
+        <img src="../../public/icons/django.png" />
+      </SkillCard>
+
+      <SkillCard title="HTML CSS JS">
+        <img src="../../public/icons/html.png" />
+        <img src="../../public/icons/css.png" />
+        <img src="../../public/icons/js.png" />
+      </SkillCard>
+
+      <SkillCard title="Vue.js">
+        <img src="../../public/icons/vuejs.png" />
+      </SkillCard>
+
+      <SkillCard title="Godot">
+        <img src="../../public/icons/godot.svg" />
+      </SkillCard>
+    </div>
+  </section>
+</div>
+
+<style>
+  .container {
+    padding: 2rem;
+    background-color: rgb(30, 30, 30);
+  }
+
+  .head {
+    text-align: center;
+  }
+
+  .wrapper {
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .wrapper .profile-pic {
+    display: block;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 100%;
+    object-fit: cover;
+  }
+
+  section {
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: rgba(121, 14, 14, 0.5);
+  }
+
+  .personal-info span {
+    color: #dad7c5;
+    font-weight: 600;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    height: 2rem;
+  }
+
+  .contacts .contact-item img {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .contact-item :first-child {
+    margin-right: 1rem;
+  }
+
+  .programming-skills {
+    width: 80%;
+    margin: auto;
+  }
+
+  .programming-skills h3 {
+    text-align: center;
+  }
+
+  .skills-container {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    gap: 2rem;
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+
+  function fromScrollTrigger(target: string, body: any, time: number) {
+    let value = -body?.y || 0;
+
+    gsap.from(target, {
+      scrollTrigger: {
+        trigger: target,
+        start: `top+=${value}px bottom`,
+        toggleActions: "play none resume reset",
+      },
+      opacity: 0,
+      duration: time,
+      ...body,
+    });
+  }
+
+  fromScrollTrigger(".head", { y: 200 }, 1);
+  fromScrollTrigger(".personal-info", { x: -500 }, 2);
+  fromScrollTrigger(".profile-pic", { x: 500 }, 0.75);
+  fromScrollTrigger(".contacts", { x: -500 }, 2);
+  fromScrollTrigger(".habits", { x: 500 }, 2);
+  fromScrollTrigger(".programming-skills", { y: -100 }, 1);
+</script>

@@ -1,0 +1,82 @@
+---
+const { title, image } = Astro.props;
+---
+
+<div class="skill-card">
+  <div class="wrapper">
+    <slot />
+  </div>
+  <p>{title}</p>
+</div>
+
+<style is:global>
+  .skill-card {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1rem;
+    column-gap: 1rem;
+
+    transition: transform 0.25s;
+  }
+
+  
+  .skill-card p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .skill-card .wrapper {
+    width: 100%;
+    display: flex;
+  }
+  
+  .skill-card > .wrapper > img {
+    width: 30%;
+    object-fit: contain;
+    margin: 0 auto;
+  }
+
+  .skill-card:hover {
+    transform: scale(1.1);
+  }
+
+  .skill-card p::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transform-origin: bottom left;
+    transition: transform 0.25s ease-out;
+  }
+
+  .skill-card:hover p::after {
+    transform: scaleX(1);
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+
+  gsap.from(".skill-card", {
+    scrollTrigger: {
+      trigger: ".skill-card",
+      toggleActions: "play none resume reset",
+    },
+    delay: 0.5,
+    opacity: 0,
+    stagger: 0.1,
+  });
+</script>
