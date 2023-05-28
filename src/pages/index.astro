@@ -1,4 +1,5 @@
 ---
+import Welcome from "../components/Welcome.astro";
 import Intro from "../components/Intro.astro";
 import Profile from "../components/Profile.astro";
 import Education from "../components/Education.astro";
@@ -17,13 +18,25 @@ import Education from "../components/Education.astro";
     ></script>
   </head>
   <body>
-    <Intro />
-    <Profile />
-    <Education />
+    <Welcome />
+    <div class="detail">
+      <Intro />
+      <Profile />
+      <Education />
+    </div>
   </body>
 </html>
 
 <style is:global>
+  :root {
+    --blue: 56, 182, 255;
+    --yellow: 255, 223, 43;
+    --green: 27, 248, 129;
+    --pink: 250, 24, 163;
+    --crimson: 121, 14, 14;
+  }
+
+  /* default settings */
   h1 {
     font-size: 4rem;
   }
@@ -55,6 +68,36 @@ import Education from "../components/Education.astro";
     font-family: Inter, "IBM Plex Sans Thai", sans-serif;
     color: white;
     overflow-x: hidden;
+  }
+
+  .container {
+    padding: 2rem;
+  }
+
+  .head {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .detail {
+    background-color: rgb(30, 30, 30);
+  }
+
+  /* utility class */
+  .blue {
+    color: rgb(var(--blue));
+  }
+
+  .yellow {
+    color: rgb(var(--yellow));
+  }
+
+  .green {
+    color: rgb(var(--green));
+  }
+
+  .pink {
+    color: rgb(var(--pink));
   }
 </style>
 

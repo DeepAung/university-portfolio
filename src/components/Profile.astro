@@ -33,7 +33,7 @@ import SkillCard from "./SkillCard.astro";
     </section>
     <img
       class="profile-pic"
-      src="../../public/images/line_54745460511716.jpg"
+      src="/images/line_54745460511716.jpg"
     />
   </div>
 
@@ -41,7 +41,7 @@ import SkillCard from "./SkillCard.astro";
     <section class="contacts">
       <h3>Contacts</h3>
       <div class="contact-item">
-        <img src="../../public/icons/gmail.png" />
+        <img src="/icons/gmail.png" />
         <p>i.deepaung@gmail.com</p>
       </div>
 
@@ -58,7 +58,7 @@ import SkillCard from "./SkillCard.astro";
     <section class="habits" ,>
       <h3>Habits</h3>
       <li>ฟังเพลง ดูหนัง ดูอนิเมะ</li>
-      <li>เล่นรูบิค เล่นเกม เขีนโค้ด</li>
+      <li>เล่นรูบิค เล่นเกม เขียนโค้ด</li>
       <li>ออกกำลังกาย (Calisthenics)</li>
     </section>
   </div>
@@ -68,49 +68,41 @@ import SkillCard from "./SkillCard.astro";
 
     <div class="skills-container">
       <SkillCard title="C">
-        <img src="../../public/icons/c.svg" />
+        <img src="/icons/c.svg" />
       </SkillCard>
 
       <SkillCard title="C++">
-        <img src="../../public/icons/c++.png" />
+        <img src="/icons/c++.png" />
       </SkillCard>
 
       <SkillCard title="Unity (C#)">
-        <img src="../../public/icons/unity.png" />
-        <img src="../../public/icons/csharp.svg" />
+        <img src="/icons/unity.png" />
+        <img src="/icons/csharp.svg" />
       </SkillCard>
 
       <SkillCard title="Python (Django)">
-        <img src="../../public/icons/python.png" />
-        <img src="../../public/icons/django.png" />
+        <img src="/icons/python.png" />
+        <img src="/icons/django.png" />
       </SkillCard>
 
       <SkillCard title="HTML CSS JS">
-        <img src="../../public/icons/html.png" />
-        <img src="../../public/icons/css.png" />
-        <img src="../../public/icons/js.png" />
+        <img src="/icons/html.png" />
+        <img src="/icons/css.png" />
+        <img src="/icons/js.png" />
       </SkillCard>
 
       <SkillCard title="Vue.js">
-        <img src="../../public/icons/vuejs.png" />
+        <img src="/icons/vuejs.png" />
       </SkillCard>
 
       <SkillCard title="Godot">
-        <img src="../../public/icons/godot.svg" />
+        <img src="/icons/godot.svg" />
       </SkillCard>
     </div>
   </section>
 </div>
 
 <style>
-  .container {
-    padding: 2rem;
-    background-color: rgb(30, 30, 30);
-  }
-
-  .head {
-    text-align: center;
-  }
 
   .wrapper {
     padding: 2rem 0;
@@ -130,7 +122,12 @@ import SkillCard from "./SkillCard.astro";
   section {
     padding: 2rem;
     border-radius: 1rem;
-    background-color: rgba(121, 14, 14, 0.5);
+    background-color: rgba(var(--crimson), 0.5);
+  }
+
+  section h3 {
+    color: rgb(var(--pink));
+    margin-bottom: 1rem;
   }
 
   .personal-info span {
@@ -165,6 +162,7 @@ import SkillCard from "./SkillCard.astro";
 
   .skills-container {
     padding: 2rem;
+    padding-top: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
     gap: 2rem;
@@ -172,22 +170,8 @@ import SkillCard from "./SkillCard.astro";
 </style>
 
 <script>
-  import gsap from "gsap";
-
-  function fromScrollTrigger(target: string, body: any, time: number) {
-    let value = -body?.y || 0;
-
-    gsap.from(target, {
-      scrollTrigger: {
-        trigger: target,
-        start: `top+=${value}px bottom`,
-        toggleActions: "play none resume reset",
-      },
-      opacity: 0,
-      duration: time,
-      ...body,
-    });
-  }
+  // import gsap from "gsap";
+  import { fromScrollTrigger } from '../scripts/fromScrollTrigger.ts'
 
   fromScrollTrigger(".head", { y: 200 }, 1);
   fromScrollTrigger(".personal-info", { x: -500 }, 2);

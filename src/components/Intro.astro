@@ -1,51 +1,67 @@
----
----
-
 <div class="container">
-  <canvas id="canvas"></canvas>
-  <h1 class="welcome">Welcome to My PortFolio</h1>
+  <div class="contents intro-container">
+    <h3>{"{"}</h3>
+    <h3>
+      &emsp;createdBy: "<span class="blue">Ashira Aungsumal</span>"
+    </h3>
+    <h3>
+      &emsp;from: "<span class="yellow">Debsirin</span>
+      <span class="green">School</span>"
+    </h3>
+    <h3>
+      &emsp;to: "<span class="pink">Chula/Engineer/Computer(CEDT)</span>"
+    </h3>
+    <h3>{"}"}</h3>
+  </div>
+  <img class="my-image" src="/images/IMG_0648.jpg" alt="" />
 </div>
 
 <style>
+  @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap");
+
   .container {
-    background-color: rgb(30, 30, 30);
     height: 100vh;
     height: 100dvh;
 
     display: flex;
     align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    justify-content: space-around;
   }
 
-  .container h1 {
-    color: white;
-    font-size: 4rem;
-    font-weight: 500;
+  .contents h3 {
+    font-family: "Fira Code", monospace;
+    font-weight: 400;
   }
 
-  canvas {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
+  .my-image {
+    display: block;
+    height: 80vh;
+    object-fit: cover;
+    border-radius: 1rem;
+    transition: box-shadow 0.5s ease-out;
   }
 </style>
 
 <script>
-  import "../scripts/polygonBackground.ts";
   import gsap from "gsap";
+  import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
 
-  gsap.from("#canvas", {
-    opacity: 0,
-    delay: 0.25,
-    duration: 0.75,
-  })
-
-  gsap.from(".welcome", {
-    opacity: 0,
-    scale: 0,
-    ease: "elastic.out(1, 0.3)",
-    delay: 1,
-    duration: 1.5,
-  });
+  fromScrollTrigger(".contents", { x: -500 }, 1.5);
+  fromScrollTrigger(
+    ".my-image",
+    {
+      x: 500,
+      delay: 0.5,
+      ease: "power4.out(1, 0.3)",
+      onComplete() {
+        const image = document.querySelector(".my-image") as HTMLImageElement;
+        image.style.boxShadow = "0px 0px 50px rgba(255, 255, 255, 0.75)";
+      },
+      onStart() {
+        const image = document.querySelector(".my-image") as HTMLImageElement;
+        image.style.boxShadow = "none";
+      },
+    },
+    1
+  );
 </script>

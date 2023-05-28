@@ -1,4 +1,134 @@
 <div class="container">
-  <h1>Education</h1>
-  <h3>ประวัติการศึกษา</h3>
+  <div class="head">
+    <h1>Education</h1>
+    <h3>ประวัติการศึกษา</h3>
+  </div>
+
+  <div class="wrapper">
+    <div class="timeline">
+      <div class="timeline-item"></div>
+      <div class="timeline-item"></div>
+      <div class="timeline-item"></div>
+      <div class="hide"></div>
+    </div>
+    <div class="items">
+      <div class="item">
+        <div class="image">
+          <img src="/icons/rnk.png" alt="" />
+        </div>
+
+        <div class="detail">
+          <h3>อนุบาล - ประถมศึกษา</h3>
+          <p>โรงเรียนราชวินิตประถมบางแค</p>
+          <p>ประถม <span>GPAX: 3.90</span></p>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="image">
+          <img src="/icons/debsirin.png" alt="" />
+        </div>
+        <div class="detail">
+          <h3>มัธยมศึกษาตอนต้น</h3>
+          <p>โรงเรียนเทพศิรินทร์</p>
+          <p><span>GPAX: 4.00</span></p>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="image">
+          <img src="/icons/debsirin.png" alt="" />
+        </div>
+        <div class="detail">
+          <h3>มัธยมศึกษาตอนปลาย</h3>
+          <p>โรงเรียนเทพศิรินทร์</p>
+          <p><span>GPAX: 4.00</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<style>
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10rem;
+    position: relative;
+  }
+
+  .timeline {
+    width: 0.3rem;
+    height: 24rem;
+    background-color: white;
+    border-radius: 100rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .timeline .timeline-item {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: white;
+    border-radius: 50%;
+  }
+
+  .timeline .hide {
+    position: absolute;
+    top: 24rem;
+    bottom: 0;
+    left: -0.75rem;
+    right: -0.75rem;
+    opacity: 0.5;
+    background-color: rgb(30, 30, 30);
+  }
+
+  .items .item {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-bottom: 2rem;
+  }
+
+  .items :last-child {
+    margin-bottom: 0rem;
+  }
+
+  .items .item .detail h3 {
+    color: rgb(var(--pink));
+  }
+
+  .items .item .detail p span {
+    font-weight: 700;
+  }
+
+  .items .item .image {
+    width: 9rem;
+    height: 9rem;
+    background-color: white;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 2rem;
+  }
+
+  .items .item .image img {
+    display: block;
+    width: 80%;
+    object-fit: cover;
+  }
+</style>
+
+<script>
+  import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
+
+  fromScrollTrigger(".item", { x: 500, stagger: 0.3 }, 1);
+  fromScrollTrigger(".hide", { opacity: 0.5, top: 0, delay: 0.25 }, 1.5);
+</script>

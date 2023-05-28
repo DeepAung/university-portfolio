@@ -1,0 +1,48 @@
+<div class="container">
+  <canvas id="canvas"></canvas>
+  <h1 class="welcome">Welcome to My PortFolio</h1>
+</div>
+
+<style>
+  .container {
+    background-color: rgb(30, 30, 30);
+    height: 100vh;
+    height: 100dvh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .container h1 {
+    color: white;
+    font-size: 4rem;
+    font-weight: 500;
+  }
+
+  canvas {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  import "../scripts/polygonBackground.ts";
+  import gsap from "gsap";
+
+  gsap.from("#canvas", {
+    opacity: 0,
+    delay: 0.5,
+    duration: 1,
+  })
+
+  gsap.from(".welcome", {
+    opacity: 0,
+    scale: 0.5,
+    ease: "power4.out(1, 0.3)",
+    delay: 1,
+    duration: 2,
+  });
+</script>
