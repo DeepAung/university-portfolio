@@ -1,0 +1,93 @@
+---
+const { width = "25rem" } = Astro.props;
+---
+
+<div class="carousels" style={`width: ${width};`}>
+  <div class="carousels__items">
+    <slot />
+  </div>
+  <div class="carousels__buttons">
+    <div class="carousels__prev">
+      <i class="fa-solid fa-arrow-left fa-2xl"></i>
+    </div>
+    <div class="carousels__next">
+      <i class="fa-solid fa-arrow-right fa-2xl"></i>
+    </div>
+  </div>
+</div>
+
+<style>
+  .carousels {
+    margin: auto;
+  }
+
+  .carousels__items {
+    display: flex;
+    overflow-x: hidden;
+  }
+
+  .carousels__items > * {
+    position: absolute;
+  }
+
+  .carousels__items .show {
+    opacity: 1;
+  }
+
+  .carousels__buttons {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem;
+  }
+
+  .carousels__prev,
+  .carousels__next {
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  const items = document.querySelector(".carousels__items") as HTMLDivElement;
+  const prev = document.querySelector(".carousels__prev") as HTMLDivElement;
+  const next = document.querySelector(".carousels__next") as HTMLDivElement;
+
+  let itemsArray: HTMLElement[] = [];
+  items.childNodes.forEach((value) => {
+    if ((value as Element).tagName != undefined) {
+      itemsArray.push(value as HTMLElement);
+    }
+  });
+
+  let index = 0;
+
+  const width = itemsArray[0].offsetWidth;
+
+  prev.onclick = slideLeft;
+  next.onclick = slideRight;
+
+  function slideLeft(e: MouseEvent) {
+    if (index == 0) return;
+    index--;
+    animate();
+  }
+
+  function slideRight(e: MouseEvent) {
+    if (index == itemsArray.length - 1) return;
+    index++;
+    animate();
+  }
+
+  function animate() {
+    itemsArray.forEach((child) => {
+      gsap.to(child, {
+        translateX: -(width * index),
+        ease: "power2.inOut",
+        duration: 0.75,
+      });
+    });
+  }
+</script>

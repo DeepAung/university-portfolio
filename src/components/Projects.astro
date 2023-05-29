@@ -1,0 +1,28 @@
+---
+import Carousels from './Carousels.astro'
+---
+
+<div class="container">
+  <div class="head">
+    <h1>Projects</h1>
+    <h3>โปรเจกต์</h3>
+  </div>
+
+  <Carousels width="25rem">
+    <div class="wrap-img show"><img src="../../public/images/DEEP.png" alt=""></div>
+    <div class="wrap-img"><img src="../../public/images/IMG_0648.jpg" alt=""></div>
+    <div class="wrap-img"><img src="../../public/images/line_54745460511716.jpg" alt=""></div>
+  </Carousels>
+</div>
+
+<style>
+  .wrap-img {
+    width: 25rem;
+    position: relative;
+  }
+
+  .wrap-img img {
+    display: block;
+    width: 25rem;
+  }
+</style>
