@@ -1,6 +1,10 @@
-import gsap from 'gsap';
+import gsap from "gsap";
 
-export function fromScrollTrigger(target: string, body: any, time: number) {
+export function fromScrollTrigger(
+  target: string | object,
+  body: any,
+  time: number
+) {
   let value = -body?.y || 0;
 
   gsap.from(target, {

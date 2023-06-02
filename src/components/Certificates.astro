@@ -1,29 +1,82 @@
+---
+import Carousels from "./Carousels.astro";
+---
+
 <div class="container">
   <div class="head">
     <h1>Certificates</h1>
     <h3>ผลงานด้านวิชาการ</h3>
   </div>
 
-  <div class="wrapper">
-    <p><b>โครงการโอลิมปิกวิชาการ (สอวน.) สาขาวิชาคอมพิวเตอร์ ค่าย 2</b></p>
-    <p>ประจำปีการศึกษา 2564</p>
-  </div>
+  <Carousels width="60vw" carouselsClass="certificates-carousels">
+    <div class="wrapper">
+      <div class="text">
+        <p><b>การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 19</b></p>
+        <p>Thailand Olympiad in Informatics 2023 (TOI 19)</p>
+        <p>มหาวิทยาลัยนเรศวร</p>
+        <p>รางวัลเทียบเท่าเหรียญเงิน</p>
+      </div>
+    </div>
 
-  <div class="wrapper">
-    <p><b>การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 18</b></p>
-    <p>Thailand Olympiad in Informatics 2022 (TOI 18)</p>
-    <p>คณะวิทยาศาสตร์ มหาวิทยาลัยเชียงใหม่</p>
-    <p>รางวัลเหรียญเงิน</p>
-  </div>
+    <div class="wrapper">
+      <div class="text">
+        <p><b>การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 18</b></p>
+        <p>Thailand Olympiad in Informatics 2022 (TOI 18)</p>
+        <p>คณะวิทยาศาสตร์ มหาวิทยาลัยเชียงใหม่</p>
+        <p>รางวัลเหรียญเงิน</p>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <div class="text">
+        <p>
+          <b>ศิลปหัตถกรรมนักเรียน ระดับชาติ ครั้งที่ ๗๐ ณ.จังหวัดราชบุรี</b>
+        </p>
+        <p>การแข่งขันสร้างเกมสร้างสรรค์จากคอมพิวเตอร์</p>
+        <p>รางวัลระดับเหรียญทองแดง</p>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <div class="text">
+        <p><b> ICT Challenge 2022</b></p>
+        <p>แข่งขันตอบปัญหาวิชาการคอมพิวเตอร์และเทคโนโลยีสารสนเทศ</p>
+        <p>ณ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี คณะเทคโนโลยีสารสนเทศ</p>
+        <p>รางวัลรองชนะเลิศอันดับ 1</p>
+      </div>
+    </div>
+  </Carousels>
 </div>
 
 <style>
   .wrapper {
     background-color: rgba(var(--crimson), 0.5);
-    width: 50%;
+    width: 60vw;
     margin: 3rem auto;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
+  }
+
+  .wrapper img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+
+  .wrapper .text {
+    width: 60vw;
+    padding: 1.5rem 5vw;
     text-align: center;
   }
 </style>
+
+<script>
+  import { initCarousels } from "../scripts/carousels.ts";
+  import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
+
+  initCarousels(
+    document.querySelector(".certificates-carousels") as HTMLElement
+  );
+
+  fromScrollTrigger(".certificates-carousels", { y: 200 }, 1.5);
+</script>

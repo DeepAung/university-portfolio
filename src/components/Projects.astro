@@ -1,5 +1,5 @@
 ---
-import Carousels from './Carousels.astro'
+import Carousels from "./Carousels.astro";
 ---
 
 <div class="container">
@@ -8,21 +8,111 @@ import Carousels from './Carousels.astro'
     <h3>โปรเจกต์</h3>
   </div>
 
-  <Carousels width="25rem">
-    <div class="wrap-img show"><img src="../../public/images/DEEP.png" alt=""></div>
-    <div class="wrap-img"><img src="../../public/images/IMG_0648.jpg" alt=""></div>
-    <div class="wrap-img"><img src="../../public/images/line_54745460511716.jpg" alt=""></div>
+  <Carousels width="50vw" carouselsClass="projects-carousels">
+    <div class="wrapper">
+      <div class="img"><img src="/public/images/chatapp.png" alt="" /></div>
+      <div class="text">
+        <p><b>Chat App</b></p>
+        <p>
+          เป็นเว็บไซต์ที่สามารถ register/login แล้วคุยกับ user คนอื่นๆ ได้
+          ผ่านห้องที่สร้างขึ้น โดยจัดทำขึ้นเพื่อศึกษาหลักการทำงานของ rest-api,
+          การเขียน front-end และ back-end, การใช้ websocket
+        </p>
+        <p class="pink">
+          <b>ใช้ Next.js(font-end) และ Django(back-end) ในการพัฒนา</b>
+        </p>
+        <p>
+          <a href="https://github.com/DeepAung/ChatApp" target="_blank"
+            >Source Code</a
+          > | <a href="https://github.com/DeepAung/ChatApp" target="_blank"
+            >Website</a
+          >
+        </p>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <div class="img">
+        <img src="/public/images/knight-move-move.png" alt="" />
+      </div>
+      <div class="text">
+        <p><b>Knight Move Move !!!</b></p>
+        <p>
+          เป็นเกมแนว Puzzle ที่จะต้องวางแผนเพื่อผ่านด่านต่างๆ
+          โดยจัดทำขึ้นเพื่อนำไปแสดงในงานวันวิทยาศาสตร์ที่โรงเรียนเทพศิรินทร์
+          ปีการศึกษา 2565
+        </p>
+        <p class="pink"><b>ใช้ Unity ในการพัฒนา</b></p>
+        <p>
+          <a href="https://github.com/DeepAung/Knight-Move-Move" target="_blank"
+            >Source Code</a
+          > | <a
+            href="https://itzpekos.itch.io/knight-move-move"
+            target="_blank">Download</a
+          >
+        </p>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <div class="img">
+        <img src="/public/images/vue-note-app.png" alt="" />
+      </div>
+      <div class="text">
+        <p><b>Vue Note App</b></p>
+        <p>เป็นเว็บไซต์ที่สามารถจดสิ่งต่างๆลงไปได้</p>
+        <p class="pink"><b>ใช้ Vue.js ในการพัฒนา</b></p>
+        <p>
+          <a href="https://github.com/DeepAung/vue-note-app" target="_blank"
+            >Source Code</a
+          > | <a href="https://github.com/DeepAung/vue-note-app" target="_blank"
+            >Website</a
+          >
+        </p>
+      </div>
+    </div>
   </Carousels>
 </div>
 
 <style>
-  .wrap-img {
-    width: 25rem;
-    position: relative;
+  .wrapper {
+    width: 50vw;
+    margin: 3rem auto;
+    border-radius: 1rem;
   }
 
-  .wrap-img img {
+  .wrapper .img {
+    width: 100%;
+    border-radius: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wrapper .img img {
     display: block;
-    width: 25rem;
+    width: 90%;
+    object-fit: cover;
+    filter: drop-shadow(5px 5px 10px black);
+  }
+
+  .wrapper .text {
+    width: 50vw;
+    margin-top: 2rem;
+    padding: 0 5vw;
+    text-align: center;
+  }
+
+  a:after {
+    content: "\2197";
   }
 </style>
+
+<script>
+  import { initCarousels } from "../scripts/carousels.ts";
+  import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
+
+  initCarousels(document.querySelector(".projects-carousels") as HTMLElement);
+  fromScrollTrigger(".projects-carousels", { y: 200 }, 1.5);
+</script>

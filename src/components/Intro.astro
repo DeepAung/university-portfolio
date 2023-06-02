@@ -17,8 +17,6 @@
 </div>
 
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap");
-
   .container {
     height: 100vh;
     height: 100dvh;
@@ -38,7 +36,8 @@
     height: 80vh;
     object-fit: cover;
     border-radius: 1rem;
-    transition: box-shadow 0.5s ease-out;
+    /* transition: box-shadow 0.1s ease-out; */
+    /* transition: none; */
   }
 </style>
 
@@ -54,14 +53,39 @@
       delay: 0.5,
       ease: "power4.out(1, 0.3)",
       onComplete() {
-        const image = document.querySelector(".my-image") as HTMLImageElement;
-        image.style.boxShadow = "0px 0px 50px rgba(255, 255, 255, 0.75)";
+        gsap.to(".my-image", { boxShadow: "0px 0px 20px white" });
       },
       onStart() {
-        const image = document.querySelector(".my-image") as HTMLImageElement;
-        image.style.boxShadow = "none";
+        gsap.to(".my-image", { boxShadow: "none" });
       },
     },
     1
   );
+
+  const myImage = document.querySelector(".my-image") as HTMLElement;
+
+  myImage.onmousemove = (e) => {
+    let [offsetX, offsetY] = getOffset(e, myImage);
+    gsap.to(".my-image", {
+      boxShadow: `${offsetX}px ${offsetY}px 50px white`,
+      duration: 0.25,
+    });
+    // myImage.style.boxShadow = `${offsetX}px ${offsetY}px 50px white`;
+  };
+
+  myImage.onmouseleave = (e) => {
+    gsap.to(".my-image", { boxShadow: "0px 0px 20px white", duration: 0.25 });
+  };
+
+  function getOffset(e: MouseEvent, element: HTMLElement) {
+    let rect = element.getBoundingClientRect();
+    let deltaX = e.pageX - (element.offsetLeft + element.offsetWidth * 0.5);
+    let deltaY =
+      e.pageY - (rect.top + window.scrollY + element.offsetHeight * 0.5);
+
+    let offsetX = deltaX / 25;
+    let offsetY = deltaY / 25;
+
+    return [offsetX, offsetY];
+  }
 </script>

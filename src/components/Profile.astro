@@ -31,10 +31,7 @@ import SkillCard from "./SkillCard.astro";
         <span>ครอบครัว:</span> มารดา ทัศนีย์ อังสุมาล, พี่ชาย อชิตะ อังสุมาล
       </p>
     </section>
-    <img
-      class="profile-pic"
-      src="/images/line_54745460511716.jpg"
-    />
+    <img class="profile-pic" src="/images/line_54745460511716.jpg" />
   </div>
 
   <div class="wrapper">
@@ -103,7 +100,6 @@ import SkillCard from "./SkillCard.astro";
 </div>
 
 <style>
-
   .wrapper {
     padding: 2rem 0;
     display: flex;
@@ -171,9 +167,8 @@ import SkillCard from "./SkillCard.astro";
 
 <script>
   // import gsap from "gsap";
-  import { fromScrollTrigger } from '../scripts/fromScrollTrigger.ts'
+  import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
 
-  fromScrollTrigger(".head", { y: 200 }, 1);
   fromScrollTrigger(".personal-info", { x: -500 }, 2);
   fromScrollTrigger(".profile-pic", { x: 500 }, 0.75);
   fromScrollTrigger(".contacts", { x: -500 }, 2);

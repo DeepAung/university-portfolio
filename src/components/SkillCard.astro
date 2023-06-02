@@ -26,19 +26,18 @@ const { title, image } = Astro.props;
     transition: transform 0.25s, box-shadow 0.25s;
   }
 
-  
   .skill-card p {
     font-size: 1.5rem;
     font-weight: 500;
     position: relative;
     display: inline-block;
   }
-  
+
   .skill-card .wrapper {
     width: 100%;
     display: flex;
   }
-  
+
   .skill-card > .wrapper > img {
     width: 30%;
     object-fit: contain;
@@ -51,7 +50,7 @@ const { title, image } = Astro.props;
   }
 
   .skill-card p::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     transform: scaleX(0);
