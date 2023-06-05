@@ -35,6 +35,7 @@ function distance(i: number, j: number) {
 }
 
 // -------------------------------------------------- //
+
 function updateCircle(i: number) {
   let circle = circles[i];
 
@@ -115,14 +116,14 @@ let edges: Edge[][] = new Array(CIRCLE_NUMBER);
 for (let i = 0; i < CIRCLE_NUMBER; i++) edges[i] = new Array(CIRCLE_NUMBER);
 
 window.onload = (e) => {
-  canvas.width = screen.availWidth;
-  canvas.height = screen.availHeight;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
   buildArray();
   animate();
 };
 
 window.onresize = (e) => {
-  canvas.width = screen.availWidth;
-  canvas.height = screen.availHeight;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
   buildArray();
 };

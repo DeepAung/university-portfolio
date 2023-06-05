@@ -5,6 +5,7 @@
 
 <style>
   .container {
+    padding: 2rem;
     background-color: rgb(30, 30, 30);
     height: 100vh;
     height: 100dvh;
@@ -16,9 +17,36 @@
   }
 
   .container h1 {
-    color: white;
-    font-size: 4rem;
+    font-family: "Teko", Inter, sans-serif;
+    font-size: 5rem;
     font-weight: 500;
+
+    background: linear-gradient(
+      90deg,
+      #6666ff,
+      #0099ff,
+      #00ff00,
+      #ff3399,
+      #6666ff,
+      #0099ff
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+
+    animation: rainbow-anim 7s linear infinite;
+    background-size: 400% 100%;
+  }
+
+  @keyframes rainbow-anim {
+    0% {
+      background-position: 0 0;
+    }
+
+    100% {
+      background-position: 100% 0;
+    }
   }
 
   canvas {

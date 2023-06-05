@@ -13,7 +13,6 @@ export function initCarousels(carousels: HTMLElement) {
   });
 
   let index = 0;
-  let width = itemsArray[0].offsetWidth;
   updateArrow();
 
   prev.onclick = () => {
@@ -39,6 +38,8 @@ export function initCarousels(carousels: HTMLElement) {
   }
 
   function animate() {
+    let width = itemsArray[0].offsetWidth;
+
     itemsArray.forEach((child) => {
       gsap.to(child, {
         translateX: -(width * index),

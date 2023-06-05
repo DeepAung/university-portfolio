@@ -6,6 +6,7 @@ import Education from "../components/Education.astro";
 import Certificates from "../components/Certificates.astro";
 import Projects from "../components/Projects.astro";
 import Activities from "../components/Activities.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@ import Activities from "../components/Activities.astro";
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Portfolio</title>
     <script
       src="https://kit.fontawesome.com/8e504b9924.js"
       crossorigin="anonymous"
@@ -22,13 +23,29 @@ import Activities from "../components/Activities.astro";
   </head>
   <body>
     <Welcome />
+
     <div class="detail">
       <Intro />
-      <Profile />
-      <Education />
-      <Certificates />
-      <Projects />
-      <Activities />
+
+      <Layout title1="Profile" title2="ประวัติส่วนตัว">
+        <Profile />
+      </Layout>
+
+      <Layout title1="Education" title2="ประวัติการศึกษา">
+        <Education />
+      </Layout>
+
+      <Layout title1="Certificates" title2="ผลงานด้านวิชาการ">
+        <Certificates />
+      </Layout>
+
+      <Layout title1="Projects" title2="โปรเจกต์">
+        <Projects />
+      </Layout>
+
+      <Layout title1="Activities" title2="กิจกรรม">
+        <Activities />
+      </Layout>
     </div>
   </body>
 </html>
@@ -37,15 +54,19 @@ import Activities from "../components/Activities.astro";
   @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap");
+
+  /* -------------------- default settings -------------------- */
+
   :root {
     --blue: 56, 182, 255;
     --yellow: 255, 223, 43;
     --green: 27, 248, 129;
     --pink: 250, 24, 163;
     --crimson: 121, 14, 14;
+    --grey: 218, 215, 197;
   }
 
-  /* default settings */
   h1 {
     font-size: 4rem;
   }
@@ -79,20 +100,13 @@ import Activities from "../components/Activities.astro";
     overflow-x: hidden;
   }
 
-  .container {
-    padding: 2rem;
-  }
-
-  .head {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
+  /* -------------------- for this component -------------------- */
 
   .detail {
     background-color: rgb(30, 30, 30);
   }
 
-  /* utility class */
+  /* -------------------- utility class -------------------- */
   .blue {
     color: rgb(var(--blue));
   }
@@ -108,17 +122,39 @@ import Activities from "../components/Activities.astro";
   .pink {
     color: rgb(var(--pink));
   }
+
+  .crimson {
+    color: rgb(var(--crimson));
+  }
+
+  .grey {
+    color: rgb(var(--grey));
+  }
 </style>
 
 <script>
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
 
   gsap.registerPlugin(ScrollTrigger);
 
+  // -------------------------------------- //
+
   const heads: object[] = gsap.utils.toArray(".head");
-  heads.forEach((head) => {
-    fromScrollTrigger(head, { y: 200 }, 1);
+
+  heads.forEach((headObj) => {
+    let head = headObj as Element;
+
+    gsap.from([head.children[0].children, head.children[1].children], {
+      scrollTrigger: {
+        trigger: head,
+        toggleActions: "play none resume reset",
+      },
+      yPercent: 100,
+      stagger: 0.2,
+      delay: 0.25,
+      ease: "power4",
+      duration: 1,
+    });
   });
 </script>

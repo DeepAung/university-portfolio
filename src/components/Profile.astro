@@ -2,21 +2,15 @@
 import SkillCard from "./SkillCard.astro";
 ---
 
-<div class="container">
-  <div class="head">
-    <h1>Profile</h1>
-    <h3>ประวัติส่วนตัว</h3>
-  </div>
-
+<div class="profile">
   <div class="wrapper">
     <section class="personal-info">
       <h3>Personal Info</h3>
       <p><span>ชื่อ:</span> อชิระ อังสุมาล (ดีพ)</p>
       <p><span>วันเกิด:</span> 14 ธันวาคม 2548</p>
       <p>
-        <span>สัญชาติ:</span> ไทย <span>เชื้อชาติ:</span> ไทย <span
-          >ศาสนา:
-        </span> พุทธ
+        <span>สัญชาติ:</span> ไทย <span>เชื้อชาติ:</span> ไทย <span>ศาสนา:</span
+        > พุทธ
       </p>
       <p><span>แผนการเรียน:</span> วิทย์-คณิต (เน้นวิศวกรรม)</p>
       <p>
@@ -77,6 +71,10 @@ import SkillCard from "./SkillCard.astro";
         <img src="/icons/csharp.svg" />
       </SkillCard>
 
+      <SkillCard title="Godot">
+        <img src="/icons/godot.svg" />
+      </SkillCard>
+
       <SkillCard title="Python (Django)">
         <img src="/icons/python.png" />
         <img src="/icons/django.png" />
@@ -90,10 +88,6 @@ import SkillCard from "./SkillCard.astro";
 
       <SkillCard title="Vue.js">
         <img src="/icons/vuejs.png" />
-      </SkillCard>
-
-      <SkillCard title="Godot">
-        <img src="/icons/godot.svg" />
       </SkillCard>
     </div>
   </section>

@@ -1,0 +1,30 @@
+---
+let { title1, title2 } = Astro.props;
+---
+
+<div class="container">
+  <div class="head">
+    <h1><span>{title1}</span></h1>
+    <h3><span>{title2}</span></h3>
+  </div>
+  <slot />
+</div>
+
+<style>
+  .container {
+    padding: 2rem;
+  }
+  .head {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .head h1,
+  .head h3 {
+    overflow: hidden;
+  }
+
+  .head span {
+    display: block;
+  }
+</style>

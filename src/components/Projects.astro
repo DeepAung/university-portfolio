@@ -2,21 +2,16 @@
 import Carousels from "./Carousels.astro";
 ---
 
-<div class="container">
-  <div class="head">
-    <h1>Projects</h1>
-    <h3>โปรเจกต์</h3>
-  </div>
-
+<div class="projects">
   <Carousels width="50vw" carouselsClass="projects-carousels">
     <div class="wrapper">
       <div class="img"><img src="/images/chatapp.png" alt="" /></div>
       <div class="text">
-        <p><b>Chat App</b></p>
+        <p class="title"><b>Chat App</b></p>
         <p>
-          เป็นเว็บไซต์ที่สามารถ register/login แล้วคุยกับ user คนอื่นๆ ได้
-          ผ่านห้องที่สร้างขึ้น โดยจัดทำขึ้นเพื่อศึกษาหลักการทำงานของ rest-api,
-          การเขียน front-end และ back-end, การใช้ websocket
+          เป็นเว็บไซต์ที่สามารถ Register/Login แล้วคุยกับ User คนอื่นๆ ได้
+          ผ่านห้องที่สร้างขึ้น โดยจัดทำขึ้นเพื่อศึกษาหลักการทำงานของ REST API,
+          การเขียน Front-end + Back-end และการใช้ WebSocket
         </p>
         <p class="pink">
           <b>ใช้ Next.js(font-end) และ Django(back-end) ในการพัฒนา</b>
@@ -36,9 +31,9 @@ import Carousels from "./Carousels.astro";
         <img src="/images/knight-move-move.png" alt="" />
       </div>
       <div class="text">
-        <p><b>Knight Move Move !!!</b></p>
+        <p class="title"><b>Knight Move Move !!!</b></p>
         <p>
-          เป็นเกมแนว Puzzle ที่จะต้องวางแผนเพื่อผ่านด่านต่างๆ
+          เป็นเกมแนว Puzzle ที่จะต้องวางแผนเพื่อผ่านด่านต่างๆไปได้
           โดยจัดทำขึ้นเพื่อนำไปแสดงในงานวันวิทยาศาสตร์ที่โรงเรียนเทพศิรินทร์
           ปีการศึกษา 2565
         </p>
@@ -59,8 +54,12 @@ import Carousels from "./Carousels.astro";
         <img src="/images/vue-note-app.png" alt="" />
       </div>
       <div class="text">
-        <p><b>Vue Note App</b></p>
-        <p>เป็นเว็บไซต์ที่สามารถจดสิ่งต่างๆลงไปได้</p>
+        <p class="title"><b>Vue Note App</b></p>
+        <p>
+          เป็นเว็บไซต์ที่สามารถจดสิ่งต่างๆลงไปได้
+          โดยจัดทำขึ้นเพื่อศึกษาการทำงานของ Vue.js(front-end) และการใช้
+          localStorage เพื่อเก็บข้อมูล
+        </p>
         <p class="pink"><b>ใช้ Vue.js ในการพัฒนา</b></p>
         <p>
           <a href="https://github.com/DeepAung/vue-note-app" target="_blank"
@@ -75,7 +74,7 @@ import Carousels from "./Carousels.astro";
 </div>
 
 <style>
-  .container {
+  .projects {
     overflow: hidden;
   }
 
@@ -106,6 +105,11 @@ import Carousels from "./Carousels.astro";
     margin-top: 2rem;
     padding: 0 5vw;
     text-align: center;
+  }
+
+  .wrapper .text .title {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
   }
 
   a:after {
