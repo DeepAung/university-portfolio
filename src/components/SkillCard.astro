@@ -68,15 +68,7 @@ const { title, image } = Astro.props;
 </style>
 
 <script>
-  import gsap from "gsap";
+  import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
 
-  gsap.from(".skill-card", {
-    scrollTrigger: {
-      trigger: ".skill-card",
-      toggleActions: "play none resume reset",
-    },
-    delay: 0.5,
-    opacity: 0,
-    stagger: 0.1,
-  });
+  fromScrollTrigger(".skill-card", { delay: 0.5, stagger: 0.1 }, 1);
 </script>

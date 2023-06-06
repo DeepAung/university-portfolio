@@ -1,0 +1,108 @@
+<div class="activities">
+  <div class="wrapper">
+    <h3>สืบสาน วัฒนธรรม ประเพณี</h3>
+    <div class="images">
+      <img class="img" src="/images/activities/1.jpg" />
+      <img class="img" src="/images/activities/2.jpg" />
+      <img class="img" src="/images/activities/3.jpg" />
+      <img class="img" src="/images/activities/4.jpg" />
+      <img class="img" src="/images/activities/5.jpg" />
+      <img class="img" src="/images/activities/6.jpg" />
+      <img class="img" src="/images/activities/7.jpg" />
+      <img class="img" src="/images/activities/8.jpg" />
+    </div>
+    <p>
+      บวชหน้าไฟ บรรพชาสามเณรฤดูร้อน พิธีไหว้ครู เชียร์และแปรอักษรฟุตบอลประเพณี
+      จตุรมิตรสามัคคี ทำบุญตักบาตร สวดมนต์ ทำวัตรเช้า พิธีประดับเข็ม ม.4
+      ปัจฉิมนิเทศ ม.6 FARTLEK 65 โครงการวิ่งเพื่อสุขภาพส่งเสริมสมรรถภาพร่างกาย
+      และสร้างความสามัคคี
+    </p>
+  </div>
+
+  <div class="wrapper">
+    <h3>ชุมนุมเทพมีเดีย ม.1-ม.6</h3>
+    <div class="images">
+      <img class="img" src="/images/activities/9.jpg" />
+      <img class="img" src="/images/activities/10.jpg" />
+      <img class="img" src="/images/activities/11.jpg" />
+      <img class="img" src="/images/activities/12.jpg" />
+      <img class="img" src="/images/activities/13.jpg" />
+      <img class="img" src="/images/activities/14.jpg" />
+      <img class="img" src="/images/activities/15.jpg" />
+      <img class="img" src="/images/activities/16.jpg" />
+      <img class="img" src="/images/activities/17.jpg" />
+      <img class="img" src="/images/activities/18.jpg" />
+      <img class="img" src="/images/activities/19.jpg" />
+      <img class="img" src="/images/activities/20.jpg" />
+    </div>
+    <p>
+      พิธีวางพวงมาลาพระบรมราชานุสาวรีย์ฯ วันคล้ายวันพระบรมราชสมภพ
+      วันคล้ายวันเฉลิมพระชนมพรรษา งานบุญแห่เทียนพรรษา งานเทศน์มหาชาติ
+      งานเกษียณอายุราชการ งานวันไหว้ครู พิธีประดับเข็ม ม.4 ปัจฉิมนิเทศ ม.6
+      ทำบุญตักบาตร ข้าวสารอาหารแห้ง-วันขึ้นปีใหม่ วันแม่แห่งชาติ ฟุตบอลแชมป์กีฬา
+      7HD 2022 โครงการโรงเรียนพี่โรงเรียนน้อง ตามพระราชดำริฯ "เทพสู่ดอย" ฯลฯ
+    </p>
+  </div>
+</div>
+
+<style>
+  .activities {
+    overflow: hidden;
+  }
+
+  .wrapper {
+    background-color: rgba(var(--crimson), 0.5);
+    width: 60vw;
+    padding: 2rem;
+    margin: 0 auto;
+    margin-bottom: 5rem;
+    border-radius: 1rem;
+  }
+
+  .wrapper h3 {
+    text-align: center;
+  }
+
+  .wrapper .images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .wrapper .images img {
+    display: block;
+    width: 100%;
+    /* height: 5rem; */
+    object-fit: cover;
+  }
+
+  .wrapper p {
+    text-align: center;
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  const wrapperArray = gsap.utils.toArray(".activities .wrapper");
+  wrapperArray.forEach((wrapperObj) => {
+    let wrapper = wrapperObj as Element;
+    let q = gsap.utils.selector(wrapper);
+
+    let tl = gsap
+      .timeline()
+      .from(wrapper, { opacity: 0, y: 100 })
+      .from(q("h3"), { opacity: 0, yPercent: 100, duration: 0.5 })
+      .from(q(".img"), { opacity: 0, stagger: 0.1 })
+      .from(q("p"), { opacity: 0, yPercent: 100, duration: 0.5 });
+
+    ScrollTrigger.create({
+      trigger: wrapper,
+      start: `top+=${-100}px bottom`,
+      toggleActions: "play none resume reset",
+      animation: tl,
+    });
+  });
+</script>
