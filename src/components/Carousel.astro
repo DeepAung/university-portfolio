@@ -1,0 +1,51 @@
+---
+const { width = "25rem" } = Astro.props;
+---
+
+<div class="carousel">
+  <div class="carousel__prev">
+    <i class="fa-solid fa-arrow-left fa-2xl"></i>
+  </div>
+  <div class="carousel__items" style={`width: ${width};`}>
+    <slot />
+  </div>
+  <div class="carousel__next">
+    <i class="fa-solid fa-arrow-right fa-2xl"></i>
+  </div>
+</div>
+
+<style>
+  .carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .carousel__items {
+    display: flex;
+    align-items: center;
+    overflow-x: hidden;
+  }
+
+  .carousel__prev,
+  .carousel__next {
+    padding: 1rem;
+    cursor: pointer;
+
+    transition: text-shadow 0.2s;
+  }
+
+  .carousel__prev:hover,
+  .carousel__next:hover {
+    text-shadow: 0px 0px 20px white;
+  }
+</style>
+
+<script>
+  import { initCarousel } from "../scripts/carousel.ts";
+  const carousels = document.querySelectorAll(".carousel");
+
+  carousels.forEach((carousel) => {
+    initCarousel(carousel as HTMLElement);
+  });
+</script>

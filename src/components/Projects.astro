@@ -1,76 +1,107 @@
 ---
-import Carousels from "./Carousels.astro";
+import Carousel from "./Carousel.astro";
 ---
 
 <div class="projects">
-  <Carousels width="50vw" carouselsClass="projects-carousels">
-    <div class="wrapper">
-      <div class="img"><img src="/images/chatapp.png" alt="" /></div>
-      <div class="text">
-        <p class="title"><b>Chat App</b></p>
-        <p>
-          เป็นเว็บไซต์ที่สามารถ Register/Login แล้วคุยกับ User คนอื่นๆ ได้
-          ผ่านห้องที่สร้างขึ้น โดยจัดทำขึ้นเพื่อศึกษาหลักการทำงานของ REST API,
-          การเขียน Front-end + Back-end และการใช้ WebSocket
-        </p>
-        <p class="pink">
-          <b>ใช้ Next.js(font-end) และ Django(back-end) ในการพัฒนา</b>
-        </p>
-        <p>
-          <a href="https://github.com/DeepAung/ChatApp" target="_blank"
-            >Source Code</a
-          > | <a href="https://github.com/DeepAung/ChatApp" target="_blank"
-            >Website</a
-          >
-        </p>
-      </div>
-    </div>
-
+  <Carousel width="50vw">
     <div class="wrapper">
       <div class="img">
-        <img src="/images/knight-move-move.png" alt="" />
+        <img src="/images/projects/knight-move-move.png" alt="" />
       </div>
       <div class="text">
         <p class="title"><b>Knight Move Move !!!</b></p>
-        <p>
-          เป็นเกมแนว Puzzle ที่จะต้องวางแผนเพื่อผ่านด่านต่างๆไปได้
-          โดยจัดทำขึ้นเพื่อนำไปแสดงในงานวันวิทยาศาสตร์ที่โรงเรียนเทพศิรินทร์
-          ปีการศึกษา 2565
-        </p>
-        <p class="pink"><b>ใช้ Unity ในการพัฒนา</b></p>
-        <p>
+        <ul>
+          <li>
+            จัดทำขึ้นในโครงงานคอมพิวเตอร์
+            เพื่อศึกษาวิธีการสร้างสรรค์เกมเบื้องต้น
+            และได้รับคัดเลือกให้แสดงผลงาน ในงานวันวิทยาศาสตร์แห่งชาติ ณ
+            โรงเรียนเทพศิรินทร์ ปีการศึกษา 2565
+          </li>
+          <li>
+            ในการพัฒนาใช้โปรแกรม <span class="pink bold">Unity</span> และภาษาโปรแกรม
+            <span class="pink bold">C#</span>
+          </li>
+          <li>
+            ตัวเกมเป็นเกมแนวปริศนา(<span class="pink bold">Puzzle</span>)
+            โดยเริ่มต้นจะมีพลังชีวิตจำกัด เมื่อเดิน, ทำลายบล็อก ,เลื่อนบล็อก
+            หรือโดนหนาม พลังชีวิตจะลดลงเรื่อยๆ
+            การที่จะผ่านด่านไปได้นั้นต้องไปถึงจุดวาร์ปก่อนที่พลังชีวิตจะหมดลง
+          </li>
+        </ul>
+        <div class="buttons">
           <a href="https://github.com/DeepAung/Knight-Move-Move" target="_blank"
             >Source Code</a
-          > | <a
-            href="https://itzpekos.itch.io/knight-move-move"
-            target="_blank">Download</a
           >
-        </p>
+          <a href="https://itzpekos.itch.io/knight-move-move" target="_blank"
+            >Download</a
+          >
+        </div>
       </div>
     </div>
 
     <div class="wrapper">
       <div class="img">
-        <img src="/images/vue-note-app.png" alt="" />
+        <img src="/images/projects/vue-note-app.png" alt="" />
       </div>
       <div class="text">
         <p class="title"><b>Vue Note App</b></p>
-        <p>
-          เป็นเว็บไซต์ที่สามารถจดสิ่งต่างๆลงไปได้
-          โดยจัดทำขึ้นเพื่อศึกษาการทำงานของ Vue.js(front-end) และการใช้
-          localStorage เพื่อเก็บข้อมูล
-        </p>
-        <p class="pink"><b>ใช้ Vue.js ในการพัฒนา</b></p>
-        <p>
+        <ul>
+          <li>
+            เพื่อศึกษาหลักการทำงานของ Note App (เช่น <span class="pink bold"
+              >Google Keep</span
+            >) ในการจะสร้างเว็บไซต์เพื่อจดบันทึกสิ่งต่างๆ ลงไปได้ ต้องทำอย่างไร
+          </li>
+          <li>
+            การพัฒนา ใช้ <span class="pink bold">Vue.js</span> เป็น Front-end Framework
+          </li>
+          <li>
+            ผู้ใช้สามารถจดบันทึกข้อมูลลงในเว็บไซต์ เพื่อกลับมาดูซ้ำอีกครั้ง
+          </li>
+        </ul>
+        <div class="buttons">
           <a href="https://github.com/DeepAung/vue-note-app" target="_blank"
             >Source Code</a
-          > | <a href="https://github.com/DeepAung/vue-note-app" target="_blank"
+          >
+          <a href="https://github.com/DeepAung/vue-note-app" target="_blank"
             >Website</a
           >
-        </p>
+        </div>
       </div>
     </div>
-  </Carousels>
+
+    <div class="wrapper">
+      <div class="img"><img src="/images/projects/chatapp.png" alt="" /></div>
+      <div class="text">
+        <p class="title"><b>Chat App</b></p>
+        <ul>
+          <li>
+            เพื่อศึกษาหลักการทำงานของ Chat App (เช่น <span class="pink bold"
+              >Line</span
+            >) การสร้างเว็บไซต์ เพื่อติดต่อสื่อสารกับบุคคลอื่น
+            จะต้องใช้ความรู้อะไรบ้าง
+          </li>
+          <li>
+            การพัฒนา ใช้ <span class="pink bold">Next.js</span> เป็น Front-end ใช้
+            <span class="pink bold">Django</span> เป็น Back-end และ
+            <span class="pink bold">SQLite</span> เป็น Database
+          </li>
+          <li>
+            ผู้ใช้สามารถสมัคร Account สร้างห้องเพื่อคุยกัน
+            สามารถแก้ไขข้อมูลส่วนตัวได้ เช่น UserName, Bio, Avatar
+            และเจ้าของห้อง (Host) สามารถแก้ไขข้อมูลได้
+          </li>
+        </ul>
+        <div class="buttons">
+          <a href="https://github.com/DeepAung/ChatApp" target="_blank"
+            >Source Code</a
+          >
+          <a href="https://github.com/DeepAung/ChatApp" target="_blank"
+            >Website</a
+          >
+        </div>
+      </div>
+    </div>
+  </Carousel>
 </div>
 
 <style>
@@ -104,23 +135,46 @@ import Carousels from "./Carousels.astro";
     width: 50vw;
     margin-top: 2rem;
     padding: 0 5vw;
+  }
+
+  .wrapper .text > :first-child,
+  .wrapper .text > :last-child {
     text-align: center;
   }
 
   .wrapper .text .title {
     font-size: 1.75rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
   }
 
-  a:after {
-    content: "\2197";
+  .wrapper .text .buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+  }
+
+  .wrapper .text .buttons a {
+    width: 11rem;
+    text-align: center;
+    background-color: rgba(var(--crimson), 0.75);
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+  }
+
+  .wrapper .text .buttons a:hover {
+    background-color: rgba(var(--crimson), 0.6);
   }
 </style>
 
 <script>
-  import { initCarousels } from "../scripts/carousels.ts";
   import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
 
-  initCarousels(document.querySelector(".projects-carousels") as HTMLElement);
-  fromScrollTrigger(".projects-carousels", { y: 200 }, 1.5);
+  fromScrollTrigger(
+    ".projects .carousel",
+    { y: 200, ease: "power2", delay: 0.25 },
+    1.5
+  );
 </script>

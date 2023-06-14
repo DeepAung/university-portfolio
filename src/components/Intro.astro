@@ -24,7 +24,7 @@
     </div>
   </div>
   <div class="right">
-    <img class="my-image" src="/images/IMG_0648.jpg" />
+    <img class="my-image" src="/images/hero-pic.jpg" />
     <div class="text-wrapper">
       <p class="text">Try Hover Image</p>
     </div>
@@ -66,7 +66,13 @@
     font-size: 2rem;
     font-weight: 500;
     font-style: italic;
-    color: rgb(255, 47, 47);
+    color: rgb(255, 47, 47, 0.5);
+
+    transition: color 0.25s;
+  }
+
+  .right .my-image:hover + .text-wrapper p {
+    color: rgb(255, 47, 47, 1);
   }
 </style>
 
@@ -85,7 +91,7 @@
     {
       x: 500,
       delay: 0.25,
-      ease: "power4.out(1, 0.3)",
+      ease: "power4",
       onComplete() {
         gsap.to(".my-image", { boxShadow: "0px 0px 20px white" });
       },

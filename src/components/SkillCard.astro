@@ -45,8 +45,8 @@ const { title, image } = Astro.props;
   }
 
   .skill-card:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 0px 20px rgb(var(--pink));
+    transform: translatey(-5px);
+    box-shadow: 0px 5px 15px rgba(var(--pink), 0.75);
   }
 
   .skill-card p::after {
@@ -55,10 +55,10 @@ const { title, image } = Astro.props;
     width: 100%;
     transform: scaleX(0);
     height: 2px;
-    bottom: 0;
+    bottom: -5px;
     left: 0;
     background-color: white;
-    transform-origin: bottom left;
+    transform-origin: bottom center;
     transition: transform 0.25s ease-out;
   }
 

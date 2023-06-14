@@ -1,6 +1,6 @@
 <div class="container">
   <canvas id="canvas"></canvas>
-  <h1 class="welcome">Welcome to My PortFolio</h1>
+  <h1 class="welcome">My PortFolio</h1>
 </div>
 
 <style>
@@ -16,37 +16,10 @@
     overflow: hidden;
   }
 
-  .container h1 {
-    font-family: "Teko", Inter, sans-serif;
+  .container .welcome {
+    font-family: "Horizon";
     font-size: 5rem;
-    font-weight: 500;
-
-    background: linear-gradient(
-      90deg,
-      #6666ff,
-      #0099ff,
-      #00ff00,
-      #ff3399,
-      #6666ff,
-      #0099ff
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-
-    animation: rainbow-anim 7s linear infinite;
-    background-size: 400% 100%;
-  }
-
-  @keyframes rainbow-anim {
-    0% {
-      background-position: 0 0;
-    }
-
-    100% {
-      background-position: 100% 0;
-    }
+    font-weight: 600;
   }
 
   canvas {
@@ -69,8 +42,8 @@
   gsap.from(".welcome", {
     opacity: 0,
     scale: 0.5,
-    ease: "power4.out(1, 0.3)",
+    ease: "back",
     delay: 1,
-    duration: 2,
+    duration: 1,
   });
 </script>

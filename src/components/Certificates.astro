@@ -1,10 +1,11 @@
 ---
-import Carousels from "./Carousels.astro";
+import Carousel from "./Carousel.astro";
 ---
 
 <div class="certificates">
-  <Carousels width="60vw" carouselsClass="certificates-carousels">
+  <Carousel width="50vw">
     <div class="wrapper">
+      <img src="/images/certificates/1.png" />
       <div class="text">
         <p><b>การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 19</b></p>
         <p>Thailand Olympiad in Informatics 2023 (TOI 19)</p>
@@ -14,6 +15,7 @@ import Carousels from "./Carousels.astro";
     </div>
 
     <div class="wrapper">
+      <img src="/images/certificates/2.png" />
       <div class="text">
         <p><b>การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 18</b></p>
         <p>Thailand Olympiad in Informatics 2022 (TOI 18)</p>
@@ -23,6 +25,7 @@ import Carousels from "./Carousels.astro";
     </div>
 
     <div class="wrapper">
+      <img src="/images/certificates/3.png" />
       <div class="text">
         <p>
           <b>ศิลปหัตถกรรมนักเรียน ระดับชาติ ครั้งที่ ๗๐ ณ.จังหวัดราชบุรี</b>
@@ -33,6 +36,7 @@ import Carousels from "./Carousels.astro";
     </div>
 
     <div class="wrapper">
+      <img src="/images/certificates/4.png" />
       <div class="text">
         <p><b> ICT Challenge 2022</b></p>
         <p>แข่งขันตอบปัญหาวิชาการคอมพิวเตอร์และเทคโนโลยีสารสนเทศ</p>
@@ -40,14 +44,16 @@ import Carousels from "./Carousels.astro";
         <p>รางวัลรองชนะเลิศอันดับ 1</p>
       </div>
     </div>
-  </Carousels>
+  </Carousel>
 </div>
 
 <style>
   .wrapper {
     background-color: rgba(var(--crimson), 0.5);
-    width: 60vw;
-    margin: 3rem auto;
+    width: 50vw;
+    height: min-content;
+    margin-bottom: 3rem;
+    margin-right: 0.1rem;
     border-radius: 1rem;
   }
 
@@ -59,19 +65,18 @@ import Carousels from "./Carousels.astro";
   }
 
   .wrapper .text {
-    width: 60vw;
+    width: 50vw;
     padding: 1.5rem 5vw;
     text-align: center;
   }
 </style>
 
 <script>
-  import { initCarousels } from "../scripts/carousels.ts";
   import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
 
-  initCarousels(
-    document.querySelector(".certificates-carousels") as HTMLElement
+  fromScrollTrigger(
+    ".certificates .carousel",
+    { y: 200, ease: "power2", delay: 0.25 },
+    1.5
   );
-
-  fromScrollTrigger(".certificates-carousels", { y: 200 }, 1.5);
 </script>

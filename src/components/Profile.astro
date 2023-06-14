@@ -25,7 +25,7 @@ import SkillCard from "./SkillCard.astro";
         <span>ครอบครัว:</span> มารดา ทัศนีย์ อังสุมาล, พี่ชาย อชิตะ อังสุมาล
       </p>
     </section>
-    <img class="profile-pic" src="/images/line_54745460511716.jpg" />
+    <img class="profile-pic" src="/images/profile-pic.jpg" />
   </div>
 
   <div class="wrapper">
@@ -162,9 +162,11 @@ import SkillCard from "./SkillCard.astro";
 <script>
   import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
 
-  fromScrollTrigger(".personal-info", { x: -500 }, 2);
-  fromScrollTrigger(".profile-pic", { x: 500 }, 0.75);
-  fromScrollTrigger(".contacts", { x: -500 }, 2);
-  fromScrollTrigger(".habits", { x: 500 }, 2);
-  fromScrollTrigger(".programming-skills", { y: -100 }, 1);
+  let defaultTween = { ease: "power2" }
+
+  fromScrollTrigger(".personal-info", { x: -500, ...defaultTween }, 2);
+  fromScrollTrigger(".profile-pic", { x: 500, delay: 0.25, ...defaultTween }, 0.75);
+  fromScrollTrigger(".contacts", { x: -500, delay: 0.5, ...defaultTween }, 1);
+  fromScrollTrigger(".habits", { x: 500, ...defaultTween }, 2);
+  fromScrollTrigger(".programming-skills", { y: -100, ...defaultTween }, 1);
 </script>

@@ -88,15 +88,15 @@
 
   const wrapperArray = gsap.utils.toArray(".activities .wrapper");
   wrapperArray.forEach((wrapperObj) => {
-    let wrapper = wrapperObj as Element;
-    let q = gsap.utils.selector(wrapper);
+    const wrapper = wrapperObj as Element;
+    const q = gsap.utils.selector(wrapper);
 
-    let tl = gsap
+    const tl = gsap
       .timeline()
       .from(wrapper, { opacity: 0, y: 100 })
       .from(q("h3"), { opacity: 0, yPercent: 100, duration: 0.5 })
-      .from(q(".img"), { opacity: 0, stagger: 0.1 })
-      .from(q("p"), { opacity: 0, yPercent: 100, duration: 0.5 });
+      .from(q(".img"), { opacity: 0, stagger: 0.1, duration: 0.5 })
+      .from(q("p"), { opacity: 0, yPercent: 100, duration: 0.5, ease: "power3" });
 
     ScrollTrigger.create({
       trigger: wrapper,
