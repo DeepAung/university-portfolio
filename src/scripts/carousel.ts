@@ -41,9 +41,10 @@ export function initCarousel(carousel: HTMLElement) {
     let item = itemsArray[0];
     let style = window.getComputedStyle(item);
     let width =
-      item.offsetWidth +
+      parseFloat(style.width) +
       parseFloat(style.marginLeft) +
       parseFloat(style.marginRight);
+    
 
     itemsArray.forEach((child) => {
       gsap.to(child, {

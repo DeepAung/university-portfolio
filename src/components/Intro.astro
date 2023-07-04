@@ -126,10 +126,10 @@
       delay: 0.25,
       ease: "power4",
       onComplete() {
-        gsap.to(".my-image", { boxShadow: "0px 0px 20px white" });
+        gsap.to(".intro .my-image", { boxShadow: "0px 0px 20px white" });
       },
       onStart() {
-        gsap.to(".my-image", { boxShadow: "none" });
+        gsap.to(".intro .my-image", { boxShadow: "none" });
       },
     },
     1
@@ -139,14 +139,14 @@
 
   myImage.onmousemove = (e) => {
     let [offsetX, offsetY] = getOffset(e, myImage);
-    gsap.to(".my-image", {
+    gsap.to(".intro .my-image", {
       boxShadow: `${offsetX}px ${offsetY}px 50px white`,
       duration: 0.25,
     });
   };
 
   myImage.onmouseleave = (e) => {
-    gsap.to(".my-image", { boxShadow: "0px 0px 20px white", duration: 0.5 });
+    gsap.to(".intro .my-image", { boxShadow: "0px 0px 20px white", duration: 0.5 });
   };
 
   function getOffset(e: MouseEvent, element: HTMLElement) {

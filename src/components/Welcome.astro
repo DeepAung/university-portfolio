@@ -37,13 +37,13 @@
   import "../scripts/polygonBackground.ts";
   import gsap from "gsap";
 
-  gsap.from("#canvas", {
+  gsap.from(".welcome #canvas", {
     opacity: 0,
     delay: 0.5,
     duration: 1,
   });
 
-  gsap.from(".welcome-text", {
+  gsap.from(".welcome .welcome-text", {
     opacity: 0,
     scale: 0.5,
     ease: "back",

@@ -222,13 +222,13 @@ import SkillCard from "./SkillCard.astro";
 
   let defaultTween = { ease: "power2" };
 
-  fromScrollTrigger(".personal-info", { x: -500, ...defaultTween }, 2);
+  fromScrollTrigger(".profile .personal-info", { x: -500, ...defaultTween }, 2);
   fromScrollTrigger(
-    ".profile-pic",
+    ".profile .profile-pic",
     { x: 500, delay: 0.25, ...defaultTween },
     0.75
   );
-  fromScrollTrigger(".contacts", { x: -500, delay: 0.5, ...defaultTween }, 1);
-  fromScrollTrigger(".habits", { x: 500, ...defaultTween }, 2);
-  fromScrollTrigger(".programming-skills", { y: -100, ...defaultTween }, 1);
+  fromScrollTrigger(".profile .contacts", { x: -500, delay: 0.5, ...defaultTween }, 1);
+  fromScrollTrigger(".profile .habits", { x: 500, ...defaultTween }, 2);
+  fromScrollTrigger(".profile .programming-skills", { y: -100, ...defaultTween }, 1);
 </script>
