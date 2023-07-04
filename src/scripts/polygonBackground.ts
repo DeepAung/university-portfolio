@@ -1,5 +1,5 @@
 // settings
-const CIRCLE_NUMBER = 50;
+let CIRCLE_NUMBER = -999;
 const CIRCLE_SIZE = 1.5;
 const MIN_VELOCITY = -0.75;
 const MAX_VELOCITY = 0.75;
@@ -35,6 +35,12 @@ function distance(i: number, j: number) {
 }
 
 // -------------------------------------------------- //
+
+function updateCircleNumber() {
+  CIRCLE_NUMBER = parseInt(String(((canvas.width * canvas.height) / 1e6) * 70));
+
+  CIRCLE_NUMBER = Math.min(CIRCLE_NUMBER, 60);
+}
 
 function updateCircle(i: number) {
   let circle = circles[i];
@@ -74,6 +80,12 @@ function updateEdge(i: number, j: number) {
 }
 
 function buildArray() {
+  // define array size
+  circles = new Array(CIRCLE_NUMBER);
+  edges = new Array(CIRCLE_NUMBER);
+  for (let i = 0; i < CIRCLE_NUMBER; i++) edges[i] = new Array(CIRCLE_NUMBER);
+
+  // fill array value
   for (let i = 0; i < CIRCLE_NUMBER; i++) {
     let circle: Circle = {
       posX: randomRange(0, window.innerWidth),
@@ -108,22 +120,29 @@ function animate() {
   requestAnimationFrame(() => animate()); // run every frame
 }
 
+// -------------------------------------------------- //
+
 const canvas = document.querySelector("#canvas") as HTMLCanvasElement;
 const context = canvas.getContext("2d") as CanvasRenderingContext2D;
 
-let circles: Circle[] = new Array(CIRCLE_NUMBER);
-let edges: Edge[][] = new Array(CIRCLE_NUMBER);
-for (let i = 0; i < CIRCLE_NUMBER; i++) edges[i] = new Array(CIRCLE_NUMBER);
+let circles: Circle[];
+let edges: Edge[][];
 
 window.onload = (e) => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+  updateCircleNumber();
   buildArray();
+
   animate();
 };
 
 window.onresize = (e) => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+
+  updateCircleNumber();
+  console.log(CIRCLE_NUMBER);
+
   buildArray();
 };

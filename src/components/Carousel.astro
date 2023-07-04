@@ -1,24 +1,23 @@
 ---
-const { width = "25rem" } = Astro.props;
+const { width } = Astro.props;
 ---
 
-<div class="carousel">
+<div class="carousel" style={`width: ${width};`}>
   <div class="carousel__prev">
-    <i class="fa-solid fa-arrow-left fa-2xl"></i>
+    <i class="fa-solid fa-arrow-left"></i>
   </div>
-  <div class="carousel__items" style={`width: ${width};`}>
+  <div class="carousel__items">
     <slot />
   </div>
   <div class="carousel__next">
-    <i class="fa-solid fa-arrow-right fa-2xl"></i>
+    <i class="fa-solid fa-arrow-right"></i>
   </div>
 </div>
 
 <style>
   .carousel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+    margin: auto;
   }
 
   .carousel__items {
@@ -29,15 +28,40 @@ const { width = "25rem" } = Astro.props;
 
   .carousel__prev,
   .carousel__next {
-    padding: 1rem;
-    cursor: pointer;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 999;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: min(1rem, 2vw);
     transition: text-shadow 0.2s;
   }
 
-  .carousel__prev:hover,
-  .carousel__next:hover {
-    text-shadow: 0px 0px 20px white;
+  .carousel__prev {
+    left: 0;
+  }
+
+  .carousel__next {
+    right: 0;
+  }
+
+  .carousel__prev i,
+  .carousel__next i {
+    font-size: min(2rem, 6vw);
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+
+    cursor: pointer;
+
+    transition: text-shadow 0.25s;
+  }
+
+  .carousel__prev i:hover,
+  .carousel__next i:hover {
+    text-shadow: 0px 0px 20px black;
   }
 </style>
 

@@ -1,5 +1,12 @@
-<div class="container">
-  <div class="left grey">
+<div class="intro">
+  <div class="left">
+    <img class="my-image" src="/images/hero-pic.jpg" />
+    <div class="text-wrapper">
+      <p class="text">Try Hover Image</p>
+    </div>
+  </div>
+
+  <div class="right grey">
     <div class="text-wrapper">
       <h3 class="text">{"{"}</h3>
     </div>
@@ -23,47 +30,43 @@
       <h3 class="text">{"}"}</h3>
     </div>
   </div>
-  <div class="right">
-    <img class="my-image" src="/images/hero-pic.jpg" />
-    <div class="text-wrapper">
-      <p class="text">Try Hover Image</p>
-    </div>
-  </div>
 </div>
 
 <style>
-  .container {
-    padding: 2rem;
-    height: 100vh;
-    height: 100dvh;
+  .intro {
+    padding: min(2vw, 2rem);
 
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    flex-direction: column;
   }
   .text-wrapper {
     overflow: hidden;
   }
 
-  .left .text {
+  .right .text {
+    margin-left: calc(30vw - 7rem);
+    font-size: max(3vw, 0.7rem);
     font-family: "Fira Code", monospace;
     font-weight: 400;
   }
 
-  .right .my-image {
+  .left {
+    margin-bottom: 5rem;
+  }
+
+  .left .my-image {
+    margin: auto;
     display: block;
-    height: 75vh;
-    object-fit: cover;
+    height: 45vh;
     border-radius: 1rem;
     cursor: pointer;
   }
 
-  .right p {
+  .left p {
     text-align: center;
     margin-top: 1rem;
     z-index: 999;
-
-    font-size: 2rem;
+    
     font-weight: 500;
     font-style: italic;
     color: rgb(255, 47, 47, 0.5);
@@ -71,8 +74,31 @@
     transition: color 0.25s;
   }
 
-  .right .my-image:hover + .text-wrapper p {
+  .left .my-image:hover + .text-wrapper p {
     color: rgb(255, 47, 47, 1);
+  }
+
+  @media only screen and (min-width: 800px) {
+    .intro {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .left .my-image {
+      height: auto;
+      width: 27vw;
+    }
+
+    .left p {
+      font-size: clamp(1rem, 2.5vw, 2rem);
+    }
+
+    .right .text {
+      margin-left: 0;
+      font-size: clamp(1rem, 2.5vw, 2rem);
+    }
   }
 </style>
 
@@ -80,14 +106,21 @@
   import gsap from "gsap";
   import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
 
-  fromScrollTrigger(
-    ".text-wrapper .text",
-    { opacity: 1, yPercent: 100, stagger: 0.2, delay: 0.75, ease: "power4" },
-    1.5
-  );
+  gsap.from(".intro .text-wrapper .text", {
+    scrollTrigger: {
+      trigger: ".right",
+      toggleActions: "play none resume reset",
+    },
+    opacity: 1,
+    yPercent: 100,
+    stagger: 0.2,
+    delay: 0.75,
+    ease: "power4",
+    duration: 1.5,
+  })
 
   fromScrollTrigger(
-    ".right",
+    ".intro .left",
     {
       x: 500,
       delay: 0.25,

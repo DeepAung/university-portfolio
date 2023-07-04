@@ -48,32 +48,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10rem;
+    gap: min(10rem, 6vw);
     position: relative;
   }
 
   .timeline {
-    width: 0.3rem;
-    height: 24rem;
-    background-color: white;
-    border-radius: 100rem;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    display: none;
   }
 
   .timeline .timeline-item {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: min(1.5rem, 5vw);
+    height: min(1.5rem, 5vw);
     background-color: white;
     border-radius: 50%;
   }
 
   .timeline .hide {
     position: absolute;
-    top: 24rem;
+    top: min(24rem, calc(45vw + 4rem));
     bottom: 0;
     left: -0.75rem;
     right: -0.75rem;
@@ -94,6 +86,7 @@
 
   .items .item .detail h3 {
     color: rgb(var(--pink));
+    font-size: clamp(1rem, 2vw, 2rem);
   }
 
   .items .item .detail p span {
@@ -101,8 +94,8 @@
   }
 
   .items .item .image {
-    width: 9rem;
-    height: 9rem;
+    width: min(9rem, 15vw);
+    height: min(9rem, 15vw);
     background-color: white;
     border-radius: 50%;
 
@@ -110,13 +103,27 @@
     align-items: center;
     justify-content: center;
 
-    margin-right: 2rem;
+    margin-right: min(2rem, 4vw);
   }
 
   .items .item .image img {
     display: block;
-    width: 80%;
+    width: 90%;
     object-fit: cover;
+  }
+
+  @media only screen and (min-width: 350px) {
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      width: 0.3rem;
+      height: min(24rem, calc(45vw + 4rem));
+      background-color: white;
+      border-radius: 100rem;
+    }
   }
 </style>
 
@@ -124,5 +131,9 @@
   import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
 
   fromScrollTrigger(".item", { x: 500, stagger: 0.3, ease: "power4" }, 2);
-  fromScrollTrigger(".hide", { opacity: 1, top: 0, delay: 0.25, ease: "power4" }, 3);
+  fromScrollTrigger(
+    ".hide",
+    { opacity: 1, top: 0, delay: 0.25, ease: "power4" },
+    3
+  );
 </script>

@@ -3,7 +3,8 @@ import SkillCard from "./SkillCard.astro";
 ---
 
 <div class="profile">
-  <div class="wrapper">
+  <div class="wrapper md flex-reversed">
+    <img class="profile-pic" src="/images/profile-pic.jpg" />
     <section class="personal-info">
       <h3>Personal Info</h3>
       <p><span>ชื่อ:</span> อชิระ อังสุมาล (ดีพ)</p>
@@ -25,10 +26,9 @@ import SkillCard from "./SkillCard.astro";
         <span>ครอบครัว:</span> มารดา ทัศนีย์ อังสุมาล, พี่ชาย อชิตะ อังสุมาล
       </p>
     </section>
-    <img class="profile-pic" src="/images/profile-pic.jpg" />
   </div>
 
-  <div class="wrapper">
+  <div class="wrapper sm">
     <section class="contacts">
       <h3>Contacts</h3>
       <div class="contact-item">
@@ -46,7 +46,7 @@ import SkillCard from "./SkillCard.astro";
         <a target="_blank" href="https://github.com/deepaung">DeepAung</a>
       </div>
     </section>
-    <section class="habits" ,>
+    <section class="habits">
       <h3>Habits</h3>
       <li>ฟังเพลง ดูหนัง ดูอนิเมะ</li>
       <li>เล่นรูบิค เล่นเกม เขียนโค้ด</li>
@@ -94,30 +94,40 @@ import SkillCard from "./SkillCard.astro";
 </div>
 
 <style>
-  .wrapper {
-    padding: 2rem 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
-
   .wrapper .profile-pic {
     display: block;
     width: 20rem;
     height: 20rem;
     border-radius: 100%;
     object-fit: cover;
+    margin: auto;
+    margin-bottom: 4rem;
   }
 
   section {
-    padding: 2rem;
+    padding: min(4vw, 2rem);
     border-radius: 1rem;
     background-color: rgba(var(--crimson), 0.5);
+    margin-bottom: min(6vw, 3rem);
   }
 
   section h3 {
     color: rgb(var(--pink));
-    margin-bottom: 1rem;
+    text-align: center;
+    margin-bottom: min(2vw, 2rem);
+  }
+
+  .personal-info,
+  .contacts,
+  .habits {
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contacts,
+  .habits {
+    height: 16.5rem;
   }
 
   .personal-info span {
@@ -141,31 +151,83 @@ import SkillCard from "./SkillCard.astro";
     margin-right: 1rem;
   }
 
-  .programming-skills {
-    width: 80%;
-    margin: auto;
-  }
-
-  .programming-skills h3 {
-    text-align: center;
-  }
-
   .skills-container {
-    padding: 2rem;
-    padding-top: 1rem;
+    padding-top: min(2vw, 1rem);
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+    gap: 1rem;
+  }
+
+  @media only screen and (min-width: 800px) {
+    .personal-info {
+      width: auto;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .wrapper .profile-pic {
+      margin: 0;
+    }
+
+    section {
+      margin-bottom: 0;
+    }
+
+    .wrapper {
+      margin-bottom: min(6vw, 3rem);
+    }
+
+    .md {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: min(6vw, 3rem);
+    }
+
+    .flex-reversed {
+      flex-direction: row-reverse;
+    }
+
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+      gap: min(2vw, 2rem);
+    }
+
+    .programming-skills {
+      width: 80%;
+      margin: auto;
+    }
+  }
+
+  @media only screen and (min-width: 650px) {
+    .contacts,
+    .habits {
+      width: auto;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .sm {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: min(6vw, 3rem);
+    }
   }
 </style>
 
 <script>
   import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
 
-  let defaultTween = { ease: "power2" }
+  let defaultTween = { ease: "power2" };
 
   fromScrollTrigger(".personal-info", { x: -500, ...defaultTween }, 2);
-  fromScrollTrigger(".profile-pic", { x: 500, delay: 0.25, ...defaultTween }, 0.75);
+  fromScrollTrigger(
+    ".profile-pic",
+    { x: 500, delay: 0.25, ...defaultTween },
+    0.75
+  );
   fromScrollTrigger(".contacts", { x: -500, delay: 0.5, ...defaultTween }, 1);
   fromScrollTrigger(".habits", { x: 500, ...defaultTween }, 2);
   fromScrollTrigger(".programming-skills", { y: -100, ...defaultTween }, 1);

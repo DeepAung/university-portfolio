@@ -1,107 +1,97 @@
----
-import Carousel from "./Carousel.astro";
----
-
 <div class="projects">
-  <Carousel width="50vw">
-    <div class="wrapper">
-      <div class="img">
-        <img src="/images/projects/knight-move-move.png" alt="" />
-      </div>
-      <div class="text">
-        <p class="title"><b>Knight Move Move !!!</b></p>
-        <ul>
-          <li>
-            จัดทำขึ้นในโครงงานคอมพิวเตอร์
-            เพื่อศึกษาวิธีการสร้างสรรค์เกมเบื้องต้น
-            และได้รับคัดเลือกให้แสดงผลงาน ในงานวันวิทยาศาสตร์แห่งชาติ ณ
-            โรงเรียนเทพศิรินทร์ ปีการศึกษา 2565
-          </li>
-          <li>
-            ในการพัฒนาใช้โปรแกรม <span class="pink bold">Unity</span> และภาษาโปรแกรม
-            <span class="pink bold">C#</span>
-          </li>
-          <li>
-            ตัวเกมเป็นเกมแนวปริศนา(<span class="pink bold">Puzzle</span>)
-            โดยเริ่มต้นจะมีพลังชีวิตจำกัด เมื่อเดิน, ทำลายบล็อก ,เลื่อนบล็อก
-            หรือโดนหนาม พลังชีวิตจะลดลงเรื่อยๆ
-            การที่จะผ่านด่านไปได้นั้นต้องไปถึงจุดวาร์ปก่อนที่พลังชีวิตจะหมดลง
-          </li>
-        </ul>
-        <div class="buttons">
-          <a href="https://github.com/DeepAung/Knight-Move-Move" target="_blank"
-            >Source Code</a
-          >
-          <a href="https://itzpekos.itch.io/knight-move-move" target="_blank"
-            >Download</a
-          >
-        </div>
+  <div class="wrapper flex">
+    <div class="img">
+      <img src="/images/projects/knight-move-move.png" alt="" />
+    </div>
+    <div class="text">
+      <h3><b>Knight Move Move !!!</b></h3>
+      <ul>
+        <li>
+          จัดทำขึ้นในโครงงานคอมพิวเตอร์ เพื่อศึกษาวิธีการสร้างสรรค์เกมเบื้องต้น
+          และได้รับคัดเลือกให้แสดงผลงาน ในงานวันวิทยาศาสตร์แห่งชาติ ณ
+          โรงเรียนเทพศิรินทร์ ปีการศึกษา 2565
+        </li>
+        <li>
+          ในการพัฒนาใช้โปรแกรม <span class="pink bold">Unity</span> และภาษาโปรแกรม
+          <span class="pink bold">C#</span>
+        </li>
+        <li>
+          ตัวเกมเป็นเกมแนวปริศนา(<span class="pink bold">Puzzle</span>)
+          โดยเริ่มต้นจะมีพลังชีวิตจำกัด เมื่อเดิน, ทำลายบล็อก ,เลื่อนบล็อก
+          หรือโดนหนาม พลังชีวิตจะลดลงเรื่อยๆ
+          การที่จะผ่านด่านไปได้นั้นต้องไปถึงจุดวาร์ปก่อนที่พลังชีวิตจะหมดลง
+        </li>
+      </ul>
+      <div class="buttons">
+        <a href="https://github.com/DeepAung/Knight-Move-Move" target="_blank"
+          >Source Code</a
+        >
+        <a href="https://itzpekos.itch.io/knight-move-move" target="_blank"
+          >Download</a
+        >
       </div>
     </div>
+  </div>
 
-    <div class="wrapper">
-      <div class="img">
-        <img src="/images/projects/vue-note-app.png" alt="" />
-      </div>
-      <div class="text">
-        <p class="title"><b>Vue Note App</b></p>
-        <ul>
-          <li>
-            เพื่อศึกษาหลักการทำงานของ Note App (เช่น <span class="pink bold"
-              >Google Keep</span
-            >) ในการจะสร้างเว็บไซต์เพื่อจดบันทึกสิ่งต่างๆ ลงไปได้ ต้องทำอย่างไร
-          </li>
-          <li>
-            การพัฒนา ใช้ <span class="pink bold">Vue.js</span> เป็น Front-end Framework
-          </li>
-          <li>
-            ผู้ใช้สามารถจดบันทึกข้อมูลลงในเว็บไซต์ เพื่อกลับมาดูซ้ำอีกครั้ง
-          </li>
-        </ul>
-        <div class="buttons">
-          <a href="https://github.com/DeepAung/vue-note-app" target="_blank"
-            >Source Code</a
-          >
-          <a href="https://github.com/DeepAung/vue-note-app" target="_blank"
-            >Website</a
-          >
-        </div>
+  <div class="wrapper flex-reverse">
+    <div class="img">
+      <img src="/images/projects/vue-note-app.png" alt="" />
+    </div>
+    <div class="text">
+      <h3><b>Vue Note App</b></h3>
+      <ul>
+        <li>
+          เพื่อศึกษาหลักการทำงานของ Note App (เช่น <span class="pink bold"
+            >Google Keep</span
+          >) ในการจะสร้างเว็บไซต์เพื่อจดบันทึกสิ่งต่างๆ ลงไปได้ ต้องทำอย่างไร
+        </li>
+        <li>
+          การพัฒนา ใช้ <span class="pink bold">Vue.js</span> เป็น Front-end Framework
+        </li>
+        <li>ผู้ใช้สามารถจดบันทึกข้อมูลลงในเว็บไซต์ เพื่อกลับมาดูซ้ำอีกครั้ง</li>
+      </ul>
+      <div class="buttons">
+        <a href="https://github.com/DeepAung/vue-note-app" target="_blank"
+          >Source Code</a
+        >
+        <a href="https://github.com/DeepAung/vue-note-app" target="_blank"
+          >Website</a
+        >
       </div>
     </div>
+  </div>
 
-    <div class="wrapper">
-      <div class="img"><img src="/images/projects/chatapp.png" alt="" /></div>
-      <div class="text">
-        <p class="title"><b>Chat App</b></p>
-        <ul>
-          <li>
-            เพื่อศึกษาหลักการทำงานของ Chat App (เช่น <span class="pink bold"
-              >Line</span
-            >) การสร้างเว็บไซต์ เพื่อติดต่อสื่อสารกับบุคคลอื่น
-            จะต้องใช้ความรู้อะไรบ้าง
-          </li>
-          <li>
-            การพัฒนา ใช้ <span class="pink bold">Next.js</span> เป็น Front-end ใช้
-            <span class="pink bold">Django</span> เป็น Back-end และ
-            <span class="pink bold">SQLite</span> เป็น Database
-          </li>
-          <li>
-            ผู้ใช้สามารถสมัคร Account สร้างห้องเพื่อคุยกัน
-            สามารถแก้ไขข้อมูลส่วนตัวได้ เช่น UserName, Bio, Avatar
-            และเจ้าของห้อง (Host) สามารถแก้ไขข้อมูลได้
-          </li>
-        </ul>
-        <div class="buttons">
-          <a href="https://github.com/DeepAung/ChatApp" target="_blank"
-            >Source Code</a
-          >
-          <a href="https://github.com/DeepAung/ChatApp" target="_blank"
-            >Website</a
-          >
-        </div>
+  <div class="wrapper flex">
+    <div class="img"><img src="/images/projects/chatapp.png" alt="" /></div>
+    <div class="text">
+      <h3><b>Chat App</b></h3>
+      <ul>
+        <li>
+          เพื่อศึกษาหลักการทำงานของ Chat App (เช่น <span class="pink bold"
+            >Line</span
+          >) การสร้างเว็บไซต์ เพื่อติดต่อสื่อสารกับบุคคลอื่น
+          จะต้องใช้ความรู้อะไรบ้าง
+        </li>
+        <li>
+          การพัฒนา ใช้ <span class="pink bold">Next.js</span> เป็น Front-end ใช้
+          <span class="pink bold">Django</span> เป็น Back-end และ
+          <span class="pink bold">SQLite</span> เป็น Database
+        </li>
+        <li>
+          ผู้ใช้สามารถสมัคร Account สร้างห้องเพื่อคุยกัน
+          สามารถแก้ไขข้อมูลส่วนตัวได้ เช่น UserName, Bio, Avatar และเจ้าของห้อง
+          (Host) สามารถแก้ไขข้อมูลได้
+        </li>
+      </ul>
+      <div class="buttons">
+        <a href="https://github.com/DeepAung/ChatApp" target="_blank"
+          >Source Code</a
+        >
+        <a href="https://github.com/DeepAung/ChatApp" target="_blank">Website</a
+        >
       </div>
     </div>
-  </Carousel>
+  </div>
 </div>
 
 <style>
@@ -110,31 +100,32 @@ import Carousel from "./Carousel.astro";
   }
 
   .wrapper {
-    width: 50vw;
-    margin: 3rem auto;
+    margin-inline: auto;
     border-radius: 1rem;
   }
 
+  .wrapper > * {
+    margin-bottom: 4rem;
+  }
+
   .wrapper .img {
-    width: 100%;
     border-radius: 1rem;
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
   }
 
   .wrapper .img img {
     display: block;
-    width: 90%;
-    object-fit: cover;
+    width: 100%;
     filter: drop-shadow(5px 5px 10px black);
   }
 
   .wrapper .text {
-    width: 50vw;
     margin-top: 2rem;
     padding: 0 5vw;
+    margin-inline: auto;
   }
 
   .wrapper .text > :first-child,
@@ -142,39 +133,80 @@ import Carousel from "./Carousel.astro";
     text-align: center;
   }
 
-  .wrapper .text .title {
-    font-size: 1.75rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .wrapper .text .buttons {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5rem;
+  .wrapper .text h3 {
+    margin-bottom: 1rem;
   }
 
   .wrapper .text .buttons a {
-    width: 11rem;
+    display: block;
+    width: clamp(10rem, 18vw, 11rem);
     text-align: center;
     background-color: rgba(var(--crimson), 0.75);
     padding: 1.25rem;
     border-radius: 0.5rem;
     text-decoration: none;
+
+    margin-top: 2rem;
+    margin-inline: auto;
+
+    transition: background-color 0.25s;
   }
 
   .wrapper .text .buttons a:hover {
-    background-color: rgba(var(--crimson), 0.6);
+    background-color: rgba(var(--crimson), 1);
+  }
+
+  @media only screen and (min-width: 400px) {
+    .wrapper .text .buttons {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: min(5rem, 5vw);
+    }
+
+    .wrapper .text .buttons a {
+      margin: 0;
+    }
+  }
+
+  @media only screen and (min-width: 800px) {
+    .wrapper {
+      display: flex;
+      gap: 5vw;
+    }
+
+    .flex {
+      flex-direction: row;
+    }
+
+    .flex-reverse {
+      flex-direction: row-reverse;
+    }
+
+    .wrapper .text {
+      padding: 0;
+    }
+
+    .wrapper .img {
+      max-width: 42rem;
+    }
   }
 </style>
 
 <script>
+  import gsap from "gsap";
   import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
 
-  fromScrollTrigger(
-    ".projects .carousel",
-    { y: 200, ease: "power2", delay: 0.25 },
-    1.5
-  );
+  const wrappers: object[] = gsap.utils.toArray(".projects .wrapper");
+  wrappers.forEach((wrapperObj) => {
+    let wrapper = wrapperObj as Element;
+    let isReverse = wrapper.classList.contains("flex-reverse");
+
+    fromScrollTrigger(
+      wrapper,
+      { x: isReverse ? 200 : -200, ease: "power2", delay: 0.2 },
+      1.5
+    );
+  });
 </script>
