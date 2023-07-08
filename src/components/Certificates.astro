@@ -5,7 +5,11 @@ import Carousel from "./Carousel.astro";
 <div class="certificates">
   <Carousel width="60vw">
     <div class="wrapper">
-      <img src="/images/certificates/1.png" />
+      <img
+        src="/images/certificates/1.png"
+        loading="lazy"
+        alt="การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 19"
+      />
       <div class="text">
         <p><b>การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 19</b></p>
         <p>Thailand Olympiad in Informatics 2023 (TOI 19)</p>
@@ -15,7 +19,11 @@ import Carousel from "./Carousel.astro";
     </div>
 
     <div class="wrapper">
-      <img src="/images/certificates/2.png" />
+      <img
+        src="/images/certificates/2.png"
+        loading="lazy"
+        alt="การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 18"
+      />
       <div class="text">
         <p><b>การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 18</b></p>
         <p>Thailand Olympiad in Informatics 2022 (TOI 18)</p>
@@ -25,7 +33,11 @@ import Carousel from "./Carousel.astro";
     </div>
 
     <div class="wrapper">
-      <img src="/images/certificates/3.png" />
+      <img
+        src="/images/certificates/3.png"
+        loading="lazy"
+        alt="ศิลปหัตถกรรมนักเรียน ระดับชาติ ครั้งที่ ๗๐ ณ.จังหวัดราชบุรี"
+      />
       <div class="text">
         <p>
           <b>ศิลปหัตถกรรมนักเรียน ระดับชาติ ครั้งที่ ๗๐ ณ.จังหวัดราชบุรี</b>
@@ -36,9 +48,13 @@ import Carousel from "./Carousel.astro";
     </div>
 
     <div class="wrapper">
-      <img src="/images/certificates/4.png" />
+      <img
+        src="/images/certificates/4.png"
+        loading="lazy"
+        alt="ICT Challenge 2022"
+      />
       <div class="text">
-        <p><b> ICT Challenge 2022</b></p>
+        <p><b>ICT Challenge 2022</b></p>
         <p>แข่งขันตอบปัญหาวิชาการคอมพิวเตอร์และเทคโนโลยีสารสนเทศ</p>
         <p>ณ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี คณะเทคโนโลยีสารสนเทศ</p>
         <p>รางวัลรองชนะเลิศอันดับ 1</p>
@@ -48,26 +64,37 @@ import Carousel from "./Carousel.astro";
 </div>
 
 <style>
+  .certificates {
+    --padding: 0.5rem;
+  }
+
   .wrapper {
-    background-color: rgba(var(--crimson), 0.5);
     width: 60vw;
     height: min-content;
     margin-bottom: 3rem;
-    margin-right: 0.1rem;
-    border-radius: 1rem;
   }
 
   .wrapper img {
     display: block;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 1rem;
+    margin: auto;
+    width: 60vw;
+    max-height: 45vh;
+    object-fit: contain;
+
+    margin-bottom: 2rem;
   }
 
   .wrapper .text {
-    width: 60vw;
     padding: 1.5rem 5vw;
     text-align: center;
+    border-radius: 1rem;
+    background-color: rgba(var(--crimson), 0.5);
+  }
+
+  @media only screen and (min-width: 800px) {
+    .wrapper .text {
+      margin-inline: 1rem;
+    }
   }
 </style>
 

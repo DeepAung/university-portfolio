@@ -44,7 +44,6 @@ export function initCarousel(carousel: HTMLElement) {
       parseFloat(style.width) +
       parseFloat(style.marginLeft) +
       parseFloat(style.marginRight);
-    
 
     itemsArray.forEach((child) => {
       gsap.to(child, {
