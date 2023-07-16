@@ -1,16 +1,16 @@
 ---
-const { width } = Astro.props;
+const { width, class: addClass } = Astro.props;
 ---
 
-<div class="carousel" style={`width: ${width};`}>
+<div class:list={["carousel", addClass]} style={`width: ${width};`}>
   <div class="carousel__prev">
-    <i class="fa-solid fa-arrow-left"></i>
+    <i class="fa-sharp fa-solid fa-angle-left"></i>
   </div>
   <div class="carousel__items">
     <slot />
   </div>
   <div class="carousel__next">
-    <i class="fa-solid fa-arrow-right"></i>
+    <i class="fa-sharp fa-solid fa-angle-right"></i>
   </div>
 </div>
 
@@ -50,17 +50,18 @@ const { width } = Astro.props;
 
   .carousel__prev i,
   .carousel__next i {
-    font-size: min(2rem, 6vw);
-    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-
+    font-size: min(3rem, 6vw);
+    color: rgba(255, 255, 255, 0.9);
     cursor: pointer;
-
-    transition: text-shadow 0.25s;
+    transition: color 0.2s, text-shadow 0.2s;
   }
 
   .carousel__prev i:hover,
   .carousel__next i:hover {
-    text-shadow: 0px 0px 20px black;
+    font-size: min(3rem, 6vw);
+    color: rgba(255, 255, 255);
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
   }
 </style>
 

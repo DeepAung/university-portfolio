@@ -34,10 +34,12 @@
 
 <style>
   .intro {
-    padding: min(2vw, 2rem);
+    padding: 2rem min(2vw, 2rem);
 
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
   }
   .text-wrapper {
     overflow: hidden;
@@ -57,7 +59,7 @@
   .left .my-image {
     margin: auto;
     display: block;
-    height: 50vh;
+    width: 90%;
     border-radius: 1rem;
     cursor: pointer;
   }
@@ -66,7 +68,7 @@
     text-align: center;
     margin-top: 1rem;
     z-index: 999;
-    
+
     font-weight: 500;
     font-style: italic;
     color: rgb(255, 47, 47, 0.5);
@@ -78,12 +80,23 @@
     color: rgb(255, 47, 47, 1);
   }
 
+  @media only screen and (min-width: 350px) {
+    .left .my-image {
+      height: 50vh;
+      width: auto;
+    }
+  }
+
   @media only screen and (min-width: 800px) {
     .intro {
       display: flex;
       flex-direction: row-reverse;
       align-items: center;
       justify-content: space-around;
+    }
+
+    .left {
+      margin-bottom: 0;
     }
 
     .left .my-image {
@@ -117,7 +130,7 @@
     delay: 0.75,
     ease: "power4",
     duration: 1.5,
-  })
+  });
 
   fromScrollTrigger(
     ".intro .left",
@@ -146,7 +159,10 @@
   };
 
   myImage.onmouseleave = (e) => {
-    gsap.to(".intro .my-image", { boxShadow: "0px 0px 20px white", duration: 0.5 });
+    gsap.to(".intro .my-image", {
+      boxShadow: "0px 0px 20px white",
+      duration: 0.5,
+    });
   };
 
   function getOffset(e: MouseEvent, element: HTMLElement) {

@@ -96,8 +96,8 @@ import SkillCard from "./SkillCard.astro";
 <style>
   .wrapper .profile-pic {
     display: block;
-    width: 20rem;
-    height: 20rem;
+    width: 80vw;
+    height: 80vw;
     border-radius: 100%;
     object-fit: cover;
     margin: auto;
@@ -117,19 +117,6 @@ import SkillCard from "./SkillCard.astro";
     margin-bottom: min(2vw, 2rem);
   }
 
-  .personal-info,
-  .contacts,
-  .habits {
-    width: max-content;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .contacts,
-  .habits {
-    height: 16.5rem;
-  }
-
   .personal-info span {
     color: #dad7c5;
     font-weight: 600;
@@ -138,6 +125,7 @@ import SkillCard from "./SkillCard.astro";
   .contact-item {
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-bottom: 1rem;
     height: 2rem;
   }
@@ -149,6 +137,10 @@ import SkillCard from "./SkillCard.astro";
 
   .contact-item :first-child {
     margin-right: 1rem;
+  }
+
+  .habits {
+    text-align: center;
   }
 
   .skills-container {
@@ -167,6 +159,8 @@ import SkillCard from "./SkillCard.astro";
 
     .wrapper .profile-pic {
       margin: 0;
+      width: 20rem;
+      height: 20rem;
     }
 
     section {
@@ -204,8 +198,17 @@ import SkillCard from "./SkillCard.astro";
     .contacts,
     .habits {
       width: auto;
+      height: 16.5rem;
       margin-left: 0;
       margin-right: 0;
+    }
+
+    .contact-item {
+      justify-content: start;
+    }
+
+    .habits {
+      text-align: left;
     }
 
     .sm {

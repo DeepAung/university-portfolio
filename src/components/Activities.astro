@@ -5,7 +5,7 @@ import Carousel from "./Carousel.astro";
 <div class="activities">
   <div class="wrapper">
     <h3>สืบสาน วัฒนธรรม ประเพณี</h3>
-    <Carousel width="min(70vw, 35rem)">
+    <Carousel class="carousel-activities" width="min(70vw, 35rem)">
       <div class="item">
         <img
           class="img"
@@ -87,7 +87,7 @@ import Carousel from "./Carousel.astro";
 
   <div class="wrapper">
     <h3>ชุมนุมเทพมีเดีย ม.1-ม.6</h3>
-    <Carousel width="min(70vw, 35rem)">
+    <Carousel class="carousel-activities" width="min(70vw, 35rem)">
       <div class="item">
         <img
           class="img"
@@ -209,11 +209,11 @@ import Carousel from "./Carousel.astro";
 
   .wrapper {
     width: calc(var(--width) + 2 * var(--padding));
-    padding: var(--padding);
+    /* padding: var(--padding); */
     margin: auto;
     margin-bottom: 5rem;
     border-radius: 1rem;
-    background-color: rgba(var(--crimson), 0.5);
+    /* background-color: rgba(var(--crimson), 0.5); */
   }
 
   .wrapper h3 {
@@ -250,10 +250,8 @@ import Carousel from "./Carousel.astro";
 
     const tl = gsap
       .timeline()
-      .from(wrapper, { opacity: 0, y: 100 })
-      .from(q("h3"), { opacity: 0, yPercent: 100, duration: 1 })
-      .from(q("img"), { opacity: 0, duration: 1 })
-      .from(q("p"), { opacity: 0, duration: 1, ease: "power3" });
+      .from(q("h3"), { opacity: 0, yPercent: 100, duration: 0.75 })
+      .from(q(".carousel-activities"), { opacity: 0, duration: 0.75 });
 
     ScrollTrigger.create({
       trigger: wrapper,
