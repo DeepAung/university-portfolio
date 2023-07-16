@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/ts-plugin": "^1.0.6",
     "astro": "^2.4.1",
-    "gsap": "^3.11.5"
+    "gsap": "^3.11.5",
+    "tsparticles-engine": "^2.11.0"
   }
 }
