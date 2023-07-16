@@ -1,11 +1,3 @@
-// settings
-let CIRCLE_NUMBER = -999;
-const CIRCLE_SIZE = 1.5;
-const MIN_VELOCITY = -0.75;
-const MAX_VELOCITY = 0.75;
-const MIN_DIST = 0;
-const MAX_DIST = 150;
-
 type Circle = {
   posX: number;
   posY: number;
@@ -16,6 +8,17 @@ type Circle = {
 type Edge = {
   opacity: number;
 };
+
+// settings
+const CIRCLE_SIZE = 1.5;
+const MIN_VELOCITY = -0.75;
+const MAX_VELOCITY = 0.75;
+const MIN_DIST = 0;
+const MAX_DIST = 150;
+const FRAME_PER_SECOND = 60;
+const FRAME_INTERVAL = 1000 / FRAME_PER_SECOND; // in milliseconds
+
+// -------------------------------------------------- //
 
 // utility function
 function randomRange(min: number, max: number): number {
@@ -36,26 +39,62 @@ function distance(i: number, j: number) {
 
 // -------------------------------------------------- //
 
-function updateCircleNumber() {
-  CIRCLE_NUMBER = parseInt(String(((canvas.width * canvas.height) / 1e6) * 70));
+const canvas = document.querySelector("#canvas") as HTMLCanvasElement;
+const context = canvas.getContext("2d") as CanvasRenderingContext2D;
 
-  CIRCLE_NUMBER = Math.min(CIRCLE_NUMBER, 60);
+let circles: Circle[];
+let edges: Edge[][];
+let circleNumber: number;
+let previousTime = performance.now();
+
+window.onload = () => {
+  updateCanvas();
+  updateCircleNumber();
+
+  buildArray();
+
+  requestAnimationFrame(animate);
+};
+
+window.onresize = () => {
+  updateCanvas();
+  updateCircleNumber();
+
+  buildArray();
+};
+
+// -------------------------------------------------- //
+
+function updateCanvas() {
+  const ratio = Math.ceil(window.devicePixelRatio);
+  canvas.width = window.innerWidth * ratio;
+  canvas.height = window.innerHeight * ratio;
 }
 
-function updateCircle(i: number) {
+function updateCircleNumber() {
+  circleNumber = parseInt(String(((canvas.width * canvas.height) / 1e6) * 20));
+  circleNumber = Math.min(circleNumber, 60);
+}
+
+function updateCircle(i: number, deltaTimeMultiplier: number) {
   let circle = circles[i];
 
   let opacity = 0;
-  for (let j = 0; j < CIRCLE_NUMBER; j++) {
+  for (let j = 0; j < circleNumber; j++) {
     if (edges[i][j]) opacity += edges[i][j].opacity;
   }
 
-  circle.posX = clamp(circle.posX + circle.velocityX, 0, canvas.width);
-  circle.posY = clamp(circle.posY + circle.velocityY, 0, canvas.height);
+  circle.posX += circle.velocityX * deltaTimeMultiplier;
+  circle.posY += circle.velocityY * deltaTimeMultiplier;
+
+  circle.posX = clamp(circle.posX, 0, window.innerWidth);
+  circle.posY = clamp(circle.posY, 0, window.innerHeight);
 
   context.fillStyle = `rgba(255, 255, 255, ${opacity})`;
   context.beginPath();
   context.arc(circle.posX, circle.posY, CIRCLE_SIZE, 0, 2 * Math.PI, false);
+  // context.shadowBlur = 10;
+  // context.shadowColor = "white";
   context.closePath();
   context.fill();
 }
@@ -81,12 +120,12 @@ function updateEdge(i: number, j: number) {
 
 function buildArray() {
   // define array size
-  circles = new Array(CIRCLE_NUMBER);
-  edges = new Array(CIRCLE_NUMBER);
-  for (let i = 0; i < CIRCLE_NUMBER; i++) edges[i] = new Array(CIRCLE_NUMBER);
+  circles = new Array(circleNumber);
+  edges = new Array(circleNumber);
+  for (let i = 0; i < circleNumber; i++) edges[i] = new Array(circleNumber);
 
   // fill array value
-  for (let i = 0; i < CIRCLE_NUMBER; i++) {
+  for (let i = 0; i < circleNumber; i++) {
     let circle: Circle = {
       posX: randomRange(0, window.innerWidth),
       posY: randomRange(0, window.innerHeight),
@@ -97,52 +136,29 @@ function buildArray() {
     circles[i] = circle;
   }
 
-  for (let i = 0; i < CIRCLE_NUMBER; i++) {
-    for (let j = i + 1; j < CIRCLE_NUMBER; j++) {
+  for (let i = 0; i < circleNumber; i++) {
+    for (let j = i + 1; j < circleNumber; j++) {
       edges[i][j] = { opacity: 0 };
     }
   }
 }
 
-function animate() {
+function animate(currentTime: number) {
+  let deltaTime = currentTime - previousTime;
+  let deltaTimeMultiplier = deltaTime / FRAME_INTERVAL;
+  previousTime = currentTime;
+
   context.clearRect(0, 0, canvas.width, canvas.height);
 
-  for (let i = 0; i < CIRCLE_NUMBER; i++) {
-    for (let j = i + 1; j < CIRCLE_NUMBER; j++) {
+  for (let i = 0; i < circleNumber; i++) {
+    for (let j = i + 1; j < circleNumber; j++) {
       updateEdge(i, j);
     }
   }
 
-  for (let i = 0; i < CIRCLE_NUMBER; i++) {
-    updateCircle(i);
+  for (let i = 0; i < circleNumber; i++) {
+    updateCircle(i, deltaTimeMultiplier);
   }
 
-  requestAnimationFrame(() => animate()); // run every frame
+  requestAnimationFrame(animate); // run every frame
 }
-
-// -------------------------------------------------- //
-
-const canvas = document.querySelector("#canvas") as HTMLCanvasElement;
-const context = canvas.getContext("2d") as CanvasRenderingContext2D;
-
-let circles: Circle[];
-let edges: Edge[][];
-
-window.onload = (e) => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  updateCircleNumber();
-  buildArray();
-
-  animate();
-};
-
-window.onresize = (e) => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  updateCircleNumber();
-  console.log(CIRCLE_NUMBER);
-
-  buildArray();
-};
