@@ -1,3 +1,5 @@
+// types -------------------------------------------- //
+
 type Circle = {
   posX: number;
   posY: number;
@@ -9,7 +11,8 @@ type Edge = {
   opacity: number;
 };
 
-// settings
+// settings ----------------------------------------- //
+
 const CIRCLE_SIZE = 1.5;
 const MIN_VELOCITY = -0.75;
 const MAX_VELOCITY = 0.75;
@@ -18,16 +21,21 @@ const MAX_DIST = 150;
 const FRAME_PER_SECOND = 60;
 const FRAME_INTERVAL = 1000 / FRAME_PER_SECOND; // in milliseconds
 
-// -------------------------------------------------- //
+// utility function --------------------------------- //
 
-// utility function
 function randomRange(min: number, max: number): number {
   return Math.random() * (max - min) + min;
 }
 
 function clamp(val: number, min: number, max: number) {
-  if (val > max + 100) return min - 100;
-  else if (val < min - 100) return max + 100;
+  if (val > max) return max;
+  else if (val < min) return min;
+  return val;
+}
+
+function clampOverflow(val: number, min: number, max: number) {
+  if (val > max) return min;
+  else if (val < min) return max;
   return val;
 }
 
@@ -37,7 +45,7 @@ function distance(i: number, j: number) {
   return Math.sqrt(dx * dx + dy * dy);
 }
 
-// -------------------------------------------------- //
+// code starts here --------------------------------- //
 
 const canvas = document.querySelector("#canvas") as HTMLCanvasElement;
 const context = canvas.getContext("2d") as CanvasRenderingContext2D;
@@ -63,7 +71,7 @@ window.onresize = () => {
   buildArray();
 };
 
-// -------------------------------------------------- //
+// helper functions --------------------------------- //
 
 function updateCanvas() {
   const ratio = Math.ceil(window.devicePixelRatio);
@@ -72,8 +80,10 @@ function updateCanvas() {
 }
 
 function updateCircleNumber() {
-  circleNumber = parseInt(String(((canvas.width * canvas.height) / 1e6) * 20));
-  circleNumber = Math.min(circleNumber, 60);
+  circleNumber = parseInt(
+    String(((window.innerWidth * window.innerHeight) / 1e6) * 60)
+  );
+  circleNumber = clamp(circleNumber, 10, 60);
 }
 
 function updateCircle(i: number, deltaTimeMultiplier: number) {
@@ -87,14 +97,12 @@ function updateCircle(i: number, deltaTimeMultiplier: number) {
   circle.posX += circle.velocityX * deltaTimeMultiplier;
   circle.posY += circle.velocityY * deltaTimeMultiplier;
 
-  circle.posX = clamp(circle.posX, 0, window.innerWidth);
-  circle.posY = clamp(circle.posY, 0, window.innerHeight);
+  circle.posX = clampOverflow(circle.posX, 0 - 100, window.innerWidth + 100);
+  circle.posY = clampOverflow(circle.posY, 0 - 100, window.innerHeight + 100);
 
   context.fillStyle = `rgba(255, 255, 255, ${opacity})`;
   context.beginPath();
   context.arc(circle.posX, circle.posY, CIRCLE_SIZE, 0, 2 * Math.PI, false);
-  // context.shadowBlur = 10;
-  // context.shadowColor = "white";
   context.closePath();
   context.fill();
 }
