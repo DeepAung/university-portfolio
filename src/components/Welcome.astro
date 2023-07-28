@@ -1,9 +1,20 @@
+---
+import ToggleSwitch from "../subcomponents/ToggleSwitch.astro";
+
+---
+
 <div class="welcome">
   <canvas id="canvas"></canvas>
-  <h1 class="welcome-text">
-    <div>Welcome to</div>
-    <div>My <span class="pink">PortFolio</span></div>
-  </h1>
+  <div>
+    <h1 class="welcome-text">
+      <div>Welcome to</div>
+      <div>My <span class="pink">PortFolio</span></div>
+    </h1>
+    <div class="anim-switch">
+      <h3>Animation</h3>
+      <ToggleSwitch />
+    </div>
+  </div>
 </div>
 
 <style>
@@ -24,6 +35,16 @@
     font-family: "Horizon";
     font-size: clamp(1rem, 6vw, 3rem);
     font-weight: 600;
+  }
+
+  .welcome .anim-switch {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1.25rem;
+    font-size: clamp(1rem, 4vw, 2rem);
   }
 
   canvas {

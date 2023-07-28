@@ -1,11 +1,11 @@
 import gsap from "gsap";
 
 export function fromScrollTrigger(
-  target: string | object,
-  body: any,
+  target: string | Element,
+  body: gsap.TweenVars,
   time: number
 ) {
-  let value = -body?.y || 0;
+  let value: number = body.y ? -body.y : 0;
 
   gsap.from(target, {
     scrollTrigger: {
