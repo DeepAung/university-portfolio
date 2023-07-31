@@ -1,10 +1,13 @@
 ---
+import ModalClicker from "../subcomponents/ModalClicker.astro";
 import SkillCard from "../subcomponents/SkillCard.astro";
 ---
 
 <div class="profile">
   <div class="wrapper md flex-reversed">
-    <img class="profile-pic" src="images/profile-pic.jpg" alt="profile-pic" />
+    <ModalClicker>
+      <img class="profile-pic" src="images/profile-pic.jpg" alt="profile-pic" />
+    </ModalClicker>
     <section class="personal-info">
       <h3>Personal Info</h3>
       <p><span>ชื่อ:</span> อชิระ อังสุมาล (ดีพ)</p>
@@ -102,6 +105,13 @@ import SkillCard from "../subcomponents/SkillCard.astro";
     object-fit: cover;
     margin: auto;
     margin-bottom: 4rem;
+
+    cursor: pointer;
+    transition: box-shadow 0.25s;
+  }
+
+  .wrapper .profile-pic:hover {
+    box-shadow: 0 0 20px white;
   }
 
   section {

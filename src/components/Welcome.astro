@@ -1,6 +1,5 @@
 ---
 import ToggleSwitch from "../subcomponents/ToggleSwitch.astro";
-
 ---
 
 <div class="welcome">
@@ -58,17 +57,23 @@ import ToggleSwitch from "../subcomponents/ToggleSwitch.astro";
   import "../scripts/polygonBackground.ts";
   import gsap from "gsap";
 
-  gsap.from(".welcome #canvas", {
-    opacity: 0,
-    delay: 0.5,
-    duration: 1,
-  });
-
-  gsap.from(".welcome .welcome-text", {
-    opacity: 0,
-    scale: 0.5,
-    ease: "back",
-    delay: 1,
-    duration: 1,
-  });
+  gsap
+    .timeline()
+    .from(".welcome #canvas", {
+      opacity: 0,
+      delay: 0.5,
+      duration: 1,
+    })
+    .from(".welcome .welcome-text", {
+      opacity: 0,
+      scale: 0.5,
+      ease: "back",
+      duration: 0.75,
+    })
+    .from(".welcome .anim-switch", {
+      opacity: 0,
+      delay: 0.25,
+      duration: 0.5
+    })
+    .play();
 </script>

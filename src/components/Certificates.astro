@@ -1,15 +1,18 @@
 ---
 import Carousel from "../subcomponents/Carousel.astro";
+import ModalClicker from "../subcomponents/ModalClicker.astro";
 ---
 
 <div class="certificates">
   <Carousel width="60vw">
     <div class="wrapper">
-      <img
-        src="images/certificates/1.webp"
-        loading="lazy"
-        alt="การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 19"
-      />
+      <ModalClicker>
+        <img
+          src="images/certificates/1.webp"
+          loading="lazy"
+          alt="การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 19"
+        />
+      </ModalClicker>
       <div class="text">
         <p><b>การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 19</b></p>
         <p>Thailand Olympiad in Informatics 2023 (TOI 19)</p>
@@ -19,11 +22,13 @@ import Carousel from "../subcomponents/Carousel.astro";
     </div>
 
     <div class="wrapper">
-      <img
-        src="images/certificates/2.webp"
-        loading="lazy"
-        alt="การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 18"
-      />
+      <ModalClicker>
+        <img
+          src="images/certificates/2.webp"
+          loading="lazy"
+          alt="การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 18"
+        />
+      </ModalClicker>
       <div class="text">
         <p><b>การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 18</b></p>
         <p>Thailand Olympiad in Informatics 2022 (TOI 18)</p>
@@ -33,11 +38,13 @@ import Carousel from "../subcomponents/Carousel.astro";
     </div>
 
     <div class="wrapper">
-      <img
-        src="images/certificates/3.webp"
-        loading="lazy"
-        alt="ศิลปหัตถกรรมนักเรียน ระดับชาติ ครั้งที่ ๗๐ ณ.จังหวัดราชบุรี"
-      />
+      <ModalClicker>
+        <img
+          src="images/certificates/3.webp"
+          loading="lazy"
+          alt="ศิลปหัตถกรรมนักเรียน ระดับชาติ ครั้งที่ ๗๐ ณ.จังหวัดราชบุรี"
+        />
+      </ModalClicker>
       <div class="text">
         <p>
           <b>ศิลปหัตถกรรมนักเรียน ระดับชาติ ครั้งที่ ๗๐ ณ.จังหวัดราชบุรี</b>
@@ -48,11 +55,13 @@ import Carousel from "../subcomponents/Carousel.astro";
     </div>
 
     <div class="wrapper">
-      <img
-        src="images/certificates/4.webp"
-        loading="lazy"
-        alt="ICT Challenge 2022"
-      />
+      <ModalClicker>
+        <img
+          src="images/certificates/4.webp"
+          loading="lazy"
+          alt="ICT Challenge 2022"
+        />
+      </ModalClicker>
       <div class="text">
         <p><b>ICT Challenge 2022</b></p>
         <p>แข่งขันตอบปัญหาวิชาการคอมพิวเตอร์และเทคโนโลยีสารสนเทศ</p>
@@ -64,10 +73,6 @@ import Carousel from "../subcomponents/Carousel.astro";
 </div>
 
 <style>
-  .certificates {
-    --padding: 0.5rem;
-  }
-
   .wrapper {
     width: 60vw;
     height: min-content;
@@ -82,6 +87,13 @@ import Carousel from "../subcomponents/Carousel.astro";
     object-fit: contain;
 
     margin-bottom: 2rem;
+
+    cursor: pointer;
+    transition: filter 0.25s;
+  }
+
+  .wrapper img:hover {
+    filter: brightness(0.8);
   }
 
   .wrapper .text {

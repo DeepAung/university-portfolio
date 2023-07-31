@@ -1,0 +1,17 @@
+<span class="popup-modal">
+  <slot />
+</span>
+
+<script>
+  import { openModal } from "../scripts/modal.ts";
+
+  let popupModals = document.querySelectorAll(".popup-modal");
+
+  popupModals.forEach((popupModal: Element) => {
+    let castedPopupModal = popupModal as HTMLElement;
+
+    castedPopupModal.onclick = () => {
+      openModal(castedPopupModal);
+    };
+  });
+</script>

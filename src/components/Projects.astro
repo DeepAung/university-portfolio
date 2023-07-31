@@ -1,7 +1,58 @@
+---
+import ModalClicker from "../subcomponents/ModalClicker.astro";
+---
+
 <div class="projects">
   <div class="wrapper flex">
     <div class="img">
-      <img src="images/projects/knight-move-move.png" alt="Knight Move Move !!!" />
+      <ModalClicker>
+        <img
+          src="images/projects/imaginary-block.png"
+          alt="Imaginary Box (กล่องทิพย์)"
+        />
+      </ModalClicker>
+    </div>
+    <div class="text">
+      <h3><b>Imaginary Box (กล่องทิพย์)</b></h3>
+      <ul>
+        <li>
+          Application ที่ช่วยในการฝึกทักษะในด้านมิติสัมพันธ์
+          เพื่อเตรียมสอบเข้ามหาลัย หรือใช้เป็นสื่อประกอบการสอนสำหรับติวเตอร์
+        </li>
+        <li>
+          Imaginary Box (กล่องทิพย์) เป็นแอพที่สามารถสร้างบล็อกหลายๆ
+          อันมาต่อเป็นรูปต่างๆ ตามที่โจทย์กำหนดได้ สามารถหมุนรูปได้ 3 แกน
+          ทั้งตามเข็มและทวน
+        </li>
+        <li>
+          การพัฒนาใช้โปรแกรม <span class="pink bold">Godot</span> และภาษา <span
+            class="pink bold">GDScript</span
+          >
+        </li>
+        <li>
+          ผู้ใช้จะได้ฝึกการมองภาพสามมิติ และมีความชำนาญในการหมุนรูปมากขึ้น
+        </li>
+      </ul>
+      <div class="buttons">
+        <a href="https://github.com/DeepAung/ImaginaryBlock" target="_blank"
+          >Source Code</a
+        >
+        <a
+          href="https://github.com/DeepAung/ImaginaryBlock/releases"
+          target="_blank">Download</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper flex-reverse">
+    <div class="img">
+      <ModalClicker>
+        <img
+          src="images/projects/knight-move-move.png"
+          alt="Knight Move Move !!!"
+        />
+      </ModalClicker>
     </div>
     <div class="text">
       <h3><b>Knight Move Move !!!</b></h3>
@@ -33,9 +84,11 @@
     </div>
   </div>
 
-  <div class="wrapper flex-reverse">
+  <div class="wrapper flex">
     <div class="img">
-      <img src="images/projects/vue-note-app.png" alt="Vue Note App" />
+      <ModalClicker>
+        <img src="images/projects/vue-note-app.png" alt="Vue Note App" />
+      </ModalClicker>
     </div>
     <div class="text">
       <h3><b>Vue Note App</b></h3>
@@ -54,15 +107,17 @@
         <a href="https://github.com/DeepAung/vue-note-app" target="_blank"
           >Source Code</a
         >
-        <a href="https://github.com/DeepAung/vue-note-app" target="_blank"
-          >Website</a
-        >
+        <a href="https://vuenoteapp.vercel.app/" target="_blank">Website</a>
       </div>
     </div>
   </div>
 
-  <div class="wrapper flex">
-    <div class="img"><img src="images/projects/chatapp.png" alt="Chat App" /></div>
+  <div class="wrapper flex-reverse">
+    <div class="img">
+      <ModalClicker>
+        <img src="images/projects/chatapp.png" alt="Chat App" />
+      </ModalClicker>
+    </div>
     <div class="text">
       <h3><b>Chat App</b></h3>
       <ul>
@@ -75,7 +130,7 @@
         <li>
           การพัฒนา ใช้ <span class="pink bold">Next.js</span> เป็น Front-end ใช้
           <span class="pink bold">Django</span> เป็น Back-end และ
-          <span class="pink bold">SQLite</span> เป็น Database
+          <span class="pink bold">PlanetScale (MySQL)</span> เป็น Database
         </li>
         <li>
           ผู้ใช้สามารถสมัคร Account สร้างห้องเพื่อคุยกัน
@@ -84,8 +139,11 @@
         </li>
       </ul>
       <div class="buttons">
-        <a href="https://github.com/DeepAung/ChatApp" target="_blank"
-          >Source Code</a
+        <a href="https://github.com/DeepAung/ChatAppFrontend" target="_blank"
+          >Source Code Frontend</a
+        >
+        <a href="https://github.com/DeepAung/ChatAppBackend" target="_blank"
+          >Source Code Backend</a
         >
         <a href="https://github.com/DeepAung/ChatApp" target="_blank">Website</a
         >
@@ -95,10 +153,6 @@
 </div>
 
 <style>
-  .projects {
-    overflow: hidden;
-  }
-
   .wrapper {
     margin-inline: auto;
     border-radius: 1rem;
@@ -119,7 +173,13 @@
   .wrapper .img img {
     display: block;
     width: 100%;
-    filter: drop-shadow(5px 5px 10px black);
+    
+    cursor: pointer;
+    transition: box-shadow 0.25s;
+  }
+
+  .wrapper .img img:hover {
+    box-shadow: 0 0 20px white;
   }
 
   .wrapper .text {
@@ -137,6 +197,17 @@
     margin-bottom: 1rem;
   }
 
+  .wrapper .text .buttons {
+    margin-top: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: min(5rem, 5vw);
+  }
+
   .wrapper .text .buttons a {
     display: block;
     width: clamp(10rem, 18vw, 11rem);
@@ -146,8 +217,7 @@
     border-radius: 0.5rem;
     text-decoration: none;
 
-    margin-top: 2rem;
-    margin-inline: auto;
+    margin: 0 auto;
 
     transition: background-color 0.25s;
   }
@@ -156,21 +226,21 @@
     background-color: rgba(var(--crimson), 1);
   }
 
-  @media only screen and (min-width: 400px) {
+  @media only screen and (min-width: 640px) {
     .wrapper .text .buttons {
-      margin-top: 2rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: min(5rem, 5vw);
-    }
-
-    .wrapper .text .buttons a {
-      margin: 0;
+      flex-wrap: nowrap;
     }
   }
 
   @media only screen and (min-width: 800px) {
+    .wrapper:last-child .text .buttons {
+      flex-wrap: wrap;
+    }
+
+    .wrapper:last-child .img {
+      width: 100%;
+    }
+
     .wrapper {
       display: flex;
       gap: 5vw;
@@ -190,6 +260,12 @@
 
     .wrapper .img {
       max-width: 42rem;
+    }
+  }
+
+  @media only screen and (min-width: 1300px) {
+    .wrapper:last-child .text .buttons {
+      flex-wrap: nowrap;
     }
   }
 </style>

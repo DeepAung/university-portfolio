@@ -1,8 +1,14 @@
+---
+import ModalClicker from "../subcomponents/ModalClicker.astro";
+---
+
 <div class="intro">
   <div class="left">
-    <img class="my-image" src="images/hero-pic.jpg" alt="my-image" />
+    <ModalClicker>
+      <img class="my-image" src="images/hero-pic.jpg" alt="my-image" />
+    </ModalClicker>
     <div class="text-wrapper">
-      <p class="text">Try Hover Image</p>
+      <p class="text">Try Hover/Click Image</p>
     </div>
   </div>
 
@@ -76,7 +82,7 @@
     transition: color 0.25s;
   }
 
-  .left .my-image:hover + .text-wrapper p {
+  .left:has(.my-image:hover) > .text-wrapper p {
     color: rgb(255, 47, 47, 1);
   }
 
@@ -163,6 +169,10 @@
       boxShadow: "0px 0px 20px white",
       duration: 0.5,
     });
+  };
+
+  myImage.onclick = (e) => {
+    myImage.style.boxShadow = "none";
   };
 
   function getOffset(e: MouseEvent, element: HTMLElement) {
