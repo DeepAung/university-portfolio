@@ -81,7 +81,7 @@ function updateCanvas() {
 
 function updateCircleNumber() {
   circleNumber = parseInt(
-    String(((window.innerWidth * window.innerHeight) / 1e6) * 60)
+    String(((window.innerWidth * window.innerHeight) / 1e6) * 60),
   );
   circleNumber = clamp(circleNumber, 10, 60);
 }

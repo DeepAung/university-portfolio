@@ -3,7 +3,7 @@ import gsap from "gsap";
 export function fromScrollTrigger(
   target: string | Element,
   body: gsap.TweenVars,
-  time: number
+  time: number,
 ) {
   let value: number = body.y ? -body.y : 0;
 
