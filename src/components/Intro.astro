@@ -42,6 +42,14 @@ interface Props {
   </div>
 </div>
 
+<style is:global>
+  .left > :first-child {
+    display: block;
+    width: min-content;
+    margin: 0 auto;
+  }
+</style>
+
 <style>
   .intro {
     padding: 2rem min(2vw, 2rem);
@@ -67,8 +75,6 @@ interface Props {
   }
 
   .left .my-image {
-    margin: auto;
-    display: block;
     width: 90%;
     border-radius: 1rem;
 

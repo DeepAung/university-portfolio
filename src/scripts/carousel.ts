@@ -2,8 +2,8 @@ import gsap from "gsap";
 
 export function initCarousel(carousel: HTMLElement) {
   let items = carousel.querySelector(".carousel__items") as HTMLElement;
-  let prev = carousel.querySelector(".carousel__prev") as HTMLElement;
-  let next = carousel.querySelector(".carousel__next") as HTMLElement;
+  let prev = carousel.querySelector(".carousel__prev > *") as HTMLElement;
+  let next = carousel.querySelector(".carousel__next > *") as HTMLElement;
 
   let itemsArray: HTMLElement[] = [];
   items.childNodes.forEach((value) => {

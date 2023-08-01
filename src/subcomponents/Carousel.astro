@@ -46,11 +46,11 @@ const { width, class: addClass } = Astro.props;
   }
 
   .carousel__prev {
-    left: 0;
+    left: calc(-1 * (min(3rem, 6vw) + min(1rem, 2vw)));
   }
 
   .carousel__next {
-    right: 0;
+    right: calc(-1 * (min(3rem, 6vw) + min(1rem, 2vw)));
   }
 
   .carousel__prev i,
