@@ -1,5 +1,7 @@
 import gsap from "gsap";
 
+setAnimationToggle(getAnimationToggle())
+
 export function getAnimationToggle(): boolean {
   let value = localStorage.getItem("animationToggle");
 
