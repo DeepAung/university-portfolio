@@ -14,5 +14,9 @@
     "astro": "^2.4.1",
     "gsap": "^3.11.5",
     "tsparticles-engine": "^2.11.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "prettier-plugin-astro": "^0.11.0"
   }
 }

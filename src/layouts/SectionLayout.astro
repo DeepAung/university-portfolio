@@ -1,0 +1,57 @@
+---
+interface Props {
+  englishTitle: string;
+  thaiTitle: string;
+}
+
+const { englishTitle, thaiTitle } = Astro.props;
+---
+
+<div class="container">
+  <div class="head">
+    <h1><span>{englishTitle}</span></h1>
+    <h3><span>{thaiTitle}</span></h3>
+  </div>
+  <slot />
+</div>
+
+<style>
+  .container {
+    padding: min(4rem, 6vw);
+  }
+  .head {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .head h1,
+  .head h3 {
+    overflow: hidden;
+  }
+
+  .head span {
+    display: block;
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+
+  const heads: object[] = gsap.utils.toArray(".head");
+
+  heads.forEach((headObj) => {
+    let head = headObj as Element;
+
+    gsap.from([head.children[0].children, head.children[1].children], {
+      scrollTrigger: {
+        trigger: head,
+        toggleActions: "play none resume reset",
+      },
+      yPercent: 100,
+      stagger: 0.2,
+      delay: 0.25,
+      ease: "power4",
+      duration: 1,
+    });
+  });
+</script>

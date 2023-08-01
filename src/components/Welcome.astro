@@ -4,14 +4,19 @@ import ToggleSwitch from "../subcomponents/ToggleSwitch.astro";
 
 <div class="welcome">
   <canvas id="canvas"></canvas>
-  <div>
+  <div class="wrapper">
     <h1 class="welcome-text">
       <div>Welcome to</div>
-      <div>My <span class="pink">PortFolio</span></div>
+      <div>My <span class="primary glow">PortFolio</span></div>
     </h1>
     <div class="anim-switch">
       <h3>Animation</h3>
       <ToggleSwitch />
+    </div>
+    <div class="buttons">
+      <a href="/portfolio/cu">Chula</a>
+      <a href="/portfolio/kmitl">KMITL</a>
+      <a href="/portfolio/kmutt">KMUTT</a>
     </div>
   </div>
 </div>
@@ -29,21 +34,60 @@ import ToggleSwitch from "../subcomponents/ToggleSwitch.astro";
     overflow: hidden;
   }
 
-  .welcome .welcome-text {
+  .welcome .wrapper {
     padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .welcome .welcome-text {
     font-family: "Horizon";
     font-size: clamp(1rem, 6vw, 3rem);
     font-weight: 600;
   }
 
+  .welcome .welcome-text .glow {
+    text-shadow: 0 0 20px rgb(var(--primary));
+  }
+
   .welcome .anim-switch {
-    margin-top: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
 
     gap: 1.25rem;
     font-size: clamp(1rem, 4vw, 2rem);
+  }
+
+  .welcome .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .welcome .buttons a {
+    display: block;
+    width: min-content;
+    margin: 0 auto;
+
+    background-color: rgba(var(--crimson), 0.8);
+    padding: 1em;
+    border-radius: 0.4rem;
+
+    text-decoration: none;
+    font-weight: 600;
+
+    font-size: clamp(0.75rem, 3vw, 1.5rem);
+
+    transition: text-shadow 0.25s, box-shadow 0.25s;
+  }
+
+  .welcome .buttons a:hover {
+    text-shadow: 0 0 10px white;
+    box-shadow: 0 0 10px 5px rgba(var(--crimson), 0.7);
   }
 
   canvas {
@@ -68,12 +112,16 @@ import ToggleSwitch from "../subcomponents/ToggleSwitch.astro";
       opacity: 0,
       scale: 0.5,
       ease: "back",
-      duration: 0.75,
+      duration: 1,
     })
     .from(".welcome .anim-switch", {
       opacity: 0,
-      delay: 0.25,
-      duration: 0.5
+      duration: 0.5,
+    })
+    .from(".welcome .buttons a", {
+      opacity: 0,
+      delay: 0.1,
+      stagger: 0.1
     })
     .play();
 </script>

@@ -1,5 +1,9 @@
 ---
 import ModalClicker from "../subcomponents/ModalClicker.astro";
+
+interface Props {
+  universityPath: string;
+}
 ---
 
 <div class="intro">
@@ -29,7 +33,7 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
     </div>
     <div class="text-wrapper">
       <h3 class="text">
-        &emsp;to: "<span class="pink">Chula/Engineer/Computer(CEDT)</span>"
+        &emsp;to: "<span class="primary">{Astro.props.universityPath}</span>"
       </h3>
     </div>
     <div class="text-wrapper">

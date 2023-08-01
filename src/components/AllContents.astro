@@ -1,0 +1,35 @@
+---
+import Intro from "../components/Intro.astro";
+import Profile from "../components/Profile.astro";
+import Education from "../components/Education.astro";
+import Certificates from "../components/Certificates.astro";
+import Projects from "../components/Projects.astro";
+import Activities from "../components/Activities.astro";
+import SectionLayout from "../layouts/SectionLayout.astro";
+
+interface Props {
+  universityPath: string;
+}
+---
+
+<Intro universityPath={Astro.props.universityPath} />
+
+<SectionLayout englishTitle="Profile" thaiTitle="ประวัติส่วนตัว">
+  <Profile />
+</SectionLayout>
+
+<SectionLayout englishTitle="Education" thaiTitle="ประวัติการศึกษา">
+  <Education />
+</SectionLayout>
+
+<SectionLayout englishTitle="Certificates" thaiTitle="ผลงานด้านวิชาการ">
+  <Certificates />
+</SectionLayout>
+
+<SectionLayout englishTitle="Projects" thaiTitle="โปรเจกต์">
+  <Projects />
+</SectionLayout>
+
+<SectionLayout englishTitle="Activities" thaiTitle="กิจกรรม">
+  <Activities />
+</SectionLayout>

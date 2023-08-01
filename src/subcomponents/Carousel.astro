@@ -1,4 +1,9 @@
 ---
+interface Props {
+  width: string;
+  class?: string;
+}
+
 const { width, class: addClass } = Astro.props;
 ---
 
@@ -52,9 +57,14 @@ const { width, class: addClass } = Astro.props;
   .carousel__next i {
     font-size: min(3rem, 6vw);
     color: rgb(255, 255, 255, 0.9);
-    text-shadow: -3px 0 10px #000000a4, 0 3px 10px #000000a4, 3px 0 10px #000000a4,
+    text-shadow:
+      -3px 0 10px #000000a4,
+      0 3px 10px #000000a4,
+      3px 0 10px #000000a4,
       0 -3px 10px #000000a4;
-    transition: color 0.2s, text-shadow 0.2s;
+    transition:
+      color 0.2s,
+      text-shadow 0.2s;
 
     cursor: pointer;
   }
@@ -62,7 +72,10 @@ const { width, class: addClass } = Astro.props;
   .carousel__prev i:hover,
   .carousel__next i:hover {
     color: rgb(255, 255, 255);
-    text-shadow: -3px 0 10px #000, 0 3px 10px #000, 3px 0 10px #000,
+    text-shadow:
+      -3px 0 10px #000,
+      0 3px 10px #000,
+      3px 0 10px #000,
       0 -3px 10px #000;
   }
 </style>

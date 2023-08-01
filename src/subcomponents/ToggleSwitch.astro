@@ -1,5 +1,5 @@
 <label class="switch">
-  <input type="checkbox" id="switch-checkbox" checked />
+  <input type="checkbox" id="switch-checkbox" />
   <span class="slider"></span>
 </label>
 
@@ -18,6 +18,8 @@
 
     width: var(--button-width);
     height: var(--button-height);
+
+    cursor: pointer;
   }
 
   .slider {
@@ -27,7 +29,13 @@
     background-color: var(--color-grey);
     border-radius: calc(var(--button-height) / 2);
     position: relative;
-    transition: 0.3s all ease-in-out;
+    transition:
+      0.3s all ease-in-out,
+      box-shadow 0.25s;
+  }
+
+  .slider:hover {
+    box-shadow: 0 0 10px 2px var(--color-grey);
   }
 
   .slider::after {
@@ -47,6 +55,10 @@
 
   .switch input[type="checkbox"]:checked + .slider {
     background-color: var(--color-green);
+  }
+
+  .switch input[type="checkbox"]:checked + .slider:hover {
+    box-shadow: 0 0 10px 2px var(--color-green);
   }
 
   .switch input[type="checkbox"]:checked + .slider::after {
@@ -78,18 +90,20 @@
 </style>
 
 <script>
-  import { toggleAnimation } from "../scripts/animationToggle.ts";
+  import {
+    getAnimationToggle,
+    setAnimationToggle,
+  } from "../scripts/animationToggle.ts";
 
   var checkbox = document.querySelector("#switch-checkbox") as HTMLInputElement;
+  checkbox.checked = getAnimationToggle();
 
   checkbox.onclick = async () => {
-    toggleAnimation(checkbox.checked);
+    setAnimationToggle(checkbox.checked);
 
     if (checkbox.checked) {
       await new Promise((resolve) => setTimeout(resolve, 500));
-      
-      location.reload()
+      location.reload();
     }
   };
-
 </script>

@@ -1,5 +1,9 @@
 ---
-const { title, image } = Astro.props;
+interface Props {
+  title?: string
+}
+
+const { title="" } = Astro.props;
 ---
 
 <div class="skill-card">
@@ -47,7 +51,7 @@ const { title, image } = Astro.props;
 
   .skill-card:hover {
     transform: translatey(-5px);
-    box-shadow: 0px 5px 15px rgba(var(--pink), 0.75);
+    box-shadow: 0px 5px 15px rgba(var(--primary), 0.75);
   }
 
   .skill-card p::after {

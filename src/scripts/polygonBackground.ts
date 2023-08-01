@@ -1,3 +1,5 @@
+import { getAnimationToggle } from "./animationToggle.ts";
+
 // types -------------------------------------------- //
 
 type Circle = {
@@ -21,30 +23,6 @@ const MAX_DIST = 150;
 const FRAME_PER_SECOND = 60;
 const FRAME_INTERVAL = 1000 / FRAME_PER_SECOND; // in milliseconds
 
-// utility function --------------------------------- //
-
-function randomRange(min: number, max: number): number {
-  return Math.random() * (max - min) + min;
-}
-
-function clamp(val: number, min: number, max: number) {
-  if (val > max) return max;
-  else if (val < min) return min;
-  return val;
-}
-
-function clampOverflow(val: number, min: number, max: number) {
-  if (val > max) return min;
-  else if (val < min) return max;
-  return val;
-}
-
-function distance(i: number, j: number) {
-  let dx = Math.abs(circles[i].posX - circles[j].posX);
-  let dy = Math.abs(circles[i].posY - circles[j].posY);
-  return Math.sqrt(dx * dx + dy * dy);
-}
-
 // code starts here --------------------------------- //
 
 const canvas = document.querySelector("#canvas") as HTMLCanvasElement;
@@ -56,6 +34,8 @@ let circleNumber: number;
 let previousTime = performance.now();
 
 window.onload = () => {
+  if (!getAnimationToggle()) return;
+
   updateCanvas();
   updateCircleNumber();
 
@@ -65,6 +45,8 @@ window.onload = () => {
 };
 
 window.onresize = () => {
+  if (!getAnimationToggle()) return;
+
   updateCanvas();
   updateCircleNumber();
 
@@ -158,6 +140,8 @@ function animate(currentTime: number) {
 
   context.clearRect(0, 0, canvas.width, canvas.height);
 
+  if (!getAnimationToggle()) return;
+
   for (let i = 0; i < circleNumber; i++) {
     for (let j = i + 1; j < circleNumber; j++) {
       updateEdge(i, j);
@@ -169,4 +153,28 @@ function animate(currentTime: number) {
   }
 
   requestAnimationFrame(animate); // run every frame
+}
+
+// utility function --------------------------------- //
+
+function randomRange(min: number, max: number): number {
+  return Math.random() * (max - min) + min;
+}
+
+function clamp(val: number, min: number, max: number) {
+  if (val > max) return max;
+  else if (val < min) return min;
+  return val;
+}
+
+function clampOverflow(val: number, min: number, max: number) {
+  if (val > max) return min;
+  else if (val < min) return max;
+  return val;
+}
+
+function distance(i: number, j: number) {
+  let dx = Math.abs(circles[i].posX - circles[j].posX);
+  let dy = Math.abs(circles[i].posY - circles[j].posY);
+  return Math.sqrt(dx * dx + dy * dy);
 }
