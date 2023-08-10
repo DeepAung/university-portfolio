@@ -1,12 +1,7 @@
 ---
 import Welcome from "../components/Welcome.astro";
 import Modal from "../components/Modal.astro";
-
-interface Props {
-  primaryColor?: string;
-}
-
-const { primaryColor = "255, 255, 255" } = Astro.props;
+import Navbar from "../components/Navbar.astro";
 ---
 
 <!DOCTYPE html>
@@ -25,10 +20,11 @@ const { primaryColor = "255, 255, 255" } = Astro.props;
       crossorigin="anonymous"></script>
   </head>
   <body>
+    <Navbar />
     <Modal />
     <Welcome />
 
-    <div class="contents">
+    <div id="contents">
       <slot />
     </div>
   </body>
@@ -40,8 +36,8 @@ const { primaryColor = "255, 255, 255" } = Astro.props;
   @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap");
 
   @font-face {
-    font-family: "Horizon";
-    src: url(/fonts/Horizon/horizon.otf);
+    font-family: "HorizonFont";
+    src: url("/portfolio/fonts/Horizon/horizon.otf");
   }
 
   /* -------------------- default settings -------------------- */
@@ -90,7 +86,7 @@ const { primaryColor = "255, 255, 255" } = Astro.props;
 
   /* -------------------- for this component -------------------- */
 
-  .contents {
+  #contents {
     background-color: rgb(30, 30, 30);
     overflow-x: hidden;
   }
@@ -132,12 +128,14 @@ const { primaryColor = "255, 255, 255" } = Astro.props;
 <script>
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { primaryColor } from "../scripts/university.ts";
 
   gsap.registerPlugin(ScrollTrigger);
-</script>
 
-<script define:vars={{ primaryColor }}>
-var root = document.querySelector(":root");
+  var root = document.querySelector(":root") as HTMLElement;
 
-root.style.setProperty("--primary", primaryColor);
+  root.style.setProperty("--primary", primaryColor);
+  window.addEventListener("universitychange", () => {
+    root.style.setProperty("--primary", primaryColor);
+  });
 </script>

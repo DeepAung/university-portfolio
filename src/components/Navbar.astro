@@ -1,0 +1,41 @@
+---
+import ToggleSwitch from "../subcomponents/ToggleSwitch.astro";
+import Dropdown from "../subcomponents/Dropdown.astro";
+---
+
+<nav class="navbar">
+  <div class="anim-switch">
+    <p>Animation</p>
+    <ToggleSwitch />
+  </div>
+  <Dropdown />
+</nav>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 4vw;
+
+    z-index: 2;
+  }
+
+  .navbar .anim-switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 0.5em;
+    font-size: clamp(1rem, 4vw, 1.5rem);
+  }
+  
+  .navbar .anim-switch p {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    font-weight: bold;
+  }
+</style>

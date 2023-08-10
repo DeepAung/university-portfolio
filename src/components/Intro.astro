@@ -1,15 +1,15 @@
 ---
 import ModalClicker from "../subcomponents/ModalClicker.astro";
-
-interface Props {
-  universityPath: string;
-}
 ---
 
 <div class="intro">
   <div class="left">
     <ModalClicker>
-      <img class="my-image" src="/portfolio/images/hero-pic.jpg" alt="my-image" />
+      <img
+        class="my-image"
+        src="/portfolio/images/hero-pic.jpg"
+        alt="my-image"
+      />
     </ModalClicker>
     <div class="text-wrapper">
       <p class="text">Try Hover/Click Image</p>
@@ -33,7 +33,7 @@ interface Props {
     </div>
     <div class="text-wrapper">
       <h3 class="text">
-        &emsp;to: "<span class="primary">{Astro.props.universityPath}</span>"
+        &emsp;to: "<span class="primary" id="universityPath"></span>"
       </h3>
     </div>
     <div class="text-wrapper">
@@ -135,6 +135,16 @@ interface Props {
 <script>
   import gsap from "gsap";
   import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
+  import { universityPath } from "../scripts/university.ts";
+
+  const universityPathElement = document.querySelector(
+    "#universityPath"
+  ) as HTMLElement;
+
+  universityPathElement.innerText = universityPath;
+  window.addEventListener("universitychange", () => {
+    universityPathElement.innerText = universityPath;
+  });
 
   gsap.from(".intro .text-wrapper .text", {
     scrollTrigger: {

@@ -6,13 +6,9 @@ import Certificates from "../components/Certificates.astro";
 import Projects from "../components/Projects.astro";
 import Activities from "../components/Activities.astro";
 import SectionLayout from "../layouts/SectionLayout.astro";
-
-interface Props {
-  universityPath: string;
-}
 ---
 
-<Intro universityPath={Astro.props.universityPath} />
+<Intro />
 
 <SectionLayout englishTitle="Profile" thaiTitle="ประวัติส่วนตัว">
   <Profile />
