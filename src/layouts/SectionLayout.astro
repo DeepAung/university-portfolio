@@ -45,7 +45,7 @@ const { englishTitle, thaiTitle } = Astro.props;
     gsap.from([head.children[0].children, head.children[1].children], {
       scrollTrigger: {
         trigger: head,
-        toggleActions: "play none resume reset",
+        toggleActions: "play none none none",
       },
       yPercent: 100,
       stagger: 0.2,

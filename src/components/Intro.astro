@@ -9,6 +9,7 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
         class="my-image"
         src="/portfolio/images/hero-pic.jpg"
         alt="my-image"
+        loading="lazy"
       />
     </ModalClicker>
     <div class="text-wrapper">
@@ -149,7 +150,7 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
   gsap.from(".intro .text-wrapper .text", {
     scrollTrigger: {
       trigger: ".right",
-      toggleActions: "play none resume reset",
+      toggleActions: "play none none none",
     },
     opacity: 1,
     yPercent: 100,

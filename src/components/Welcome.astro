@@ -9,7 +9,7 @@
 <style>
   .welcome {
     padding: 1rem;
-    background-color: rgb(30, 30, 30);
+    background-color: rgb(var(--dark));
     height: 100vh;
     height: 100dvh;
 
@@ -37,21 +37,28 @@
 </style>
 
 <script>
-  import "../scripts/polygonBackground.ts";
+  import { onLoad, onResize } from "../scripts/polygonBackground.ts";
   import gsap from "gsap";
 
-  gsap
-    .timeline()
-    .from(".welcome #canvas", {
-      opacity: 0,
-      delay: 0.5,
-      duration: 1,
-    })
-    .from(".welcome .welcome-text", {
-      opacity: 0,
-      scale: 0.5,
-      ease: "back",
-      duration: 1,
-    })
-    .play();
+  window.onload = () => {
+    onLoad();
+    gsap
+      .timeline()
+      .from(".welcome #canvas", {
+        opacity: 0,
+        delay: 0.5,
+        duration: 1,
+      })
+      .from(".welcome .welcome-text", {
+        opacity: 0,
+        scale: 0.5,
+        ease: "back",
+        duration: 1,
+      })
+      .play();
+  };
+
+  window.onresize = () => {
+    onResize();
+  };
 </script>

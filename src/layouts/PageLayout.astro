@@ -2,6 +2,7 @@
 import Welcome from "../components/Welcome.astro";
 import Modal from "../components/Modal.astro";
 import Navbar from "../components/Navbar.astro";
+import Loader from "../components/Loader.astro";
 ---
 
 <!DOCTYPE html>
@@ -17,9 +18,11 @@ import Navbar from "../components/Navbar.astro";
     <title>Ashira Aungsumal's Portfolio for applying to the university.</title>
     <script
       src="https://kit.fontawesome.com/8e504b9924.js"
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous"
+      defer></script>
   </head>
   <body>
+    <Loader />
     <Navbar />
     <Modal />
     <Welcome />
@@ -38,11 +41,13 @@ import Navbar from "../components/Navbar.astro";
   @font-face {
     font-family: "HorizonFont";
     src: url("/portfolio/fonts/Horizon/horizon.otf");
+    font-display: swap;
   }
 
   /* -------------------- default settings -------------------- */
 
   :root {
+    --dark: 33, 33, 33;
     --blue: 56, 182, 255;
     --yellow: 255, 223, 43;
     --green: 27, 248, 129;
@@ -87,7 +92,7 @@ import Navbar from "../components/Navbar.astro";
   /* -------------------- for this component -------------------- */
 
   #contents {
-    background-color: rgb(30, 30, 30);
+    background-color: rgb(var(--dark));
     overflow-x: hidden;
   }
 

@@ -11,7 +11,7 @@ export function fromScrollTrigger(
     scrollTrigger: {
       trigger: target,
       start: `top+=${value}px bottom`,
-      toggleActions: "play none resume reset",
+      toggleActions: "play none none none",
     },
     opacity: 0,
     duration: time,

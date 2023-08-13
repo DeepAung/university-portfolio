@@ -12,7 +12,11 @@ export function openModal(element: HTMLElement) {
 
   modalWrapper.append(element.cloneNode(true));
 
-  gsap.to(modalWrapper, { opacity: 1, display: "block" });
+  gsap.to(modalWrapper, {
+    opacity: 1,
+    display: "block",
+    duration: 0.25,
+  });
 }
 
 export function closeModal() {
@@ -21,6 +25,7 @@ export function closeModal() {
   gsap.to(modalWrapper, {
     opacity: 0,
     display: "none",
+    duration: 0.25,
     onComplete: () => {
       modalWrapper.innerHTML = "";
     },

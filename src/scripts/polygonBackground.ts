@@ -33,7 +33,7 @@ let edges: Edge[][];
 let circleNumber: number;
 let previousTime = performance.now();
 
-window.onload = () => {
+export function onLoad() {
   if (!getAnimationToggle()) return;
 
   updateCanvas();
@@ -42,16 +42,16 @@ window.onload = () => {
   buildArray();
 
   requestAnimationFrame(animate);
-};
+}
 
-window.onresize = () => {
+export function onResize() {
   if (!getAnimationToggle()) return;
 
   updateCanvas();
   updateCircleNumber();
 
   buildArray();
-};
+}
 
 // helper functions --------------------------------- //
 
@@ -63,7 +63,7 @@ function updateCanvas() {
 
 function updateCircleNumber() {
   circleNumber = parseInt(
-    String(((window.innerWidth * window.innerHeight) / 1e6) * 60),
+    String(((window.innerWidth * window.innerHeight) / 1e6) * 60)
   );
   circleNumber = clamp(circleNumber, 10, 60);
 }
