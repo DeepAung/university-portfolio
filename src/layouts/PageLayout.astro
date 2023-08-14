@@ -1,8 +1,10 @@
 ---
 import Welcome from "../components/Welcome.astro";
+import ThankYou from "../components/ThankYou.astro";
 import Modal from "../components/Modal.astro";
 import Navbar from "../components/Navbar.astro";
 import Loader from "../components/Loader.astro";
+import PolygonBackground from "../components/PolygonBackground.astro";
 ---
 
 <!DOCTYPE html>
@@ -25,11 +27,15 @@ import Loader from "../components/Loader.astro";
     <Loader />
     <Navbar />
     <Modal />
+
+    <PolygonBackground />
     <Welcome />
 
     <div id="contents">
       <slot />
     </div>
+
+    <ThankYou />
   </body>
 </html>
 
@@ -86,6 +92,7 @@ import Loader from "../components/Loader.astro";
     font-weight: normal;
     font-family: Inter, "IBM Plex Sans Thai", sans-serif;
     color: white;
+    background-color: rgb(var(--dark));
     overflow-x: hidden;
   }
 

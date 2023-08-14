@@ -1,5 +1,4 @@
 <div class="welcome">
-  <canvas id="canvas"></canvas>
   <h1 class="welcome-text">
     <div>Welcome to</div>
     <div>My <span class="primary glow">PortFolio</span></div>
@@ -9,7 +8,6 @@
 <style>
   .welcome {
     padding: 1rem;
-    background-color: rgb(var(--dark));
     height: 100vh;
     height: 100dvh;
 
@@ -21,44 +19,25 @@
 
   .welcome .welcome-text {
     font-family: "HorizonFont";
-    font-size: clamp(1rem, 6vw, 3rem);
+    font-size: clamp(1rem, 6vw, 4rem);
     font-weight: 600;
   }
 
   .welcome .welcome-text .glow {
     text-shadow: 0 0 20px rgb(var(--primary));
   }
-
-  canvas {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-  }
 </style>
 
 <script>
-  import { onLoad, onResize } from "../scripts/polygonBackground.ts";
   import gsap from "gsap";
 
-  window.onload = () => {
-    onLoad();
-    gsap
-      .timeline()
-      .from(".welcome #canvas", {
-        opacity: 0,
-        delay: 0.5,
-        duration: 1,
-      })
-      .from(".welcome .welcome-text", {
-        opacity: 0,
-        scale: 0.5,
-        ease: "back",
-        duration: 1,
-      })
-      .play();
-  };
-
-  window.onresize = () => {
-    onResize();
-  };
+  window.addEventListener("load", () => {
+    gsap.from(".welcome .welcome-text", {
+      opacity: 0,
+      scale: 0.5,
+      ease: "back",
+      delay: 0.8,
+      duration: 1,
+    });
+  });
 </script>

@@ -1,0 +1,28 @@
+<canvas id="canvas"><div class="bg"></div></canvas>
+
+<style>
+  canvas {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .bg {
+    background-color: rgb(var(--dark));
+  }
+</style>
+
+<script>
+  import { onLoad, onResize } from "../scripts/polygonBackground.ts";
+  import gsap from "gsap";
+
+  window.addEventListener("load", () => {
+    onLoad();
+
+    gsap.from("#canvas", { opacity: 0, duration: 1 });
+  });
+
+  window.addEventListener("resize", () => {
+    onResize();
+  });
+</script>

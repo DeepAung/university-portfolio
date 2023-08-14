@@ -4,27 +4,11 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
 ---
 
 <div class="certificates">
-  <Carousel width="60vw">
+  <Carousel width="min(80vw, 50rem)">
     <div class="wrapper">
       <ModalClicker>
         <img
           src="/portfolio/images/certificates/1.webp"
-          loading="lazy"
-          alt="การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 19"
-        />
-      </ModalClicker>
-      <div class="text">
-        <p><b>การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 19</b></p>
-        <p>Thailand Olympiad in Informatics 2023 (TOI 19)</p>
-        <p>มหาวิทยาลัยนเรศวร</p>
-        <p>รางวัลเทียบเท่าเหรียญเงิน</p>
-      </div>
-    </div>
-
-    <div class="wrapper">
-      <ModalClicker>
-        <img
-          src="/portfolio/images/certificates/2.webp"
           loading="lazy"
           alt="การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 18"
         />
@@ -34,6 +18,22 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
         <p>Thailand Olympiad in Informatics 2022 (TOI 18)</p>
         <p>คณะวิทยาศาสตร์ มหาวิทยาลัยเชียงใหม่</p>
         <p>รางวัลเหรียญเงิน</p>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <ModalClicker>
+        <img
+          src="/portfolio/images/certificates/2.webp"
+          loading="lazy"
+          alt="การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 19"
+        />
+      </ModalClicker>
+      <div class="text">
+        <p><b>การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 19</b></p>
+        <p>Thailand Olympiad in Informatics 2023 (TOI 19)</p>
+        <p>คณะวิทยาศาสตร์ มหาวิทยาลัยนเรศวร</p>
+        <p>รางวัลเทียบเท่าเหรียญเงิน</p>
       </div>
     </div>
 
@@ -73,8 +73,12 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
 </div>
 
 <style>
+  .certificates {
+    --width: min(80vw, 50rem);
+  }
+
   .wrapper {
-    width: 60vw;
+    width: var(--width);
     height: min-content;
     margin-bottom: 3rem;
   }
@@ -82,7 +86,7 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
   .wrapper img {
     display: block;
     margin: auto;
-    width: 60vw;
+    width: var(--width);
     max-height: 45vh;
     object-fit: contain;
 
