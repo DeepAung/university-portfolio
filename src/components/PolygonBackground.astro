@@ -1,28 +1,64 @@
-<canvas id="canvas"><div class="bg"></div></canvas>
+---
+import Particles from "astro-particles";
+import type { ISourceOptions } from "tsparticles-engine";
 
-<style>
-  canvas {
+const options: ISourceOptions = {
+  fullScreen: {
+    enable: false,
+  },
+  particles: {
+    number: {
+      value: 100,
+      density: {
+        enable: true,
+        area: 1000,
+      },
+    },
+    links: {
+      distance: 150,
+      enable: true,
+    },
+    move: {
+      enable: true,
+      random: true,
+    },
+    size: {
+      value: 1,
+    },
+    opacity: {
+      random: true,
+    },
+    shape: {
+      type: "circle",
+    },
+  },
+};
+---
+
+<Particles id="tsparticles" options={options} init="particlesInit" />
+
+<style is:global>
+  #tsparticles {
     position: fixed;
     inset: 0;
-    overflow: hidden;
+    z-index: -1;
   }
 
-  .bg {
-    background-color: rgb(var(--dark));
+  canvas {
+    position: fixed;
   }
 </style>
 
 <script>
-  import { onLoad, onResize } from "../scripts/polygonBackground.ts";
+  import type { Engine } from "tsparticles-engine";
+  import { loadFull } from "tsparticles";
   import gsap from "gsap";
 
+  (window as any).particlesInit = async (engine: Engine) => {
+    await loadFull(engine);
+  };
+
   window.addEventListener("load", () => {
-    onLoad();
-
-    gsap.from("#canvas", { opacity: 0, duration: 1 });
-  });
-
-  window.addEventListener("resize", () => {
-    onResize();
+    gsap.from("#tsparticles", { opacity: 0, duration: 1 });
   });
 </script>
