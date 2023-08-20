@@ -46,19 +46,34 @@ import PolygonBackground from "../components/PolygonBackground.astro";
 
   @font-face {
     font-family: "HorizonFont";
-    src: url("/portfolio/fonts/Horizon/horizon.otf");
+    src: local("HorizonFont"), url("/portfolio/fonts/Horizon/horizon.otf");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Cascadia Code Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Cascadia Code Regular"),
+      url("/portfolio/fonts/CascadiaCode/CascadiaCode-Regular.otf");
     font-display: swap;
   }
 
   /* -------------------- default settings -------------------- */
 
   :root {
-    --dark: 33, 33, 33;
+    /* --dark: rgb(23, 27, 46); */
+    --dark: 23, 27, 46;
+
+    /* --primary: rgb(48, 215, 176); */
+    --primary: 48, 215, 176;
+
+    /* --secondary: rgb(14, 151, 119); */
+    --secondary: 14, 151, 119;
+
     --blue: 56, 182, 255;
     --yellow: 255, 223, 43;
     --green: 27, 248, 129;
-    --primary: 255, 255, 255;
-    --crimson: 121, 14, 14;
     --grey: 218, 215, 197;
   }
 
@@ -92,7 +107,8 @@ import PolygonBackground from "../components/PolygonBackground.astro";
     font-weight: normal;
     font-family: Inter, "IBM Plex Sans Thai", sans-serif;
     color: white;
-    background-color: rgb(var(--dark));
+    background: radial-gradient(rgb(var(--primary)), rgb(var(--dark)) 73%);
+
     overflow-x: hidden;
   }
 
@@ -120,8 +136,8 @@ import PolygonBackground from "../components/PolygonBackground.astro";
     color: rgb(var(--primary));
   }
 
-  .crimson {
-    color: rgb(var(--crimson));
+  .secondary {
+    color: rgb(var(--secondary));
   }
 
   .grey {
@@ -140,14 +156,7 @@ import PolygonBackground from "../components/PolygonBackground.astro";
 <script>
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import { primaryColor } from "../scripts/university.ts";
+  import { TextPlugin } from "gsap/TextPlugin";
 
-  gsap.registerPlugin(ScrollTrigger);
-
-  var root = document.querySelector(":root") as HTMLElement;
-
-  root.style.setProperty("--primary", primaryColor);
-  window.addEventListener("universitychange", () => {
-    root.style.setProperty("--primary", primaryColor);
-  });
+  gsap.registerPlugin(ScrollTrigger, TextPlugin);
 </script>

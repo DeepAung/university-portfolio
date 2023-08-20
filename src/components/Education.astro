@@ -9,7 +9,11 @@
   <div class="items">
     <div class="item">
       <div class="image">
-        <img src="/portfolio/icons/rnk.png" alt="โรงเรียนราชวินิตประถมบางแค" loading="lazy" />
+        <img
+          src="/portfolio/icons/rnk.png"
+          alt="โรงเรียนราชวินิตประถมบางแค"
+          loading="lazy"
+        />
       </div>
 
       <div class="detail">
@@ -21,7 +25,11 @@
 
     <div class="item">
       <div class="image">
-        <img src="/portfolio/icons/debsirin.png" alt="โรงเรียนเทพศิรินทร์" loading="lazy" />
+        <img
+          src="/portfolio/icons/debsirin.png"
+          alt="โรงเรียนเทพศิรินทร์"
+          loading="lazy"
+        />
       </div>
       <div class="detail">
         <h3>มัธยมศึกษาตอนต้น</h3>
@@ -32,7 +40,11 @@
 
     <div class="item">
       <div class="image">
-        <img src="/portfolio/icons/debsirin.png" alt="โรงเรียนเทพศิรินทร์" loading="lazy" />
+        <img
+          src="/portfolio/icons/debsirin.png"
+          alt="โรงเรียนเทพศิรินทร์"
+          loading="lazy"
+        />
       </div>
       <div class="detail">
         <h3>มัธยมศึกษาตอนปลาย</h3>
@@ -132,12 +144,13 @@
 
   fromScrollTrigger(
     ".education .item",
-    { x: 500, stagger: 0.3, ease: "power4" },
-    2
+    { x: 500, stagger: 0.4, delay: 0.25, ease: "power4" },
+    1.5
   );
+
   fromScrollTrigger(
     ".education .hide",
-    { opacity: 1, top: 0, delay: 0.25, ease: "power4" },
+    { opacity: 1, top: 0, delay: 0.5, ease: "power4" },
     3
   );
 </script>

@@ -247,10 +247,7 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
   }
 
   .wrapper {
-    width: calc(var(--width) + 2 * var(--padding));
-    margin: auto;
-    margin-bottom: 5rem;
-    border-radius: 1rem;
+    margin-bottom: 3rem;
   }
 
   .wrapper h3 {
@@ -293,9 +290,9 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
     const q = gsap.utils.selector(wrapper);
 
     const tl = gsap
-      .timeline()
-      .from(q("h3"), { opacity: 0, yPercent: 100, duration: 0.75 })
-      .from(q(".carousel-activities"), { opacity: 0, duration: 0.75 });
+      .timeline({ defaults: { ease: "power4" } })
+      .from(q("h3"), { opacity: 0, yPercent: 100, duration: 0.7, delay: 0.2 })
+      .from(q(".carousel-activities"), { opacity: 0, duration: 1 });
 
     ScrollTrigger.create({
       trigger: wrapper,

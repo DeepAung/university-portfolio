@@ -1,5 +1,5 @@
 <div class="thankyou">
-  <h1>Thank You</h1>
+  <h1 id="thankyou-text">Thank You</h1>
 </div>
 
 <style>
@@ -18,5 +18,16 @@
     font-weight: 600;
 
     color: rgb(var(--primary));
+    text-shadow: 0 0 20px rgb(var(--primary));
   }
 </style>
+
+<script>
+  import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
+
+  fromScrollTrigger(
+    "#thankyou-text",
+    { scale: 2, opacity: 0, delay: 0.6, ease: "power4" },
+    1
+  );
+</script>

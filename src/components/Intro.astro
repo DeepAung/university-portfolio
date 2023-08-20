@@ -34,7 +34,7 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
     </div>
     <div class="text-wrapper">
       <h3 class="text">
-        &emsp;to: "<span class="primary" id="universityPath"></span>"
+        &emsp;to: "<span class="primary" id="random-text"></span>"
       </h3>
     </div>
     <div class="text-wrapper">
@@ -67,16 +67,18 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
   .right .text {
     margin-left: calc(25vw - 4rem);
     font-size: max(3vw, 0.7rem);
-    font-family: "Fira Code", monospace;
-    font-weight: 400;
+    font-family: "Cascadia Code Regular", monospace;
+    font-weight: normal;
   }
 
   .left {
+    position: relative;
     margin-bottom: 5rem;
   }
 
   .left .my-image {
-    width: 90%;
+    width: 75vw;
+    height: auto;
     border-radius: 1rem;
 
     cursor: pointer;
@@ -136,16 +138,6 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
 <script>
   import gsap from "gsap";
   import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
-  import { universityPath } from "../scripts/university.ts";
-
-  const universityPathElement = document.querySelector(
-    "#universityPath"
-  ) as HTMLElement;
-
-  universityPathElement.innerText = universityPath;
-  window.addEventListener("universitychange", () => {
-    universityPathElement.innerText = universityPath;
-  });
 
   gsap.from(".intro .text-wrapper .text", {
     scrollTrigger: {
@@ -157,7 +149,10 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
     stagger: 0.2,
     delay: 0.75,
     ease: "power4",
-    duration: 1.5,
+    duration: 1,
+    onComplete: () => {
+      startTypeRandomText();
+    },
   });
 
   fromScrollTrigger(
@@ -208,5 +203,43 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
     let offsetY = deltaY / 10;
 
     return [offsetX, offsetY];
+  }
+
+  async function startTypeRandomText() {
+    while (true) {
+      await gsap
+        .timeline({ defaults: { ease: "none" } })
+        .to(".intro #random-text", { text: { value: getRandomString(8) } })
+        .to(".intro #random-text", {
+          text: { value: "", rtl: true },
+          delay: 0.5,
+        })
+        .play();
+    }
+  }
+
+  // random a-z and A-Z
+  function getRandomString(len: number) {
+    let randomNumbers = [];
+    for (let i = 0; i < len; i++) {
+      let randomNumber = gsap.utils.random(1, 52, 1);
+
+      if (1 <= randomNumber && randomNumber <= 26) {
+        randomNumber = "A".charCodeAt(0) + randomNumber - 1;
+      } else if (27 <= randomNumber && randomNumber <= 52) {
+        randomNumber = "a".charCodeAt(0) + randomNumber - 27;
+      }
+
+      randomNumbers.push(randomNumber);
+    }
+
+    console.log(
+      randomNumbers,
+      String.fromCharCode(...randomNumbers) + " University",
+      "A".charCodeAt(0),
+      "a".charCodeAt(0)
+    );
+
+    return String.fromCharCode(...randomNumbers) + " University";
   }
 </script>

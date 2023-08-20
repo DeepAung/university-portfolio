@@ -65,7 +65,8 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
           โรงเรียนเทพศิรินทร์ ปีการศึกษา 2565
         </li>
         <li>
-          ในการพัฒนาใช้โปรแกรม <span class="primary bold">Unity</span> และภาษาโปรแกรม
+          ในการพัฒนาใช้โปรแกรม <span class="primary bold">Unity</span>
+           และภาษาโปรแกรม
           <span class="primary bold">C#</span>
         </li>
         <li>
@@ -89,7 +90,11 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
   <div class="wrapper flex">
     <div class="img">
       <ModalClicker>
-        <img src="/portfolio/images/projects/vue-note-app.png" alt="Vue Note App" loading="lazy" />
+        <img
+          src="/portfolio/images/projects/vue-note-app.png"
+          alt="Vue Note App"
+          loading="lazy"
+        />
       </ModalClicker>
     </div>
     <div class="text">
@@ -101,7 +106,8 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
           >) ในการจะสร้างเว็บไซต์เพื่อจดบันทึกสิ่งต่างๆ ลงไปได้ ต้องทำอย่างไร
         </li>
         <li>
-          การพัฒนา ใช้ <span class="primary bold">Vue.js</span> เป็น Front-end Framework
+          การพัฒนา ใช้ <span class="primary bold">Vue.js</span> เป็น Front-end
+          Framework
         </li>
         <li>ผู้ใช้สามารถจดบันทึกข้อมูลลงในเว็บไซต์ เพื่อกลับมาดูซ้ำอีกครั้ง</li>
       </ul>
@@ -117,7 +123,11 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
   <div class="wrapper flex-reverse">
     <div class="img">
       <ModalClicker>
-        <img src="/portfolio/images/projects/chatapp.png" alt="Chat App" loading="lazy" />
+        <img
+          src="/portfolio/images/projects/chatapp.png"
+          alt="Chat App"
+          loading="lazy"
+        />
       </ModalClicker>
     </div>
     <div class="text">
@@ -130,7 +140,8 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
           จะต้องใช้ความรู้อะไรบ้าง
         </li>
         <li>
-          การพัฒนา ใช้ <span class="primary bold">Next.js</span> เป็น Front-end ใช้
+          การพัฒนา ใช้ <span class="primary bold">Next.js</span> เป็น Front-end
+          ใช้
           <span class="primary bold">Django</span> เป็น Back-end และ
           <span class="primary bold">PlanetScale (MySQL)</span> เป็น Database
         </li>
@@ -147,8 +158,6 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
         <a href="https://github.com/DeepAung/ChatAppBackend" target="_blank"
           >Source Code Backend</a
         >
-        <!-- <a href="https://github.com/DeepAung/ChatApp" target="_blank">Website</a
-        > -->
       </div>
     </div>
   </div>
@@ -214,18 +223,21 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
     display: block;
     width: clamp(10rem, 18vw, 11rem);
     text-align: center;
-    background-color: rgba(var(--crimson), 0.75);
+    background-color: rgba(var(--secondary), 0.75);
     padding: 1.25rem;
     border-radius: 0.5rem;
     text-decoration: none;
 
     margin: 0 auto;
 
-    transition: background-color 0.25s;
+    transition:
+      background-color 0.25s,
+      transform 0.25s;
   }
 
   .wrapper .text .buttons a:hover {
-    background-color: rgba(var(--crimson), 1);
+    background-color: rgba(var(--secondary), 1);
+    transform: translateY(-3px);
   }
 
   @media only screen and (min-width: 640px) {
@@ -283,8 +295,8 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
 
     fromScrollTrigger(
       wrapper,
-      { x: isReverse ? 200 : -200, ease: "power2", delay: 0.2 },
-      1.5
+      { x: isReverse ? 200 : -200, ease: "power4", delay: 0.2 },
+      1
     );
   });
 </script>
