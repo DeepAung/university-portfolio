@@ -90,13 +90,10 @@
 </style>
 
 <script>
-  import {
-    getAnimationToggle,
-    setAnimationToggle,
-  } from "../scripts/animationToggle.ts";
+  import { animValue, setAnimationToggle } from "../scripts/animationToggle.ts";
 
   var checkbox = document.querySelector("#switch-checkbox") as HTMLInputElement;
-  checkbox.checked = getAnimationToggle();
+  checkbox.checked = animValue;
 
   checkbox.onclick = async () => {
     setAnimationToggle(checkbox.checked);

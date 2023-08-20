@@ -138,6 +138,7 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
 <script>
   import gsap from "gsap";
   import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
+  import { animValue } from "../scripts/animationToggle";
 
   gsap.from(".intro .text-wrapper .text", {
     scrollTrigger: {
@@ -207,6 +208,8 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
 
   async function startTypeRandomText() {
     while (true) {
+      if (!animValue) break;
+
       await gsap
         .timeline({ defaults: { ease: "none" } })
         .to(".intro #random-text", { text: { value: getRandomString(8) } })
@@ -232,13 +235,6 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
 
       randomNumbers.push(randomNumber);
     }
-
-    console.log(
-      randomNumbers,
-      String.fromCharCode(...randomNumbers) + " University",
-      "A".charCodeAt(0),
-      "a".charCodeAt(0)
-    );
 
     return String.fromCharCode(...randomNumbers) + " University";
   }

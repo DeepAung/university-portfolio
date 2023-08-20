@@ -1,8 +1,9 @@
 import gsap from "gsap";
 
-setAnimationToggle(getAnimationToggle())
+export let animValue = getAnimationToggle();
+setAnimationToggle(animValue);
 
-export function getAnimationToggle(): boolean {
+function getAnimationToggle(): boolean {
   let value = localStorage.getItem("animationToggle");
 
   if (value == null) {
@@ -13,8 +14,11 @@ export function getAnimationToggle(): boolean {
   return JSON.parse(value);
 }
 
-export function setAnimationToggle(value: boolean): void {
+export function setAnimationToggle(value: boolean) {
   gsap.globalTimeline.timeScale(value ? 1 : Number.MAX_SAFE_INTEGER);
 
   localStorage.setItem("animationToggle", JSON.stringify(value));
+  animValue = value;
+
+  window.dispatchEvent(new CustomEvent("animationchanged", { bubbles: true }));
 }

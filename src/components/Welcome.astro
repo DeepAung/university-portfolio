@@ -8,7 +8,6 @@
       <i class="fa-solid fa-chevron-down fa-bounce"></i>
     </div>
   </h1>
-
 </div>
 
 <style>
@@ -41,23 +40,24 @@
     top: 100%;
     left: calc(50% - max(4vw, 0.5rem));
 
-    display: flex; 
+    display: flex;
     flex-direction: column;
 
     margin-top: max(8vh, 3rem);
   }
-  
+
   .icon-wrapper > * {
     margin-top: min(-2vw, -0.25rem);
     font-size: max(4vw, 0.5rem);
   }
-
 </style>
 
 <script>
   import gsap from "gsap";
+  import { animValue } from "../scripts/animationToggle";
 
   window.addEventListener("load", () => {
+    checkAnimValue();
     gsap.from(".welcome .welcome-text", {
       opacity: 0,
       scale: 0.5,
@@ -66,4 +66,20 @@
       duration: 1,
     });
   });
+
+  window.addEventListener("animationchanged", () => {
+    checkAnimValue();
+  });
+
+  function checkAnimValue() {
+    const elems = document.querySelectorAll(
+      ".welcome i"
+    ) as NodeListOf<HTMLElement>;
+
+    if (animValue) {
+      elems.forEach((elem) => elem.classList.add("fa-bounce"));
+    } else {
+      elems.forEach((elem) => elem.classList.remove("fa-bounce"));
+    }
+  }
 </script>

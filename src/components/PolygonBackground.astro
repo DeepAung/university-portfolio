@@ -53,12 +53,24 @@ const options: ISourceOptions = {
   import type { Engine } from "tsparticles-engine";
   import { loadFull } from "tsparticles";
   import gsap from "gsap";
+  import { animValue } from "../scripts/animationToggle";
 
   (window as any).particlesInit = async (engine: Engine) => {
     await loadFull(engine);
   };
 
   window.addEventListener("load", () => {
+    checkAnimValue();
     gsap.from("#tsparticles", { opacity: 0, duration: 1 });
   });
+
+  window.addEventListener("animationchanged", () => {
+    checkAnimValue();
+  });
+
+  function checkAnimValue() {
+    if (animValue) return;
+    const tsparticles = document.querySelector("#tsparticles") as HTMLElement;
+    tsparticles.style.display = "none";
+  }
 </script>

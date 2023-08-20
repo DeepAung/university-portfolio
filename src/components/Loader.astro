@@ -94,13 +94,9 @@
 
   document.onreadystatechange = () => {
     if (document.readyState !== "complete") {
-      console.log("incomplete");
-
       body.style.visibility = "hidden";
       loader.style.visibility = "visible";
     } else {
-      console.log("complete");
-
       loader.style.backgroundColor = "transparent";
       gsap.to("#loader", { display: "none", scale: 0, duration: 0.75 });
 
