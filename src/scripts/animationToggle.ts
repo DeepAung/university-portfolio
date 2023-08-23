@@ -22,3 +22,7 @@ export function setAnimationToggle(value: boolean) {
 
   window.dispatchEvent(new CustomEvent("animationchanged", { bubbles: true }));
 }
+
+export function onAnimChanged(func: () => any) {
+  window.addEventListener("animationchanged", func);
+}

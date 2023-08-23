@@ -136,25 +136,9 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
 </style>
 
 <script>
-  import gsap from "gsap";
-  import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
   import { animValue } from "../scripts/animationToggle";
-
-  gsap.from(".intro .text-wrapper .text", {
-    scrollTrigger: {
-      trigger: ".right",
-      toggleActions: "play none none none",
-    },
-    opacity: 1,
-    yPercent: 100,
-    stagger: 0.2,
-    delay: 0.75,
-    ease: "power4",
-    duration: 1,
-    onComplete: () => {
-      startTypeRandomText();
-    },
-  });
+  import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
+  import gsap from "gsap";
 
   fromScrollTrigger(
     ".intro .left",
@@ -175,25 +159,27 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
   const myImage = document.querySelector(".my-image") as HTMLElement;
 
   myImage.onmousemove = (e) => {
-    let [offsetX, offsetY] = getOffset(e, myImage);
+    if (!animValue) return;
+
+    const [offsetX, offsetY] = getOffset(e, myImage);
     gsap.to(".intro .my-image", {
       boxShadow: `${offsetX}px ${offsetY}px 50px white`,
       duration: 0.25,
     });
   };
 
-  myImage.onmouseleave = (e) => {
+  myImage.onmouseleave = () => {
     gsap.to(".intro .my-image", {
       boxShadow: "0px 0px 20px white",
       duration: 0.5,
     });
   };
 
-  myImage.onclick = (e) => {
+  myImage.onclick = () => {
     myImage.style.boxShadow = "none";
   };
 
-  function getOffset(e: MouseEvent, element: HTMLElement) {
+  function getOffset(e: MouseEvent, element: HTMLElement): [number, number] {
     let rect = element.getBoundingClientRect();
     let deltaX =
       e.pageX - (rect.left + window.scrollX + element.offsetWidth * 0.5);
@@ -205,6 +191,29 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
 
     return [offsetX, offsetY];
   }
+</script>
+
+<script>
+  import gsap from "gsap";
+  import { animValue } from "../scripts/animationToggle";
+
+  gsap.from(".intro .text-wrapper .text", {
+    scrollTrigger: {
+      trigger: ".right",
+      toggleActions: "play none none none",
+    },
+    opacity: 1,
+    yPercent: 100,
+    stagger: 0.2,
+    delay: 0.75,
+    ease: "power4",
+    duration: 1,
+    onComplete: () => {
+      startTypeRandomText();
+    },
+  });
+
+  window.addEventListener("load", setDefaultUniversity);
 
   async function startTypeRandomText() {
     while (true) {
@@ -219,6 +228,9 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
         })
         .play();
     }
+
+    // after !animValue break
+    setDefaultUniversity();
   }
 
   // random a-z and A-Z
@@ -237,5 +249,12 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
     }
 
     return String.fromCharCode(...randomNumbers) + " University";
+  }
+
+  function setDefaultUniversity() {
+    if (animValue) return;
+
+    const randomTextElem = document.querySelector("#random-text") as Element;
+    randomTextElem.innerHTML = "??? University";
   }
 </script>

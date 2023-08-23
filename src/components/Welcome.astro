@@ -3,9 +3,9 @@
     <div>Welcome to</div>
     <div>My <span class="primary glow">PortFolio</span></div>
     <div class="icon-wrapper">
-      <i class="fa-solid fa-chevron-down fa-bounce"></i>
-      <i class="fa-solid fa-chevron-down fa-bounce"></i>
-      <i class="fa-solid fa-chevron-down fa-bounce"></i>
+      <i class="fa-solid fa-chevron-down"></i>
+      <i class="fa-solid fa-chevron-down"></i>
+      <i class="fa-solid fa-chevron-down"></i>
     </div>
   </h1>
 </div>
@@ -54,22 +54,27 @@
 
 <script>
   import gsap from "gsap";
-  import { animValue } from "../scripts/animationToggle";
+  import { animValue, onAnimChanged } from "../scripts/animationToggle";
 
   window.addEventListener("load", () => {
-    checkAnimValue();
-    gsap.from(".welcome .welcome-text", {
-      opacity: 0,
-      scale: 0.5,
-      ease: "back",
-      delay: 0.8,
-      duration: 1,
-    });
+    gsap
+      .timeline()
+      .from(".welcome .welcome-text", {
+        opacity: 0,
+        scale: 0.5,
+        ease: "back",
+        delay: 0.8,
+        duration: 1,
+      })
+      .from(".welcome .welcome-text .icon-wrapper", {
+        opacity: 0,
+        duration: 1,
+        onComplete: checkAnimValue,
+      })
+      .play();
   });
 
-  window.addEventListener("animationchanged", () => {
-    checkAnimValue();
-  });
+  onAnimChanged(checkAnimValue);
 
   function checkAnimValue() {
     const elems = document.querySelectorAll(
