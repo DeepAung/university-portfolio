@@ -1,5 +1,8 @@
 ---
 import ModalClicker from "../subcomponents/ModalClicker.astro";
+import { store } from "../scripts/store.ts";
+
+const { universityPath } = store;
 ---
 
 <div class="intro">
@@ -34,7 +37,8 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
     </div>
     <div class="text-wrapper">
       <h3 class="text">
-        &emsp;to: "<span class="primary" id="random-text"></span>"
+        &emsp;to: "<span class="primary" id="random-text">{universityPath}</span
+        >"
       </h3>
     </div>
     <div class="text-wrapper">
@@ -57,16 +61,26 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
     height: 100vh;
     height: 100dvh;
   }
+
   .text-wrapper {
     overflow: hidden;
   }
 
+  .right {
+    width: max-content;
+    margin: 0 auto;
+  }
+
+  .right .text-wrapper {
+    width: max-content;
+  }
+
   .right .text {
-    margin-left: calc(25vw - 4rem);
-    font-size: max(3vw, 0.7rem);
+    font-size: min(4.7vw, 2rem);
     font-family: "Cascadia Code Regular", monospace;
     font-weight: normal;
   }
@@ -112,7 +126,9 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
       display: flex;
       flex-direction: row-reverse;
       align-items: center;
-      justify-content: space-around;
+      justify-content: space-between;
+
+      padding: 0 calc(16vw - 6rem);
     }
 
     .left {
@@ -126,6 +142,10 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
 
     .left p {
       font-size: clamp(1rem, 2.5vw, 2rem);
+    }
+
+    .right {
+      margin: 0;
     }
 
     .right .text {
@@ -197,6 +217,13 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
   import gsap from "gsap";
   import { animValue } from "../scripts/animationToggle";
 
+  const randomTextElem = document.querySelector("#random-text") as Element;
+  const universityPath = randomTextElem.innerHTML;
+
+  window.addEventListener("load", () => {
+    if (!animValue) setUniversityName();
+  });
+
   gsap.from(".intro .text-wrapper .text", {
     scrollTrigger: {
       trigger: ".right",
@@ -213,24 +240,17 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
     },
   });
 
-  window.addEventListener("load", setDefaultUniversity);
-
   async function startTypeRandomText() {
-    while (true) {
-      if (!animValue) break;
-
-      await gsap
-        .timeline({ defaults: { ease: "none" } })
-        .to(".intro #random-text", { text: { value: getRandomString(8) } })
-        .to(".intro #random-text", {
-          text: { value: "", rtl: true },
-          delay: 0.5,
-        })
-        .play();
-    }
+    await gsap
+      .timeline({ defaults: { ease: "none", duration: 0.75 }, repeat: -1 })
+      .to(".intro #random-text", {
+        text: { value: "", rtl: true },
+        delay: 1,
+      })
+      .to(".intro #random-text", { text: { value: getRandomString(8) } });
 
     // after !animValue break
-    setDefaultUniversity();
+    setUniversityName();
   }
 
   // random a-z and A-Z
@@ -248,13 +268,10 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
       randomNumbers.push(randomNumber);
     }
 
-    return String.fromCharCode(...randomNumbers) + " University";
+    return universityPath;
   }
 
-  function setDefaultUniversity() {
-    if (animValue) return;
-
-    const randomTextElem = document.querySelector("#random-text") as Element;
-    randomTextElem.innerHTML = "??? University";
+  function setUniversityName() {
+    randomTextElem.innerHTML = universityPath;
   }
 </script>

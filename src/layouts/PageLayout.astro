@@ -5,6 +5,9 @@ import Modal from "../components/Modal.astro";
 import Navbar from "../components/Navbar.astro";
 import Loader from "../components/Loader.astro";
 import PolygonBackground from "../components/PolygonBackground.astro";
+import { store } from "../scripts/store";
+
+const { primaryColor } = store;
 ---
 
 <!DOCTYPE html>
@@ -39,7 +42,7 @@ import PolygonBackground from "../components/PolygonBackground.astro";
   </body>
 </html>
 
-<style is:global>
+<style is:global define:vars={{ primaryColor }}>
   @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap");
@@ -65,11 +68,11 @@ import PolygonBackground from "../components/PolygonBackground.astro";
     /* --dark: rgb(23, 27, 46); */
     --dark: 23, 27, 46;
 
-    /* --primary: rgb(48, 215, 176); */
-    --primary: 48, 215, 176;
+    /* --primary: rgb(255, 255, 255); */
+    --primary: var(--primaryColor);
 
-    /* --secondary: rgb(14, 151, 119); */
-    --secondary: 14, 151, 119;
+    /* --secondary: rgb(121, 14, 14); */
+    --secondary: 121, 14, 14;
 
     --blue: 56, 182, 255;
     --yellow: 255, 223, 43;
@@ -120,36 +123,41 @@ import PolygonBackground from "../components/PolygonBackground.astro";
   }
 
   /* -------------------- utility class -------------------- */
-  .blue {
-    color: rgb(var(--blue));
-  }
 
-  .yellow {
-    color: rgb(var(--yellow));
-  }
-
-  .green {
-    color: rgb(var(--green));
+  .dark {
+    color: rgb(var(--dark)) !important;
   }
 
   .primary {
-    color: rgb(var(--primary));
+    color: rgb(var(--primary)) !important;
   }
 
   .secondary {
-    color: rgb(var(--secondary));
+    color: rgb(var(--secondary)) !important;
+  }
+
+  .blue {
+    color: rgb(var(--blue)) !important;
+  }
+
+  .yellow {
+    color: rgb(var(--yellow)) !important;
+  }
+
+  .green {
+    color: rgb(var(--green)) !important;
   }
 
   .grey {
-    color: rgb(var(--grey));
+    color: rgb(var(--grey)) !important;
   }
 
   .bold {
-    font-weight: 600;
+    font-weight: 600 !important;
   }
 
   .underline {
-    text-decoration: underline;
+    text-decoration: underline !important;
   }
 </style>
 
