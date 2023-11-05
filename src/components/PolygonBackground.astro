@@ -31,7 +31,7 @@ const options: ISourceOptions = {
 };
 ---
 
-<div class="bg">
+<div id="bg">
   <Particles id="tsparticles" options={options} init="particlesInit" />
   <div class="gear-wrapper">
     <img src="/portfolio/images/gear.svg" alt="gear" class="gear">
@@ -39,7 +39,7 @@ const options: ISourceOptions = {
 </div>
 
 <style is:global>
-  .bg {
+  #bg {
     position: fixed;
     inset: 0;
     z-index: -1;
@@ -91,7 +91,7 @@ const options: ISourceOptions = {
   };
 
   window.addEventListener("load", () => {
-    gsap.from("#tsparticles", { opacity: 0, duration: 1 });
+    gsap.from("#bg", { opacity: 0, duration: 1 });
 
     checkAnimValue();
   });
@@ -102,5 +102,8 @@ const options: ISourceOptions = {
     if (animValue) return;
     const tsparticles = document.querySelector("#tsparticles") as HTMLElement;
     tsparticles.style.display = "none";
+
+    const gear = document.querySelector(".gear") as HTMLElement;
+    gear.style.animation = "none";
   }
 </script>
