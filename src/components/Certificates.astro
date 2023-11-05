@@ -1,75 +1,101 @@
 ---
 import Carousel from "../subcomponents/Carousel.astro";
 import ModalClicker from "../subcomponents/ModalClicker.astro";
+
+let items = [
+  {
+    imgSrc: "/portfolio/images/certificates/1.webp",
+    headText:
+      "โครงการจัดส่งผู้แทนประเทศไทยไปแข่งขันคณิตศาสตร์ วิทยาศาสตร์ โอลิมปิกระหว่างประเทศ ประจำปี พ.ศ. 2567",
+    text: "วันที่ 5-25 ตุลาคม 2566\nณ โรงแรมแกรนด์ทาวเวอร์อินน์ พระรามหก โดย สสวท.",
+    footText: "ได้ผ่านการอบรมคัดเลือก ครั้งที่ 1 วิชาคอมพิวเตอร์",
+  },
+  {
+    imgSrc: "/portfolio/images/certificates/1.webp",
+    headText: "การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 19",
+    text: "Thailand Olympiad in Informatics 2023 (TOI 19th)\nวันที่ 22-25 พฤษภาคม 2566 จัดโดยศูนย์ สอวน. มหาวิทยาลัยนเรศวร",
+    footText: "รางวัลเทียบเท่าเหรียญเงิน",
+  },
+  {
+    imgSrc: "/portfolio/images/certificates/1.webp",
+    headText:
+      "โครงการจัดส่งผู้แทนประเทศไทยไปแข่งขันคณิตศาสตร์ วิทยาศาสตร์ โอลิมปิกระหว่างประเทศ ประจำปี พ.ศ. 2566",
+    text: "วันที่ 4-24 ตุลาคม 2565\nณ สถาบันส่งเสริมการสอนวิทยาศาสตร์และเทคโนโลยี โดย สสวท.",
+    footText: "ได้ผ่านการอบรมคัดเลือก ครั้งที่ 1 วิชาคอมพิวเตอร์",
+  },
+  {
+    imgSrc: "/portfolio/images/certificates/1.webp",
+    headText: "การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 18",
+    text: "Thailand Olympiad in Informatics 2022 (TOI 18th)\nวันที่ 1-4 มิถุนายน 2565 จัดโดยศูนย์ สอวน. มหาวิทยาลัยเชียงใหม่",
+    footText: "รางวัลเหรียญเงิน",
+  },
+  {
+    imgSrc: "/portfolio/images/certificates/1.webp",
+    headText:
+      "ศิลปหัตถกรรมนักเรียน ระดับชาติ ครั้งที่ 70 ปีการศึกษา 2565\nภาคกลางและภาคตะวันออก จังหวัดราชบุรี",
+    text: "การแข่งขันสร้างเกมสร้างสรรค์จากคอมพิวเตอร์ ระดับชั้น ม.4 - ม.6\nวันที่ 25-27 มกราคม 2566 ณ โรงเรียนโพธาวัฒนาเสนี\nโดย สำนักงานกรรมการการศึกษาขั้นพื้นฐาน กระทรวงศึกษาธิการ",
+    footText: "รางวัลระดับเหรียญทองแดง",
+  },
+  {
+    imgSrc: "/portfolio/images/certificates/1.webp",
+    headText:
+      "ศิลปหัตถกรรมนักเรียน ระดับเขตพื้นที่การศึกษา ครั้งที่ 70 ปีการศึกษา 2565",
+    text: "การแข่งขันสร้างเกมสร้างสรรค์จากคอมพิวเตอร์ ระดับชั้น ม.4 - ม.6\nวันที่ 21 ธันวาคม 2565 ณ โรงเรียนโยธินบูรณะ\nโดย สำนักงานเขตพื้นที่การศึกษามัธยมศึกษากรุงเทพมหานคร เขต 1",
+    footText: "รางวัลระดับเหรียญทอง",
+  },
+  {
+    imgSrc: "/portfolio/images/certificates/1.webp",
+    headText: "Coding For Metaverse 2023",
+    text: "โดย สำนักงานส่งเสริมเศรษฐกิจดิจิทัล และมหาวิทยาลัยกรุงเทพ\nวันที่ 6-7 เมษายน 2566 ณ มหาวิทยาลัยกรุงเทพ",
+    footText: "เข้ารอบการแข่งขันระดับภูมิภาค ",
+  },
+  {
+    imgSrc: "/portfolio/images/certificates/1.webp",
+    headText: "ICT Challenge 2022",
+    text: "แข่งขันตอบปัญหาวิชาการคอมพิวเตอร์และเทคโนโลยีสารสนเทศ\nวันที่ 23 พฤศจิกายน 2565 โดย มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี\nทีม “Enuma Elish”",
+    footText: "รางวัลรองชนะเลิศอันดับ 1",
+  },
+  {
+    imgSrc: "/portfolio/images/certificates/1.webp",
+    headText: "เปิดบ้านวิศวฯ Fundamental Java Coding",
+    text: "วันที่ 6 กันยายน 2565 โดย มหาวิทยาลัยหอการค้าไทย",
+    footText: "",
+  },
+  {
+    imgSrc: "/portfolio/images/certificates/1.webp",
+    headText: "K-Engineering World Tour and Workshop 2022",
+    text: "วันที่ 28 สิงหาคม 2565 โดย สจล. (KMITL)\nWeb & Python Programming",
+    footText: "",
+  },
+  {
+    imgSrc: "/portfolio/images/certificates/1.webp",
+    headText: "การอบรมโครงการ “ค่าย ITCamp ครั้งที่ 18”",
+    text: "วันที่ 14-17 กรกฎาคม 2565 โดย สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง",
+    footText: "",
+  },
+];
 ---
 
 <div class="certificates">
   <Carousel width="min(80vw, 50rem)">
-    <div class="wrapper">
-      <ModalClicker>
-        <img
-          src="/portfolio/images/certificates/1.webp"
-          loading="lazy"
-          alt="การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 18"
-        />
-      </ModalClicker>
-      <div class="text">
-        <p><b>การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 18</b></p>
-        <p>Thailand Olympiad in Informatics 2022 (TOI 18)</p>
-        <p>ณ คณะวิทยาศาสตร์ มหาวิทยาลัยเชียงใหม่</p>
-        <p class="primary"><b>รางวัลเหรียญเงิน</b></p>
-      </div>
-    </div>
-
-    <div class="wrapper">
-      <ModalClicker>
-        <img
-          src="/portfolio/images/certificates/2.webp"
-          loading="lazy"
-          alt="การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 19"
-        />
-      </ModalClicker>
-      <div class="text">
-        <p><b>การแข่งขันคอมพิวเตอร์โอลิมปิกระดับชาติ ครั้งที่ 19</b></p>
-        <p>Thailand Olympiad in Informatics 2023 (TOI 19)</p>
-        <p>ณ คณะวิทยาศาสตร์ มหาวิทยาลัยนเรศวร</p>
-        <p class="primary"><b>รางวัลเทียบเท่าเหรียญเงิน</b></p>
-      </div>
-    </div>
-
-    <div class="wrapper">
-      <ModalClicker>
-        <img
-          src="/portfolio/images/certificates/3.webp"
-          loading="lazy"
-          alt="ศิลปหัตถกรรมนักเรียน ระดับชาติ ครั้งที่ ๗๐ ณ.จังหวัดราชบุรี"
-        />
-      </ModalClicker>
-      <div class="text">
-        <p>
-          <b>ศิลปหัตถกรรมนักเรียน ระดับชาติ ครั้งที่ ๗๐ ณ.จังหวัดราชบุรี</b>
-        </p>
-        <p>การแข่งขันสร้างเกมสร้างสรรค์จากคอมพิวเตอร์</p>
-        <p>ณ โรงเรียนโพธาวัฒนาเสนี จังหวัดราชบุรี</p>
-        <p class="primary"><b>รางวัลระดับเหรียญทองแดง</b></p>
-      </div>
-    </div>
-
-    <div class="wrapper">
-      <ModalClicker>
-        <img
-          src="/portfolio/images/certificates/4.webp"
-          loading="lazy"
-          alt="ICT Challenge 2022"
-        />
-      </ModalClicker>
-      <div class="text">
-        <p><b>ICT Challenge 2022</b></p>
-        <p>แข่งขันตอบปัญหาวิชาการคอมพิวเตอร์และเทคโนโลยีสารสนเทศ</p>
-        <p>ณ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี คณะเทคโนโลยีสารสนเทศ</p>
-        <p class="primary"><b>รางวัลรองชนะเลิศอันดับ 1</b></p>
-      </div>
-    </div>
+    {
+      items.map((item, index) => (
+        <div class="wrapper">
+          <ModalClicker>
+            <img src={`/portfolio/images/certificates/${index+1}.webp`} alt={item.headText} loading="lazy" />
+          </ModalClicker>
+          <div class="text">
+            <p>
+              <b>{item.headText}</b>
+            </p>
+            <p class="pre-line">{item.text}</p>
+            <p class="primary">
+              <b>{item.footText}</b>
+            </p>
+          </div>
+        </div>
+      ))
+    }
   </Carousel>
 </div>
 
@@ -108,6 +134,10 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
     background-color: rgba(var(--secondary), 0.5);
   }
 
+  .pre-line {
+    white-space: pre-line;
+  }
+
   @media only screen and (min-width: 800px) {
     .wrapper .text {
       margin-inline: 1rem;
@@ -121,6 +151,6 @@ import ModalClicker from "../subcomponents/ModalClicker.astro";
   fromScrollTrigger(
     ".certificates .carousel",
     { y: 200, ease: "power4", delay: 0.4 },
-    1
+    1,
   );
 </script>

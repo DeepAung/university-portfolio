@@ -14,10 +14,6 @@ const options: ISourceOptions = {
         area: 1000,
       },
     },
-    links: {
-      distance: 150,
-      enable: true,
-    },
     move: {
       enable: true,
       random: true,
@@ -35,9 +31,20 @@ const options: ISourceOptions = {
 };
 ---
 
-<Particles id="tsparticles" options={options} init="particlesInit" />
+<div class="bg">
+  <Particles id="tsparticles" options={options} init="particlesInit" />
+  <div class="gear-wrapper">
+    <img src="/portfolio/images/gear.svg" alt="gear" class="gear">
+  </div>
+</div>
 
 <style is:global>
+  .bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+  }
+  
   #tsparticles {
     position: fixed;
     inset: 0;
@@ -46,6 +53,30 @@ const options: ISourceOptions = {
 
   canvas {
     position: fixed;
+  }
+
+  .gear-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gear {
+    max-width: 70vw;
+    max-height: 70vh;
+    opacity: 15%;
+    position: absolute;
+    margin: auto;
+    animation: spin ease-in-out 15s infinite;
+  }
+
+  @keyframes spin {
+    0% { rotate: 0deg }
+    93.5% { rotate: calc(360deg * 3) }
+    100% { rotate: calc(360deg * 4) }
   }
 </style>
 
