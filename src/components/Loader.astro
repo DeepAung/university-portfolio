@@ -93,7 +93,7 @@
   const loader = document.querySelector("#loader") as HTMLElement;
 
   document.onreadystatechange = () => {
-    if (document.readyState !== "complete") {
+    if (document.readyState === "loading") {
       body.style.visibility = "hidden";
       loader.style.visibility = "visible";
     } else {

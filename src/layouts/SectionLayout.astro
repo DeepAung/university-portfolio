@@ -21,7 +21,13 @@ const { englishTitle, thaiTitle } = Astro.props;
   }
   .head {
     text-align: center;
+    margin-inline: auto;
     margin-bottom: 3rem;
+
+    background-color: rgba(var(--secondary), 0.7);
+    border-radius: 1rem;
+    padding: 1rem 0;
+    max-width: 40rem;
   }
 
   .head h1,
@@ -37,7 +43,22 @@ const { englishTitle, thaiTitle } = Astro.props;
 <script>
   import gsap from "gsap";
 
+  const containers: object[] = gsap.utils.toArray(".container");
   const heads: object[] = gsap.utils.toArray(".head");
+
+  containers.forEach((containerObj) => {
+    let container = containerObj as Element;
+
+    gsap.from(container, {
+      scrollTrigger: {
+        trigger: container,
+        toggleActions: "play none none none",
+      },
+      opacity: 0,
+      ease: "power4",
+      duration: 1.5,
+    });
+  });
 
   heads.forEach((headObj) => {
     let head = headObj as Element;
@@ -49,7 +70,7 @@ const { englishTitle, thaiTitle } = Astro.props;
       },
       yPercent: 100,
       stagger: 0.2,
-      delay: 0.2,
+      delay: 0.7,
       ease: "power4",
       duration: 1,
     });
