@@ -6,9 +6,15 @@ interface Props {
 const { from } = Astro.props;
 ---
 
-<span class="popup-modal" style={from ? "display: none;" : ""} data-from={from}>
+<div class="popup-modal" style={from ? "display: none;" : ""} data-from={from}>
   <slot />
-</span>
+</div>
+
+<style>
+  .popup-modal {
+    min-height: calc(100vh - 2 * var(--modal-padding));
+  }
+</style>
 
 <script>
   import { openModal } from "../scripts/modal.ts";
