@@ -1,5 +1,5 @@
 ---
-import ModalClicker from "../subcomponents/ModalClicker.astro";
+import ImageClicker from "../subcomponents/ImageClicker.astro";
 import { store } from "../scripts/store.ts";
 
 const { universityPath } = store;
@@ -7,14 +7,14 @@ const { universityPath } = store;
 
 <div class="intro">
   <div class="left">
-    <ModalClicker>
+    <ImageClicker>
       <img
         class="my-image"
         src="/portfolio/images/hero-pic.webp"
         alt="my-image"
         loading="lazy"
       />
-    </ModalClicker>
+    </ImageClicker>
     <div class="text-wrapper">
       <p class="text">Try Hover/Click Image</p>
     </div>
@@ -48,7 +48,7 @@ const { universityPath } = store;
 </div>
 
 <style is:global>
-  .left > :first-child {
+  .intro .left > :first-child {
     display: block;
     width: min-content;
     margin: 0 auto;
@@ -72,7 +72,8 @@ const { universityPath } = store;
 
   .right {
     width: max-content;
-    margin: 0 auto;
+    margin: 0;
+    margin-left: 3%;
   }
 
   .right .text-wrapper {
@@ -80,7 +81,7 @@ const { universityPath } = store;
   }
 
   .right .text {
-    font-size: min(4.7vw, 2rem);
+    font-size: min(4vw, 2rem);
     font-family: "Cascadia Code Regular", monospace;
     font-weight: normal;
   }
@@ -173,7 +174,7 @@ const { universityPath } = store;
         gsap.to(".intro .my-image", { boxShadow: "none" });
       },
     },
-    1
+    1,
   );
 
   const myImage = document.querySelector(".my-image") as HTMLElement;

@@ -1,0 +1,16 @@
+<span class="popup-image-modal">
+  <slot />
+</span>
+
+<script>
+  import { openImageModal } from "../scripts/modal.ts";
+
+  let popupModals = document.querySelectorAll(".popup-image-modal");
+
+  popupModals.forEach((item: Element) => {
+    let popupModal = item as HTMLElement;
+    popupModal.onclick = () => {
+      openImageModal(popupModal);
+    };
+  });
+</script>

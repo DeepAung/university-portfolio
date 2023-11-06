@@ -1,6 +1,6 @@
 ---
 import Carousel from "../subcomponents/Carousel.astro";
-import ModalClicker from "../subcomponents/ModalClicker.astro";
+import ImageClicker from "../subcomponents/ImageClicker.astro";
 
 let items = [
   {
@@ -81,9 +81,9 @@ let items = [
     {
       items.map((item, index) => (
         <div class="wrapper">
-          <ModalClicker>
+          <ImageClicker>
             <img src={`/portfolio/images/certificates/${index+1}.webp`} alt={item.headText} loading="lazy" />
-          </ModalClicker>
+          </ImageClicker>
           <div class="text">
             <p>
               <b>{item.headText}</b>

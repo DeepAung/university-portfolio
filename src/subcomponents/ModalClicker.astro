@@ -1,4 +1,12 @@
-<span class="popup-modal">
+---
+interface Props {
+  from: string;
+}
+
+const { from } = Astro.props;
+---
+
+<span class="popup-modal" style={from ? "display: none;" : ""} data-from={from}>
   <slot />
 </span>
 
@@ -7,11 +15,13 @@
 
   let popupModals = document.querySelectorAll(".popup-modal");
 
-  popupModals.forEach((popupModal: Element) => {
-    let castedPopupModal = popupModal as HTMLElement;
+  popupModals.forEach((item: Element) => {
+    let popupModal = item as HTMLElement;
+    let from = popupModal.dataset.from as string;
+    let fromElem = document.querySelector(from) as HTMLElement;
 
-    castedPopupModal.onclick = () => {
-      openModal(castedPopupModal);
+    fromElem.onclick = () => {
+      openModal(popupModal);
     };
   });
 </script>
