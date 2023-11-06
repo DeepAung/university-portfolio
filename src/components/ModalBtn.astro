@@ -24,11 +24,13 @@ const { id = "" } = Astro.props;
     font-weight: 500;
 
     transition:
+      color 0.25s,
       background-color 0.25s,
       transform 0.25s;
   }
 
   button:hover {
+    color: rgb(var(--primary-text));
     background-color: rgba(var(--primary), 0.8);
     transform: translateY(-3px);
   }

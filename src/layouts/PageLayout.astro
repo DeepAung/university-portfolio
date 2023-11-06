@@ -1,13 +1,13 @@
 ---
-import Welcome from "../components/Welcome.astro";
-import ThankYou from "../components/ThankYou.astro";
+import Welcome from "../content-components/Welcome.astro";
+import ThankYou from "../content-components/ThankYou.astro";
 import Modal from "../components/Modal.astro";
-import Navbar from "../components/Navbar.astro";
+import Navbar from "../content-components/Navbar.astro";
 import Loader from "../components/Loader.astro";
 import PolygonBackground from "../components/PolygonBackground.astro";
 import { store } from "../scripts/store";
 
-const { primaryColor } = store;
+const { primaryColor, primaryText } = store;
 ---
 
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ const { primaryColor } = store;
   </body>
 </html>
 
-<style is:global define:vars={{ primaryColor }}>
+<style is:global define:vars={{ primaryColor, primaryText }}>
   @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap");
@@ -70,6 +70,7 @@ const { primaryColor } = store;
 
     /* --primary: rgb(255, 255, 255); */
     --primary: var(--primaryColor);
+    --primary-text: var(--primaryText);
 
     /* --secondary: rgb(121, 14, 14); */
     --secondary: 121, 14, 14;
