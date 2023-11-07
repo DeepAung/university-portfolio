@@ -181,7 +181,6 @@ import ModalClicker from "../components/ModalClicker.astro";
 
 <style is:global>
   .profile-wrapper {
-    width: max-content;
     max-width: 40rem;
     margin: auto;
   }
@@ -292,6 +291,12 @@ import ModalClicker from "../components/ModalClicker.astro";
 
 <script>
   import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
+
+  fromScrollTrigger(
+    ".personal-info-wrapper",
+    { x: 500, delay: 0.5, ease: "power4" },
+    1,
+  );
 
   fromScrollTrigger(
     ".profile .wrapper",

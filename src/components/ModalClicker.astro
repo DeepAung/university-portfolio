@@ -10,12 +10,6 @@ const { from } = Astro.props;
   <slot />
 </div>
 
-<style>
-  .popup-modal {
-    min-height: calc(100vh - 2 * var(--modal-padding));
-  }
-</style>
-
 <script>
   import { openModal } from "../scripts/modal.ts";
 
