@@ -42,7 +42,7 @@ const { englishTitle, thaiTitle } = Astro.props;
 
 <script>
   import gsap from "gsap";
-  import { fromScrollTrigger } from "../scripts/fromScrollTrigger";
+  import { gsapTrigger } from "../scripts/gsapTrigger";
 
   const containers: object[] = gsap.utils.toArray(".container");
   const heads: object[] = gsap.utils.toArray(".head");
@@ -50,22 +50,27 @@ const { englishTitle, thaiTitle } = Astro.props;
   containers.forEach((containerObj) => {
     let container = containerObj as Element;
 
-    fromScrollTrigger(container, { x: -500, ease: "power4" }, 1.5);
+    gsapTrigger.from(container, container, {
+      opacity: 0,
+      x: -500,
+      ease: "power4",
+      duration: 1.5,
+    });
   });
 
   heads.forEach((headObj) => {
     let head = headObj as Element;
 
-    gsap.from([head.children[0].children, head.children[1].children], {
-      scrollTrigger: {
-        trigger: head,
-        toggleActions: "play none none none",
+    gsapTrigger.from(
+      [head.children[0].children, head.children[1].children],
+      head,
+      {
+        yPercent: 100,
+        stagger: 0.2,
+        delay: 0.7,
+        ease: "power4",
+        duration: 1,
       },
-      yPercent: 100,
-      stagger: 0.2,
-      delay: 0.7,
-      ease: "power4",
-      duration: 1,
-    });
+    );
   });
 </script>

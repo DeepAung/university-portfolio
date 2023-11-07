@@ -1,7 +1,6 @@
 ---
 import Carousel from "../components/Carousel.astro";
 import ImageClicker from "../components/ImageClicker.astro";
-import { fromScrollTrigger } from "../scripts/fromScrollTrigger";
 
 let items = [
   {
@@ -151,11 +150,13 @@ let items = [
 </style>
 
 <script>
-  import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
+  import { gsapTrigger } from "../scripts/gsapTrigger";
 
-  fromScrollTrigger(
-    ".certificates .carousel",
-    { y: 200, ease: "power4", delay: 0.4 },
-    1,
-  );
+  gsapTrigger.from(".certificates .carousel", ".certificates .carousel", {
+    opacity: 0,
+    y: 200,
+    ease: "power4",
+    delay: 0.4,
+    duration: 1,
+  });
 </script>

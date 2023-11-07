@@ -24,11 +24,13 @@
 </style>
 
 <script>
-  import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
+  import { gsapTrigger } from "../scripts/gsapTrigger";
 
-  fromScrollTrigger(
-    "#thankyou-text",
-    { scale: 2, opacity: 0, delay: 0.6, ease: "power4" },
-    1
-  );
+  gsapTrigger.from("#thankyou-text", "#thankyou-text", {
+    opacity: 0,
+    scale: 2,
+    delay: 0.6,
+    ease: "power4",
+    duration: 1,
+  });
 </script>

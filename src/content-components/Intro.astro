@@ -158,24 +158,21 @@ const { universityPath } = store;
 
 <script>
   import { animValue } from "../scripts/animationToggle";
-  import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
   import gsap from "gsap";
+  import { gsapTrigger } from "../scripts/gsapTrigger";
 
-  fromScrollTrigger(
-    ".intro .left",
-    {
-      x: 500,
-      delay: 0.25,
-      ease: "power4",
-      onComplete() {
-        gsap.to(".intro .my-image", { boxShadow: "0px 0px 20px white" });
-      },
-      onStart() {
-        gsap.to(".intro .my-image", { boxShadow: "none" });
-      },
+  gsapTrigger.from(".intro .left", ".intro .left", {
+    opacity: 0,
+    x: 500,
+    delay: 0.25,
+    ease: "power4",
+    onComplete() {
+      gsap.to(".intro .my-image", { boxShadow: "0px 0px 20px white" });
     },
-    1,
-  );
+    onStart() {
+      gsap.to(".intro .my-image", { boxShadow: "none" });
+    },
+  });
 
   const myImage = document.querySelector(".my-image") as HTMLElement;
 
@@ -217,6 +214,7 @@ const { universityPath } = store;
 <script>
   import gsap from "gsap";
   import { animValue } from "../scripts/animationToggle";
+  import { gsapTrigger } from "../scripts/gsapTrigger";
 
   const randomTextElem = document.querySelector("#random-text") as Element;
   const universityPath = randomTextElem.innerHTML;
@@ -225,11 +223,7 @@ const { universityPath } = store;
     if (!animValue) setUniversityName();
   });
 
-  gsap.from(".intro .text-wrapper .text", {
-    scrollTrigger: {
-      trigger: ".right",
-      toggleActions: "play none none none",
-    },
+  gsapTrigger.from(".intro .text-wrapper .text", ".right", {
     opacity: 1,
     yPercent: 100,
     stagger: 0.2,

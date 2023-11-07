@@ -140,17 +140,22 @@
 </style>
 
 <script>
-  import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
+  import { gsapTrigger } from "../scripts/gsapTrigger";
 
-  fromScrollTrigger(
-    ".education .item",
-    { x: 500, stagger: 0.4, delay: 0.25, ease: "power4" },
-    1.5
-  );
+  gsapTrigger.from(".education .item", ".education .item", {
+    opacity: 0,
+    x: 500,
+    stagger: 0.4,
+    delay: 0.25,
+    ease: "power4",
+    duration: 1.5,
+  });
 
-  fromScrollTrigger(
-    ".education .hide",
-    { opacity: 1, top: 0, delay: 0.5, ease: "power4" },
-    3
-  );
+  gsapTrigger.from(".education .hide", ".education .hide", {
+    opacity: 1,
+    top: 0,
+    delay: 0.5,
+    ease: "power4",
+    duration: 3,
+  });
 </script>

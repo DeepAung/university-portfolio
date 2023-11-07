@@ -290,17 +290,21 @@ import ModalClicker from "../components/ModalClicker.astro";
 </style>
 
 <script>
-  import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
+  import { gsapTrigger } from "../scripts/gsapTrigger";
 
-  fromScrollTrigger(
-    ".personal-info-wrapper",
-    { x: 500, delay: 0.5, ease: "power4" },
-    1,
-  );
+  gsapTrigger.from(".personal-info-wrapper", ".personal-info-wrapper", {
+    opacity: 0,
+    x: 500,
+    delay: 0.5,
+    ease: "power4",
+    duration: 1,
+  });
 
-  fromScrollTrigger(
-    ".profile .wrapper",
-    { x: -500, delay: 0.5, ease: "power4" },
-    1,
-  );
+  gsapTrigger.from(".profile .wrapper", ".profile .wrapper", {
+    opacity: 0,
+    x: -500,
+    delay: 0.5,
+    ease: "power4",
+    duration: 1,
+  });
 </script>

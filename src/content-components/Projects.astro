@@ -303,11 +303,13 @@ import ModalClicker from "../components/ModalClicker.astro";
 </style>
 
 <script>
-  import { fromScrollTrigger } from "../scripts/fromScrollTrigger.ts";
+  import { gsapTrigger } from "../scripts/gsapTrigger";
 
-  fromScrollTrigger(
-    ".projects .wrapper",
-    { x: -200, ease: "power4", delay: 0.2 },
-    1,
-  );
+  gsapTrigger.from(".projects .wrapper", ".projects .wrapper", {
+    opacity: 0,
+    x: -200,
+    ease: "power4",
+    delay: 0.2,
+    duration: 1,
+  });
 </script>
