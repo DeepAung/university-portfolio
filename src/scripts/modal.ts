@@ -1,9 +1,14 @@
 import gsap from "gsap";
 
-let modalWrapper = document.querySelector("#modal-wrapper") as HTMLElement;
+const modalWrapper = document.querySelector("#modal-wrapper") as HTMLElement;
+const modalContent = document.querySelector("#modal-content") as HTMLElement;
 
 closeModal();
 modalWrapper.onclick = closeModal;
+
+addEventListener("popstate", () => {
+  closeModal();
+});
 
 // --------------------------------------------- //
 
@@ -14,7 +19,7 @@ export function openModal(element: HTMLElement) {
   let clonedElem = element.cloneNode(true) as HTMLElement;
   clonedElem.style.display = "block";
 
-  modalWrapper.append(clonedElem);
+  modalContent.append(clonedElem);
 
   document.body.classList.add("lock-scroll");
   gsap.to(modalWrapper, {
@@ -22,6 +27,8 @@ export function openModal(element: HTMLElement) {
     display: "block",
     duration: 0.25,
   });
+
+  history.pushState(null, "", window.location.pathname);
 }
 
 export function openImageModal(element: HTMLElement) {
@@ -33,7 +40,7 @@ export function openImageModal(element: HTMLElement) {
   const img = clonedElem.querySelector("img");
   img?.classList.add("full-image");
 
-  modalWrapper.append(clonedElem);
+  modalContent.append(clonedElem);
 
   document.body.classList.add("lock-scroll");
   gsap.to(modalWrapper, {
@@ -41,6 +48,8 @@ export function openImageModal(element: HTMLElement) {
     display: "block",
     duration: 0.25,
   });
+
+  history.pushState(null, "", window.location.pathname);
 }
 
 export function closeModal() {
@@ -52,8 +61,10 @@ export function closeModal() {
     display: "none",
     duration: 0.25,
     onComplete: () => {
-      modalWrapper.innerHTML = "";
+      modalContent.innerHTML = "";
       modalWrapper.style.overflowY = "hidden";
     },
   });
+
+  history.replaceState(null, "", window.location.pathname);
 }

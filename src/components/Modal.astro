@@ -1,4 +1,7 @@
-<div id="modal-wrapper"></div>
+<div id="modal-wrapper">
+  <button id="modal-close-btn">Close</button>
+  <div id="modal-content"></div>
+</div>
 
 <style is:global>
   #modal-wrapper {
@@ -16,6 +19,27 @@
     padding: var(--modal-padding);
 
     display: none;
+  }
+
+  #modal-close-btn {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    margin-inline: auto;
+    margin-bottom: 2rem;
+    font-size: medium;
+    cursor: pointer;
+    z-index: 1000;
+
+    color: white;
+    background-color: rgba(180, 0, 0, 0.7);
+    border: none;
+    border-radius: 0.25rem;
+
+    transition: background-color 0.25s;
+  }
+
+  #modal-close-btn:hover {
+    background-color: rgb(180, 0, 0);
   }
 </style>
 

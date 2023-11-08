@@ -47,19 +47,15 @@ const { englishTitle, thaiTitle } = Astro.props;
   const containers: object[] = gsap.utils.toArray(".container");
   const heads: object[] = gsap.utils.toArray(".head");
 
-  containers.forEach((containerObj) => {
-    let container = containerObj as Element;
+  heads.forEach((headObj) => {
+    let head = headObj as Element;
 
-    gsapTrigger.from(container, container, {
+    gsapTrigger.from(head, head, {
       opacity: 0,
       x: -500,
       ease: "power4",
       duration: 1.5,
     });
-  });
-
-  heads.forEach((headObj) => {
-    let head = headObj as Element;
 
     gsapTrigger.from(
       [head.children[0].children, head.children[1].children],

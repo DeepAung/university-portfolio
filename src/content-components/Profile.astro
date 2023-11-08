@@ -1,46 +1,48 @@
 ---
 import ModalBtn from "../components/ModalBtn.astro";
 import ModalClicker from "../components/ModalClicker.astro";
+import Tab from "../components/Tab.astro";
 ---
 
 <div class="profile">
-  <div class="profile-wrapper personal-info-wrapper">
-    <h3>Personal Info</h3>
-    <p><span>ชื่อ:</span> อชิระ อังสุมาล (ดีพ)</p>
-    <p><span>วันเกิด:</span> 14 ธันวาคม 2548</p>
-    <p>
-      <span>สัญชาติ:</span> ไทย <span>เชื้อชาติ:</span> ไทย <span>ศาสนา:</span>
-       พุทธ
-    </p>
-    <p><span>แผนการเรียน:</span> วิทย์-คณิต (เน้นวิศวกรรม)</p>
-    <p>
-      <span>ที่อยู่:</span>
-      <a
-        target="_blank"
-        href="https://goo.gl/maps/mqgZLzyVSvBxq79A8?coh=178571&entry=tt"
-        >คลิกที่นี่</a
-      >
-       (รีเจ้นท์คอร์ท 70 ถนนเพชรบุรี แขวงถนนเพชรบุรี เขตราชเทวี กทม. 10400)
-    </p>
-    <p>
-      <span>ครอบครัว:</span> มารดา ทัศนีย์ อังสุมาล, พี่ชาย อชิตะ อังสุมาล
-    </p>
-    <p>
-      <span>งานอดิเรก:</span> ดูอนิเมะ, เล่นรูบิค, เขียนโค้ด, ออกกำลังกาย
-      (Calisthenics)
-    </p>
-  </div>
+  <Tab>
+    <div slot="selects" class="selects">
+      <button>Personal Info</button>
+      <button>Contacts</button>
+      <button>Programming Skills</button>
+      <button>Skills</button>
+    </div>
 
-  <div class="wrapper">
-    <ModalBtn id="contacts-click">Contacts</ModalBtn>
-    <ModalBtn id="programming-skills-click">Programming Skills</ModalBtn>
-    <ModalBtn id="skills-click">Skills</ModalBtn>
-  </div>
+    <div slot="contents" class="contents">
+      <div class="wrapper">
+        <p><span>ชื่อ:</span> อชิระ อังสุมาล (ดีพ)</p>
+        <p><span>วันเกิด:</span> 14 ธันวาคม 2548</p>
+        <p>
+          <span>สัญชาติ:</span> ไทย <span>เชื้อชาติ:</span> ไทย <span
+            >ศาสนา:</span
+          >
+           พุทธ
+        </p>
+        <p><span>แผนการเรียน:</span> วิทย์-คณิต (เน้นวิศวกรรม)</p>
+        <p>
+          <span>ที่อยู่:</span>
+          <a
+            target="_blank"
+            href="https://goo.gl/maps/mqgZLzyVSvBxq79A8?coh=178571&entry=tt"
+            >คลิกที่นี่</a
+          >
+           (รีเจ้นท์คอร์ท 70 ถนนเพชรบุรี แขวงถนนเพชรบุรี เขตราชเทวี กทม. 10400)
+        </p>
+        <p>
+          <span>ครอบครัว:</span> มารดา ทัศนีย์ อังสุมาล, พี่ชาย อชิตะ อังสุมาล
+        </p>
+        <p>
+          <span>งานอดิเรก:</span> ดูอนิเมะ, เล่นรูบิค, เขียนโค้ด, ออกกำลังกาย
+          (Calisthenics)
+        </p>
+      </div>
 
-  <ModalClicker from="#contacts-click">
-    <div class="profile-wrapper">
-      <h3 class="contact-header">Contacts</h3>
-      <div class="contacts">
+      <div class="wrapper contacts">
         <p>
           <span><i class="fa-solid fa-envelope fa-2xl"></i></span>
            i.deepaung@gmail.com
@@ -54,176 +56,137 @@ import ModalClicker from "../components/ModalClicker.astro";
           <span><i class="fa-brands fa-github fa-2xl"></i></span> DeepAung
         </a>
       </div>
-    </div>
-  </ModalClicker>
 
-  <ModalClicker from="#programming-skills-click">
-    <div class="profile-wrapper">
-      <h3>Programming Skills</h3>
-      <div class="skills">
-        <span
-          >C <img src="/portfolio/icons/c.svg" loading="lazy" alt="C" /></span
-        >
-        <span
-          >C++ <img
-            src="/portfolio/icons/c++.png"
-            loading="lazy"
-            alt="C++"
-          /></span
-        >
+      <div class="wrapper">
+        <div class="skills">
+          <span
+            >C <img src="/portfolio/icons/c.svg" loading="lazy" alt="C" /></span
+          >
+          <span
+            >C++ <img
+              src="/portfolio/icons/c++.png"
+              loading="lazy"
+              alt="C++"
+            /></span
+          >
 
-        <span
-          >Unity <img
-            src="/portfolio/icons/unity.png"
-            loading="lazy"
-            alt="Unity"
-          /></span
-        >
+          <span
+            >Unity <img
+              src="/portfolio/icons/unity.png"
+              loading="lazy"
+              alt="Unity"
+            /></span
+          >
 
-        <span>
-          C# <img src="/portfolio/icons/csharp.svg" loading="lazy" alt="C#" />
-        </span>
+          <span>
+            C# <img src="/portfolio/icons/csharp.svg" loading="lazy" alt="C#" />
+          </span>
 
-        <span
-          >Godot <img
-            src="/portfolio/icons/godot.svg"
-            loading="lazy"
-            alt="Godot"
-          /></span
-        >
+          <span
+            >Godot <img
+              src="/portfolio/icons/godot.svg"
+              loading="lazy"
+              alt="Godot"
+            /></span
+          >
 
-        <span
-          >Python <img
-            src="/portfolio/icons/python.png"
-            loading="lazy"
-            alt="Python"
-          /></span
-        >
+          <span
+            >Python <img
+              src="/portfolio/icons/python.png"
+              loading="lazy"
+              alt="Python"
+            /></span
+          >
 
-        <span
-          >Django
-          <img
-            src="/portfolio/icons/django.png"
-            loading="lazy"
-            alt="Django"
-          /></span
-        >
+          <span
+            >Django
+            <img
+              src="/portfolio/icons/django.png"
+              loading="lazy"
+              alt="Django"
+            /></span
+          >
 
-        <span
-          >HTML <img
-            src="/portfolio/icons/html.png"
-            loading="lazy"
-            alt="HTML"
-          /></span
-        >
-        <span
-          >CSS <img
-            src="/portfolio/icons/css.png"
-            loading="lazy"
-            alt="CSS"
-          /></span
-        >
-        <span
-          >JavaScript <img
-            src="/portfolio/icons/js.png"
-            loading="lazy"
-            alt="JS"
-          /></span
-        >
+          <span
+            >HTML <img
+              src="/portfolio/icons/html.png"
+              loading="lazy"
+              alt="HTML"
+            /></span
+          >
+          <span
+            >CSS <img
+              src="/portfolio/icons/css.png"
+              loading="lazy"
+              alt="CSS"
+            /></span
+          >
+          <span
+            >JavaScript <img
+              src="/portfolio/icons/js.png"
+              loading="lazy"
+              alt="JS"
+            /></span
+          >
 
-        <span
-          >Vue.js <img
-            src="/portfolio/icons/vuejs.png"
-            loading="lazy"
-            alt="Vue.js"
-          /></span
-        >
+          <span
+            >Vue.js <img
+              src="/portfolio/icons/vuejs.png"
+              loading="lazy"
+              alt="Vue.js"
+            /></span
+          >
+        </div>
+      </div>
+
+      <div class="wrapper">
+        <div class="skills">
+          <span>ถ่ายภาพ</span>
+          <span>ฟัง-อ่านภาษาอังกฤษ</span>
+          <span class="highlight">CU-TEP Score: xx / 120</span>
+        </div>
       </div>
     </div>
-  </ModalClicker>
-
-  <ModalClicker from="#skills-click">
-    <div class="profile-wrapper">
-      <h3>Skills</h3>
-      <div class="skills">
-        <span>ถ่ายภาพ</span>
-        <span>ฟัง-อ่านภาษาอังกฤษ</span>
-        <span class="highlight">CU-TEP Score: xx / 120</span>
-      </div>
-    </div>
-  </ModalClicker>
+  </Tab>
 </div>
 
 <style>
-  .personal-info-wrapper {
-    margin-bottom: 2rem;
-    max-width: max-content;
-    width: auto;
-  }
-
-  .wrapper {
-    max-width: 15rem;
-    margin: auto;
-    position: relative;
-
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 1fr);
-    gap: 2rem;
-  }
-
-  @media only screen and (min-width: 555px) {
-    .wrapper {
-      max-width: 45rem;
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-</style>
-
-<style is:global>
-  .profile-wrapper {
-    max-width: 40rem;
-    margin: auto;
-  }
-
-  .profile-wrapper h3 {
-    color: rgb(var(--primary));
-    text-align: center;
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-  }
-
-  .profile-wrapper span {
-    color: #dad7c5;
-    font-weight: 600;
-  }
-
-  .profile-wrapper .contacts {
-    margin-inline: auto;
-    max-width: max-content;
-
+  .selects {
     display: flex;
-    flex-direction: column;
-    align-items: start;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    margin-bottom: 1rem;
+
+    border-radius: 0.25rem;
+    border: 2px solid transparent;
+    padding: 1rem 0.25rem;
+    transition: border 0.25s ease-out;
   }
 
-  .profile-wrapper .contacts > * {
-    line-height: 3em;
-    display: inline;
-
-    border-radius: 0.5rem;
-    padding: 0.25rem;
-    text-decoration: none;
-
-    transition: 0.25s;
+  .selects:hover {
+    border: 2px solid rgb(var(--primary));
   }
 
-  .profile-wrapper .contacts > *::after {
+  .selects button {
+    background-color: transparent;
+    border: none;
+    color: rgb(var(--primary));
+    font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+    font-weight: 600;
+    padding-bottom: 0.3rem;
+
+    cursor: pointer;
+  }
+
+  .selects button::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 2px;
+    height: 2.5px;
 
     transform: scaleX(0);
     background-color: rgb(var(--primary));
@@ -232,29 +195,80 @@ import ModalClicker from "../components/ModalClicker.astro";
     transition: transform 0.25s ease-out;
   }
 
-  .profile-wrapper .contacts *:hover::after {
+  .selects button:hover::after,
+  .selects button:focus::after {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
 
-  .profile-wrapper .contacts > * i {
+  .selects:has(button:focus) {
+    border: 2px solid transparent;
+  }
+
+  .wrapper {
+    max-width: max-content;
+    margin: auto;
+  }
+
+  .wrapper span {
+    color: #dad7c5;
+    font-weight: 600;
+  }
+
+  .contacts {
+    max-width: max-content;
+    margin: auto;
+  }
+
+  .contacts > * {
+    line-height: 3em;
+    display: block;
+
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    text-decoration: none;
+
+    transition: 0.25s;
+  }
+
+  .contacts > *::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2.5px;
+
+    transform: scaleX(0);
+    background-color: rgb(var(--primary));
+
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  .contacts *:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  .contacts > * i {
     margin-right: 0.3em;
     transition: 0.25s;
   }
 
-  .profile-wrapper .contacts > *:hover i {
+  .contacts > *:hover i {
     color: white;
     transform: translateY(-3px);
   }
 
-  .profile-wrapper .skills {
+  .skills {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
   }
 
-  .profile-wrapper .skills span {
+  .skills span {
     background-color: rgba(255, 255, 255, 0.7);
     padding: 0.5rem;
     border-radius: 0.25rem;
@@ -272,18 +286,18 @@ import ModalClicker from "../components/ModalClicker.astro";
     transition: 0.25s;
   }
 
-  .profile-wrapper .skills span:hover {
+  .skills span:hover {
     background-color: rgba(255, 255, 255, 0.9);
     color: black;
     transform: translateY(-2px);
   }
 
-  .profile-wrapper .skills span img {
+  .skills span img {
     height: 2rem;
     user-select: none;
   }
 
-  .profile-wrapper .skills .highlight {
+  .skills .highlight {
     text-decoration: underline;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }
@@ -292,19 +306,8 @@ import ModalClicker from "../components/ModalClicker.astro";
 <script>
   import { gsapTrigger } from "../scripts/gsapTrigger";
 
-  gsapTrigger.from(".personal-info-wrapper", ".personal-info-wrapper", {
+  gsapTrigger.from(".profile", ".profile", {
     opacity: 0,
-    x: 500,
-    delay: 0.5,
-    ease: "power4",
-    duration: 1,
-  });
-
-  gsapTrigger.from(".profile .wrapper", ".profile .wrapper", {
-    opacity: 0,
-    x: -500,
-    delay: 0.5,
-    ease: "power4",
     duration: 1,
   });
 </script>
