@@ -33,7 +33,10 @@
   }
 
   function openAnim(i: number) {
+    const select = selects.children[i] as HTMLElement;
     const content = contents.children[i] as HTMLElement;
+
+    select.classList.add("active");
     gsap.to(content, {
       opacity: 1,
       display: "block",
@@ -43,7 +46,10 @@
   }
 
   function closeAnim(i: number) {
+    const select = selects.children[i] as HTMLElement;
     const content = contents.children[i] as HTMLElement;
+
+    select.classList.remove("active");
     gsap.killTweensOf(content);
     content.style.display = "none";
     content.style.opacity = "0";

@@ -1,6 +1,6 @@
 ---
 interface Props {
-  from: string;
+  from?: string;
 }
 
 const { from } = Astro.props;
@@ -13,14 +13,17 @@ const { from } = Astro.props;
 <script>
   import { openModal } from "../scripts/modal.ts";
 
-  let popupModals = document.querySelectorAll(".popup-modal");
+  const popupModals = document.querySelectorAll(".popup-modal");
 
   popupModals.forEach((item: Element) => {
-    let popupModal = item as HTMLElement;
-    let from = popupModal.dataset.from as string;
-    let fromElem = document.querySelector(from) as HTMLElement;
+    const popupModal = item as HTMLElement;
+    const from = popupModal.dataset.from as string;
 
-    fromElem.onclick = () => {
+    const elem = from
+      ? (document.querySelector(from) as HTMLElement)
+      : popupModal;
+
+    elem.onclick = () => {
       openModal(popupModal);
     };
   });

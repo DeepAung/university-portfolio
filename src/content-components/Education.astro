@@ -1,3 +1,7 @@
+---
+import ModalClicker from "../components/ModalClicker.astro";
+---
+
 <div class="education">
   <div class="timeline">
     <div class="timeline-item"></div>
@@ -7,7 +11,7 @@
   </div>
 
   <div class="items">
-    <div class="item">
+    <div class="item" id="item1">
       <div class="image">
         <img
           src="/portfolio/icons/rnk.png"
@@ -23,7 +27,7 @@
       </div>
     </div>
 
-    <div class="item">
+    <div class="item" id="item2">
       <div class="image">
         <img
           src="/portfolio/icons/debsirin.png"
@@ -38,7 +42,7 @@
       </div>
     </div>
 
-    <div class="item">
+    <div class="item" id="item3">
       <div class="image">
         <img
           src="/portfolio/icons/debsirin.png"
@@ -52,6 +56,19 @@
         <p><span>GPAX: 4.00</span> (5 ภาคเรียน)</p>
       </div>
     </div>
+
+    {
+      [1, 2, 3].map((number) => (
+        <ModalClicker from={`#item${number}`}>
+          <img
+            src={`/portfolio/images/education/${number}.webp`}
+            alt="education-picture"
+            loading="lazy"
+            class="modal-full-image"
+          />
+        </ModalClicker>
+      ))
+    }
   </div>
 </div>
 
@@ -60,7 +77,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: min(10rem, 6vw);
+    gap: min(10rem, 2vw);
     position: relative;
   }
 
@@ -77,7 +94,7 @@
 
   .timeline .hide {
     position: absolute;
-    top: min(24rem, calc(45vw + 4rem));
+    /* top: min(24rem, calc(45vw + 4rem)); */
     bottom: 0;
     left: -0.75rem;
     right: -0.75rem;
@@ -90,6 +107,19 @@
     align-items: center;
     justify-content: start;
     margin-bottom: 2rem;
+
+    cursor: pointer;
+    padding: 1rem 3vw;
+    border-radius: 0.4rem;
+    transition: background-color 0.25s;
+  }
+
+  .items .item:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .item .item:hover {
+    background-color: rgba(255, 255, 255, 0.5);
   }
 
   .items :last-child {
@@ -124,7 +154,7 @@
     object-fit: cover;
   }
 
-  @media only screen and (min-width: 350px) {
+  @media only screen and (min-width: 370px) {
     .timeline {
       display: flex;
       flex-direction: column;
@@ -132,7 +162,7 @@
       justify-content: space-between;
 
       width: 0.3rem;
-      height: min(24rem, calc(45vw + 4rem));
+      height: min(26rem, calc(27vw + 12rem));
       background-color: white;
       border-radius: 100rem;
     }

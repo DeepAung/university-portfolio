@@ -1,5 +1,5 @@
 ---
-import ImageClicker from "../components/ImageClicker.astro";
+import ModalClicker from "../components/ModalClicker.astro";
 import { store } from "../scripts/store.ts";
 
 const { universityPath } = store;
@@ -7,14 +7,14 @@ const { universityPath } = store;
 
 <div class="intro">
   <div class="left">
-    <ImageClicker>
+    <ModalClicker>
       <img
-        class="my-image"
+        class="my-image modal-full-image"
         src="/portfolio/images/hero-pic.webp"
         alt="my-image"
         loading="lazy"
       />
-    </ImageClicker>
+    </ModalClicker>
     <div class="text-wrapper">
       <p class="text">Try Hover/Click Image</p>
     </div>

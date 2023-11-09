@@ -1,10 +1,14 @@
 ---
-import ModalBtn from "../components/ModalBtn.astro";
-import ModalClicker from "../components/ModalClicker.astro";
 import Tab from "../components/Tab.astro";
 ---
 
 <div class="profile">
+  <img
+    src="/portfolio/images/profile-pic.webp"
+    alt="profile-pic"
+    loading="lazy"
+    class="profile-pic"
+  />
   <Tab>
     <div slot="selects" class="selects">
       <button>Personal Info</button>
@@ -151,6 +155,14 @@ import Tab from "../components/Tab.astro";
 </div>
 
 <style>
+  .profile-pic {
+    display: block;
+    border-radius: 50%;
+    width: min(100%, 40vh);
+    margin: auto;
+    margin-bottom: 2rem;
+  }
+
   .selects {
     display: flex;
     justify-content: space-around;
@@ -159,14 +171,10 @@ import Tab from "../components/Tab.astro";
 
     margin-bottom: 1rem;
 
-    border-radius: 0.25rem;
-    border: 2px solid transparent;
+    border-radius: 0.4rem;
+    border: 2.5px solid rgba(var(--primary), 0.5);
     padding: 1rem 0.25rem;
     transition: border 0.25s ease-out;
-  }
-
-  .selects:hover {
-    border: 2px solid rgb(var(--primary));
   }
 
   .selects button {
@@ -195,14 +203,10 @@ import Tab from "../components/Tab.astro";
     transition: transform 0.25s ease-out;
   }
 
-  .selects button:hover::after,
-  .selects button:focus::after {
+  .selects button.active::after,
+  .selects button:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
-  }
-
-  .selects:has(button:focus) {
-    border: 2px solid transparent;
   }
 
   .wrapper {
