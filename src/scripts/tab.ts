@@ -1,8 +1,6 @@
 import gsap from "gsap";
 
 export function initTab(tab: Element, startIndex: number) {
-  console.log(tab);
-
   const selects = tab?.children[0] as HTMLElement;
   const contents = tab?.children[1] as HTMLElement;
 
