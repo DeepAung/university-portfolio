@@ -25,7 +25,8 @@ let array2 = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
         ))
       }
     </Carousel>
-    <p>
+    <i class="fa-solid fa-plus" data-toggle-id="content-1"></i>
+    <p id="content-1">
       บรรพชาสามเณร, พิธีไหว้ครู, ทำบุญตักบาตร สวดมนต์ ทำวัตรเช้า, FARTLEK 65
       โครงการวิ่งเพื่อสุขภาพส่งเสริมสมรรถภาพร่างกาย และสร้างความสามัคคี,
       เชียร์และแปรอักษรฟุตบอลประเพณีจตุรมิตรสามัคคี, ปัจฉิมนิเทศ ฯลฯ
@@ -50,7 +51,8 @@ let array2 = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
         ))
       }
     </Carousel>
-    <p>
+    <i class="fa-solid fa-plus" data-toggle-id="content-2"></i>
+    <p id="content-2">
       งานพิธีวางพวงมาลาพระบรมราชานุสาวรีย์ฯ, วันคล้ายวันพระบรมราชสมภพ,
       วันคล้ายวันเฉลิมฯ งานบุญแห่เทียนพรรษา, งานเทศน์มหาชาติ, งานเกษียณฯ,
       งานวันไหว้ครู, พิธีประดับเข็ม, ทำบุญตักบาตร วันขึ้นปีใหม่-วันแม่แห่งชาติ,
@@ -75,13 +77,36 @@ let array2 = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
     margin-bottom: calc(var(--padding) * 0.75);
   }
 
+  .wrapper i {
+    display: block;
+    float: right;
+    top: 1rem;
+    right: calc((100vw - var(--width) - 2 * min(4rem, 6vw)) * 0.5);
+
+    background-color: transparent;
+    border: 2.5px solid rgb(var(--primary));
+
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+
+    transition: background-color 0.25s;
+  }
+
+  .wrapper i.toggled,
+  .wrapper i:hover {
+    background-color: rgb(var(--primary));
+  }
+
   .wrapper p {
     width: var(--width);
     margin: auto;
-    margin-top: var(--padding);
+    margin-top: calc(4rem);
 
     text-align: center;
     font-size: clamp(1rem, 2vw, 1.2rem);
+
+    display: none;
   }
 
   .item {
@@ -121,5 +146,21 @@ let array2 = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
       start: "top bottom",
       toggleActions: "play none none none",
     });
+  });
+
+  const icons = gsap.utils.toArray(".activities i");
+  icons.forEach((elem) => {
+    const icon = elem as HTMLElement;
+    icon.onclick = () => {
+      const toggleId = icon.dataset.toggleId;
+      const target = document.querySelector("#" + toggleId) as HTMLElement;
+      if (target.style.display == "none") {
+        gsap.to(target, { opacity: 1, display: "block", duration: 0.5 });
+        icon.classList.add("toggled");
+      } else {
+        gsap.to(target, { opacity: 0, display: "none", duration: 0.5 });
+        icon.classList.remove("toggled");
+      }
+    };
   });
 </script>
