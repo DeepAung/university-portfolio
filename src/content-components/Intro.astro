@@ -15,9 +15,6 @@ const { universityPath } = store;
         loading="lazy"
       />
     </ModalClicker>
-    <div class="text-wrapper">
-      <p class="text">Try Hover/Click Image</p>
-    </div>
   </div>
 
   <div class="right grey">
@@ -88,7 +85,7 @@ const { universityPath } = store;
 
   .left {
     position: relative;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
   }
 
   .left .my-image {
@@ -96,22 +93,6 @@ const { universityPath } = store;
     border-radius: 1rem;
 
     cursor: pointer;
-  }
-
-  .left p {
-    text-align: center;
-    margin-top: 1rem;
-    z-index: 1;
-
-    font-weight: 500;
-    font-style: italic;
-    color: rgb(255, 47, 47, 0.5);
-
-    transition: color 0.25s;
-  }
-
-  .left:has(.my-image:hover) > .text-wrapper p {
-    color: rgb(255, 47, 47, 1);
   }
 
   @media only screen and (min-width: 350px) {
@@ -138,10 +119,6 @@ const { universityPath } = store;
     .left .my-image {
       height: auto;
       width: 27vw;
-    }
-
-    .left p {
-      font-size: clamp(1rem, 2.5vw, 2rem);
     }
 
     .right {

@@ -309,9 +309,12 @@ import Tab from "../components/Tab.astro";
 
 <script>
   import { gsapTrigger } from "../scripts/gsapTrigger";
+  import { initTab } from "../scripts/tab";
 
   gsapTrigger.from(".profile", ".profile", {
     opacity: 0,
     duration: 1,
   });
+
+  initTab(document.querySelector(".profile .tab") as Element, 0);
 </script>
