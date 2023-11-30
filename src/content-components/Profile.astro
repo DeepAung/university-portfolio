@@ -145,9 +145,14 @@ import Tab from "../components/Tab.astro";
 
       <div class="wrapper">
         <div class="skills">
-          <span>ถ่ายภาพ</span>
-          <span>ฟัง-อ่านภาษาอังกฤษ</span>
-          <span class="highlight">CU-TEP Score: xx / 120</span>
+          <span>ถ่ายภาพ <i class="fa-solid fa-camera"></i></span>
+          <span>ฟัง-อ่านภาษาอังกฤษ <i class="fa-solid fa-book"></i></span>
+          <a
+            href="https://register.atc.chula.ac.th/?op=score&data=MTE1NjE1M3w4ZDU1MDk5Yjg4YjZjNDk2ODdlY2Y3ZDkwMDA3MDgwOQ=="
+            target="_blank"
+            >CU-TEP Score: 94 / 120 <i
+              class="fa-solid fa-arrow-up-right-from-square"></i></a
+          >
         </div>
       </div>
     </div>
@@ -272,6 +277,7 @@ import Tab from "../components/Tab.astro";
     justify-content: center;
   }
 
+  .skills a,
   .skills span {
     background-color: rgba(255, 255, 255, 0.7);
     padding: 0.5rem;
@@ -290,6 +296,7 @@ import Tab from "../components/Tab.astro";
     transition: 0.25s;
   }
 
+  .skills a:hover,
   .skills span:hover {
     background-color: rgba(255, 255, 255, 0.9);
     color: black;

@@ -1,0 +1,13 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import AllContents from "../content-components/AllContents.astro";
+import { store } from "../scripts/store.ts";
+
+store.primaryColor = "48, 215, 176";
+store.primaryText = "255, 255, 255";
+store.universityPath = "KU/Engineer/Computer(CPE)";
+---
+
+<PageLayout>
+  <AllContents />
+</PageLayout>
