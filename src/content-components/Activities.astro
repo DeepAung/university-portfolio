@@ -140,7 +140,8 @@ let array2 = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
     const tl = gsap
       .timeline({ defaults: { ease: "power4" } })
       .from(q("h3"), { opacity: 0, yPercent: 100, duration: 0.7, delay: 0.2 })
-      .from(q(".carousel-activities"), { opacity: 0, duration: 1 });
+      .from(q(".carousel-activities"), { opacity: 0, duration: 1 })
+      .from(q("i"), { opacity: 0, duration: 0.5 });
 
     ScrollTrigger.create({
       trigger: wrapper,
@@ -156,11 +157,19 @@ let array2 = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
     icon.onclick = () => {
       const toggleId = icon.dataset.toggleId;
       const target = document.querySelector("#" + toggleId) as HTMLElement;
-      if (target.style.display != "block") {
-        gsap.to(target, { opacity: 1, display: "block", duration: 0.5 });
+      if (target.style.display !== "block") {
+        gsap.fromTo(
+          target,
+          { opacity: 0, display: "none" },
+          { opacity: 1, display: "block", duration: 0.5 },
+        );
         icon.classList.add("toggled");
       } else {
-        gsap.to(target, { opacity: 0, display: "none", duration: 0.5 });
+        gsap.fromTo(
+          target,
+          { opacity: 1, display: "block" },
+          { opacity: 0, display: "none", duration: 0.3 },
+        );
         icon.classList.remove("toggled");
       }
     };
