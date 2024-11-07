@@ -34,7 +34,7 @@ const options: ISourceOptions = {
 <div id="bg">
   <Particles id="tsparticles" options={options} init="particlesInit" />
   <div class="gear-wrapper">
-    <img src="/portfolio/images/gear.svg" alt="gear" class="gear">
+    <img src="/university-portfolio/images/gear.svg" alt="gear" class="gear" />
   </div>
 </div>
 
@@ -44,7 +44,7 @@ const options: ISourceOptions = {
     inset: 0;
     z-index: -1;
   }
-  
+
   #tsparticles {
     position: fixed;
     inset: 0;
@@ -74,16 +74,22 @@ const options: ISourceOptions = {
   }
 
   @keyframes spin {
-    0% { rotate: 0deg }
-    93.5% { rotate: calc(360deg * 3) }
-    100% { rotate: calc(360deg * 4) }
+    0% {
+      rotate: 0deg;
+    }
+    93.5% {
+      rotate: calc(360deg * 3);
+    }
+    100% {
+      rotate: calc(360deg * 4);
+    }
   }
 </style>
 
 <script>
-  import type { Engine } from "tsparticles-engine";
-  import { loadFull } from "tsparticles";
   import gsap from "gsap";
+  import { loadFull } from "tsparticles";
+  import type { Engine } from "tsparticles-engine";
   import { animValue, onAnimChanged } from "../scripts/animationToggle";
 
   (window as any).particlesInit = async (engine: Engine) => {

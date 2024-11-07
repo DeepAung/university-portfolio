@@ -15,7 +15,7 @@ import Tab from "../components/Tab.astro";
       <div class="item" id="item1">
         <div class="image">
           <img
-            src="/portfolio/icons/rnk.png"
+            src="/university-portfolio/icons/rnk.png"
             alt="โรงเรียนราชวินิตประถมบางแค"
             loading="lazy"
           />
@@ -31,7 +31,7 @@ import Tab from "../components/Tab.astro";
       <div class="item" id="item2">
         <div class="image">
           <img
-            src="/portfolio/icons/debsirin.png"
+            src="/university-portfolio/icons/debsirin.png"
             alt="โรงเรียนเทพศิรินทร์"
             loading="lazy"
           />
@@ -46,7 +46,7 @@ import Tab from "../components/Tab.astro";
       <div class="item" id="item3">
         <div class="image">
           <img
-            src="/portfolio/icons/debsirin.png"
+            src="/university-portfolio/icons/debsirin.png"
             alt="โรงเรียนเทพศิรินทร์"
             loading="lazy"
           />
@@ -63,7 +63,7 @@ import Tab from "../components/Tab.astro";
       {
         [1, 2, 3].map((number) => (
           <img
-            src={`/portfolio/images/education/${number}.webp`}
+            src={`/university-portfolio/images/education/${number}.webp`}
             alt="education-picture"
             loading="lazy"
           />
@@ -74,15 +74,17 @@ import Tab from "../components/Tab.astro";
 </div>
 
 <style>
+  * {
+    --dot-wh: min(1.5rem, 5vw);
+    --img-wh: min(9rem, 15vw);
+    --tl-height: min(26rem, calc(27vw + 12rem));
+  }
+
   .education {
     display: flex;
     justify-content: center;
     gap: min(10rem, 2vw);
     position: relative;
-
-    --dot-wh: min(1.5rem, 5vw);
-    --img-wh: min(9rem, 15vw);
-    --tl-height: min(26rem, calc(27vw + 12rem));
   }
 
   .timeline {
